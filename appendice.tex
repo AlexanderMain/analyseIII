@@ -1,0 +1,29 @@
+\chapter{Solutions des exercices}
+Tous les exercices ne seront pas corrigés.
+
+\section{Hahn-Banach (Formes analytiques)}
+\textbf{Solution de l'exercice \ref{hb:a:exo1}}
+
+\begin{enumerate}
+\item Supposons que $x_0\in \mathrm{adh(F)}$.
+  Etant donné que le noyau de toute forme linéaire
+  continue est fermé (le noyau est l'image réciproque du singleton
+  0 qui est fermé, donc est fermé par continuité), et que le passage
+  à l'adhérence conserve les inclusions, il est aisé de conclure.
+
+  Réciproquement, supposons que $x_0\notin \mathrm{adh(F)}$.
+  Par le corollaire \ref{hb:a:cor4} des formes analytiques de
+  Hahn-Banach, il existe une forme s'annulant sur $F$ et pas
+  en $x_0$, ce que l'on voulait montrer.
+\item Supposons $F$ dense dans $E$. Soit $x^*\in E^*$ tel
+  que $F\subseteq\mathrm{Ker}(x^*)$. Etant donné que ce
+  noyau est fermé, il contient la fermeture de $F$ qui
+  est $E$. Ceci implique que $x^*$ est l'application
+  constante nulle.
+
+  Réciproquement, supposons $F$ non dense dans $E$.
+  Il suffit de considérer un élément du complémentaire
+  de l'adhérence de $F$ et d'appliquer le résultat \ref{hb:a:cor4}
+  pour obtenir une forme linéaire dont le noyau contient
+  $F$ mais non identiquement nulle.
+\end{enumerate}

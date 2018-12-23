@@ -1,0 +1,223 @@
+\section{Généralités}
+Soit $\mathbb{K}$ un corps, avec $\mathbb{K}= \mathbb{R}$
+ou $\mathbb{K}=\mathbb{C}$.
+Soit $(E, \|.\|)$ un espace vectoriel sur $\mathbb{K}$.
+\begin{df}
+  Le dual de $E$, noté $E^*$ correspond à $\mathscr{L}(E, \mathbb{K})$ ie.
+  l'ensemble des formes linéaires continues.
+\end{df}
+
+Par la proposition \ref{lin:cpl:imp}, étant donné que $\mathbb{K}$ est complet,
+on a que $(E^*, \|.\|)$ est un espace de Banach (la norme considérée est
+la norme opérateur).
+
+Dans ce chapitre plutôt que de s'attarder sur des propriétés générales
+des espaces duaux, nous étudierons des exemples et nous identifierons
+les espaces duaux d'espaces connus à d'autres espaces que nous connaissons.
+
+\textbf{Remarque}: les intuitions sur comment trouver à quel espace s'identifie
+le dual seront omises.
+
+\section{Exemples en dimension finie}\label{dual:ex:dimf}
+En dimension finie, il est connu que le dual algébrique est de même dimension
+que l'espace vectoriel considéré. De plus, comme toutes les applications
+linéaires définies sur un espace vectoriel de dimension finie
+sont continues, il suffit de vérifier qu'on a une isométrie entre
+les espaces considérés pour avoir l'identification.
+
+\begin{exo}
+Soient $(X, d_X),(Y, d_Y)$ deux espaces métriques, $i:X\to Y$ une isométrie,
+c'est-à-dire \og $i$ préserve les distances\fg, c'est-à-dire:
+$$\forall x, y\in X, d_X(x, y) = d_Y(i(x), i(y))$$
+
+Montrer que $i$ est injective.
+\end{exo}
+
+Dans les calculs relatifs à tous les exemples
+suivants, il n'est jamais montré que l'application
+considérée est linéaire. Cela est laissé comme exercice.
+
+\begin{ex}
+  On a $(\mathbb{R}^2, \|.\|_2)^*\equiv (\mathbb{R}^2, \|.\|_2)$
+  via l'isométrie:
+  \begin{IEEEeqnarray*}{rrClrCl}
+    i: & (\mathbb{R}^2, \|.\|_2) & \to & \IEEEeqnarraymulticol{3}{l}{(\mathbb{R}^2, \|.\|_2)^*} \\
+    & (x_1, x_2)&\mapsto& i(x_1, x_2):&(\mathbb{R}^2, \|.\|_2)&\to&\mathbb{R} \\
+    &&&&(x, y)&\mapsto& x_1x + x_2 y
+  \end{IEEEeqnarray*}
+\end{ex}
+
+Il suffit de prouver que $i$ est une isométrie étant donné que
+l'espace considéré est de  dimension finie.
+
+Soit $(x_1, x_2)\in\mathbb{R}^2$. On a (en utilisant l'inégalité
+de Cauchy-Schwarz):
+\begin{IEEEeqnarray*}{rCl}
+  \|i(x_1, x_2)\| = \sup_{x^2+y^2\leq 1}|x_1 x + x_2 y|
+  & \leq & \sup_{x^2+y^2\leq 1}|x_1x| + |x_2 y| \\
+  & \leq & \sup_{x^2+y^2\leq 1} (x_1^2+x_2^2)^{1/2}(x^2+y^2)^{1/2} \\
+  & \leq & (x_1^2+x_2^2)^{1/2}\sup_{x^2+y^2\leq 1}(x^2+y^2)^{1/2}
+  = \|(x_1, x_2)\|_2
+\end{IEEEeqnarray*}
+
+Réciproquement, il suffit de considérer $z = \frac{(x_1, x_2)}{\|(x_1, x_2)\|_2}$;
+on a $i(x_1, x_2)(z) = \|(x_1, x_2)\|_2$ ce qui fournit l'inégalité nous
+permettant de conclure.
+
+\begin{ex}\label{dual:ex:r2n1}
+  On a $(\mathbb{R}^2, \|.\|_1)^*\equiv (\mathbb{R}^2, \|.\|_\infty)$
+  via l'isométrie:
+  \begin{IEEEeqnarray*}{rrClrCl}
+    i: & (\mathbb{R}^2, \|.\|_\infty) & \to & \IEEEeqnarraymulticol{3}{l}{(\mathbb{R}^2, \|.\|_1)^*} \\
+    & (x_1, x_2)&\mapsto& i(x_1, x_2):&(\mathbb{R}^2, \|.\|_1)&\to&\mathbb{R} \\
+    &&&&(x, y)&\mapsto& x_1x + x_2 y
+  \end{IEEEeqnarray*}
+\end{ex}
+
+Soit $(x_1, x_2)\in\mathbb{R}^2$. On a:
+\begin{IEEEeqnarray*}{rCl}
+  \|i(x_1, x_2)\| = \sup_{|x|+|y|\leq 1} |x_1 x + x_2 y|
+  & \leq & \sup_{|x|+|y|\leq 1}|x_1 x| + |x_2 y| \\
+  & \leq & \sup_{|x|+|y|\leq 1} \max(|x_1|, |x_2|) (|x|+|y|) \\
+  & \leq & \|(x_1, x_2)\|_\infty \sup_{|x|+|y|\leq 1}(|x|+|y|)
+  = \|(x_1, x_2)\|_\infty
+\end{IEEEeqnarray*}
+
+Si $\max(|x_1|, |x_2|) = |x_1|$, alors $i(x_1, x_2)$ atteint
+$\|(x_1, x_2)\|_\infty$ en $(\mathrm{sign}(x_1), 0)$ qui est bien un élément de
+la boule unité de $(\mathbb{R}^2, \|.\|_1)$. L'autre cas
+est analogue. On peut donc conclure que $i$ est bien une isométrie.
+
+\begin{ex}\label{dual:ex:r2ninfty}
+  On a $(\mathbb{R}^2, \|.\|_\infty)^*\equiv (\mathbb{R}^2, \|.\|_1)$
+  via l'isométrie:
+  \begin{IEEEeqnarray*}{rrClrCl}
+    i: & (\mathbb{R}^2, \|.\|_1) & \to & \IEEEeqnarraymulticol{3}{l}{(\mathbb{R}^2, \|.\|_\infty)^*}\\
+    & (x_1, x_2)&\mapsto& i(x_1, x_2):&(\mathbb{R}^2, \|.\|_\infty)&\to&\mathbb{R} \\
+    &&&&(x, y)&\mapsto& x_1x + x_2 y
+  \end{IEEEeqnarray*}
+\end{ex}
+
+Soit $(x_1, x_2)\in\mathbb{R}^2$. On a:
+\begin{IEEEeqnarray*}{rCl}
+  \|i(x_1, x_2)\| = \sup_{\max(|x|,|y|)\leq 1} |x_1 x + x_2 y|
+  & \leq & \sup_{\max(|x|,|y|)\leq 1}|x_1 x| + |x_2 y| \\
+  & \leq & \sup_{\max(|x|,|y|)\leq 1} (|x_1|+|x_2|)\max(|x|, |y|)  \\
+  & \leq & \|(x_1, x_2)\|_1 \sup_{\max(|x|,|y|)\leq 1}\max(|x|,|y|)
+  = \|(x_1, x_2)\|_1
+\end{IEEEeqnarray*}
+
+Il est facile de vérifier que $i(x_1, x_2)$ atteint $\|(x_1, x_2)\|_1$
+au point $(\mathrm{sign}(x_1), \mathrm{sign}(x_2))$ de la boule unité
+de $(\mathbb{R}^2, \|.\|_\infty)$, ce qui fournit l'autre inégalité
+désirée.
+
+\begin{exo}
+  Soient $p > 1$, $q>1$ le conjugué de $p$. Montrer qu'on a
+  que $(\mathbb{R}^2, \|.\|_q)^*\equiv (\mathbb{R}^2, \|.\|_p)$.
+\end{exo}
+
+Notez que tous ces exemples peuvent se généraliser
+en dimension supérieure à 2.
+
+\section{Exemples en dimension infinie}
+Contrairement aux exemples de la section précédente, il ne
+suffit plus de vérifier que l'application considérée est
+une isométrie car la surjectivité n'est plus garantie par
+l'injectivité. Les exemples requièrent donc plus de travail.
+
+Introduisons le premier espace sur lequel nous allons nous
+concentrer, qui est un espace de suites.
+\begin{df}
+  L'espace $c_0$ est l'espace des suites dans $\mathbb{K}$
+  convergeant vers $0$. On le munit de la norme $\|.\|_\infty$.
+\end{df}
+
+Etant donné que toutes les suites convergeantes sont bornées,
+on a que $c_0$ est un sous-espace vectoriel de $\ell^\infty$.
+
+\begin{ex}
+  On a $(c_0, \|.\|_\infty)^*\equiv (\ell^1, \|.\|_1)$
+  via l'isométrie:
+  \begin{IEEEeqnarray*}{rrClrCl}
+    i: & (\ell^1, \|.\|_1) & \to & \IEEEeqnarraymulticol{3}{l}{(c_0, \|.\|_\infty)^*}\\
+    & x=(x_n)_{n\in\mathbb{N}}&\mapsto& i(x): & (c_0, \|.\|_\infty)&\to&\mathbb{R} \\
+    &&&&(y_n)_{n\in\mathbb{N}}&\mapsto& \sum_{k=0}^\infty x_ky_k
+  \end{IEEEeqnarray*}
+\end{ex}
+
+\textbf{L'application $i$ est une isométrie}:
+
+Soit $x=(x_n)_{n\in\mathbb{N}}\in\ell^1$. La fonction $i(x)$
+est bien définie car pour tout $y\in c_0$, on a l'inégalité
+$$|i(x)(y)|\leq \sum_{k=0}^\infty |x_ky_k|\leq \|y\|_\infty \|x\|_1$$
+
+Cela implique en particulier que $\|i(x)\|\leq\|x\|_1$. Montrons l'inégalité
+réciproque.
+
+Soit, pour tout naturel $N$, la suite $(y^{(N)}_n)_{n\in\mathbb{N}}$
+définie par:
+$$\forall n\in\mathbb{N},  y_n^{(N)}=\begin{cases} \mathrm{sign}(x_n)\mbox{ si $n\leq N$}
+  \\ 0 \mbox{ sinon}\end{cases}$$
+
+Alors $(y^{(N)}_n)_{n\in\mathbb{N}}$ appartient à la boule unité
+de $c_0$ et on a $|i(x)(y^{(N)})|\to\|x\|_1$ quand $N$ tend vers
+l'infini. Ceci implique que $\|i(x)\|\geq \|x\|_1$, ce qu'on voulait. \newline
+
+\textbf{L'application $i$ est surjective}:
+
+Vérifions la surjectivité de $i$.
+Soit $x^*\in (c_0)^*$. On pose $x = (x^*(e_n))_{n\in\mathbb{N}}$ où $e_n$
+est la suite de terme général $(\ind_{\{n\}}(k))_{k\in\mathbb{N}}$.
+
+Il reste à montrer que $i(x) = x^*$, ce qui se vérifie par
+un simple calcul (il suffit d'observer les sommes partielles
+puis de passer à la limite), et que $x$ est bien élément de $\ell^1$.
+
+Pour tout naturel $N$, on a:
+$$\sum_{k=0}^N |x_k| = x^*(y^{(N)})\leq \|x^*\|$$
+Ce qui implique que la série des termes de $x$ est
+absolument convergente, ce qu'on voulait montrer.
+
+\begin{ex}
+  On a $(\ell^1, \|.\|_1)^*\equiv (\ell^\infty, \|.\|_\infty)$
+  via l'isométrie:
+  \begin{IEEEeqnarray*}{rrClrCl}
+    i: & (\ell^\infty, \|.\|_\infty) & \to & \IEEEeqnarraymulticol{3}{l}{(\ell^1, \|.\|_1)^*}\\
+    & x=(x_n)_{n\in\mathbb{N}}&\mapsto& i(x): & (\ell^1, \|.\|_1)&\to&\mathbb{R} \\
+    &&&&(y_n)_{n\in\mathbb{N}}&\mapsto& \sum_{k=0}^\infty x_ky_k
+  \end{IEEEeqnarray*}
+\end{ex}
+
+\textbf{L'application $i$ est une isométrie}:
+
+Soit $x=(x_n)_{n\in\mathbb{N}}\in\ell^\infty$. La fonction $i(x)$
+est bien définie car pour tout $y\in \ell^1$, on a l'inégalité
+$$|i(x)(y)|\leq \sum_{k=0}^\infty |x_ky_k|\leq \|x\|_\infty \|y\|_1$$
+
+Cela implique en particulier que $\|i(x)\|\leq\|x\|_\infty$. Montrons l'inégalité
+réciproque.
+
+Soit, pour tout naturel $N$, la suite $(y^{(N)}_n)_{n\in\mathbb{N}}$
+définie par:
+$$\forall n\in\mathbb{N} , y_n^{(N)}= \ind_{\{N\}}(n)\mathrm{sign}(x_n)$$
+
+Alors $(y^{(N)}_n)_{n\in\mathbb{N}}$ est élément de la boule unité
+de $\ell^1$ et on a $|i(x)(y^{(N)})| = |x_N|$ quel que soit
+le naturel $N$ considéré.
+Ceci implique que $\|i(x)\|\geq \|x\|_\infty$, ce qu'on voulait. \newline
+
+\textbf{L'application $i$ est surjective}:
+
+Vérifions la surjectivité de $i$.
+Soit $x^*\in (\ell^1)^*$. On pose $x = (x^*(e_n))_{n\in\mathbb{N}}$ où $e_n$
+est la suite de terme général $(\ind_{\{n\}}(k))_{k\in\mathbb{N}}$.
+
+Il reste à montrer que $i(x) = x^*$, ce qui se vérifie par
+un simple calcul (il suffit d'observer les sommes partielles
+puis de passer à la limite), et que $x$ est bien élément de $\ell^\infty$.
+
+Pour tout naturel $N$, on a:
+$$|x_k| = x^*(y^{(N)})\leq \|x^*\|$$
+Ce qui implique que $x$ est
+une suite bornée, ce que l'on voulait montrer.

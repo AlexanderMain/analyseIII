@@ -1,0 +1,490 @@
+Dans ce chapitre nous présentons plusieurs exemples d'espaces de Banach,
+notamment les espaces $\ell^p$ de suites et deux exemples d'espaces de fonctions.
+
+La lettre $\mathbb{K}$ est utilisée pour représenter le
+corps des nombres réels $\mathbb{R}$ ou celui des nombres
+complexes $\mathbb{C}$.
+\section{Exemples tirés du cours d'Analyse II}
+
+Nous avons vu l'année passée que tous les espaces vectoriels
+de dimension finie étaient complets.
+\begin{prop}
+  Soit $(E, \|.\|)$ un espace vectoriel sur $\mathbb{K}$
+  de dimension finie. Il s'agit d'un espace de Banach.
+\end{prop}
+\begin{proof}(Esquisse de preuve)
+
+  \textbf{Remarque}: un point intéressant de la dimension finie est qu'on
+  peut travailler, si on le souhaite, avec sa norme
+  préférée étant donné qu'elles sont toutes équivalentes.
+
+  Etant donné une suite de Cauchy, il est évident (via l'inégalité
+  triangulaire) que chaque composante (en se fixant au préalable
+  une base) est de Cauchy et donc converge dans $\mathbb{K}$
+
+  Ceci fournit un candidat limite et la vérification se fait
+  facilement en prenant par exemple la norme $\|.\|_1$.
+\end{proof}
+
+Les espaces de Hilbert sont un autre type d'espace de Banach
+que nous avons étudié en analyse II. Ils sont complets par
+définition.
+
+\section{Espaces de suites $\ell^p$}
+\begin{df}
+  Soit $1\leq p<\infty$ un réel. On appelle $\ell^p$ (noté aussi
+  $\ell^p(\mathbb{N})$)l'ensemble  de suites suivant:
+  \begin{equation*}
+    \left\{(x_n)_{n\in\mathbb{N}}\mid
+       \forall  n\in\mathbb{N}, x_n\in\mathbb{K} \mbox{ et }
+      \sum_{n=0}^\infty|x_n|^p<+\infty\right\}
+  \end{equation*}
+
+  On définit l'application $\|.\|_p:\ell^p\to\left[0, +\infty\right[$
+  par
+  $$ \forall  x=(x_n)_{n\in\mathbb{N}}\in \ell^p, \|x\|_p=
+  \left(\sum_{n=0}^\infty|x_n|^p\right)^{1/p}$$
+\end{df}
+
+Il n'est pas clair à première vue que $\ell^p$ est un espace
+vectoriel, lorsque $p>1$. Efforçons de montrer des résultats
+permettant une preuve courte de cela, tout en délivrant
+des résultats simplifiant la démonstration du fait
+que l'application $\|.\|_p$ définit une
+norme sur $\ell^p$.
+Nous aurons besoin d'une première inégalité célèbre afin
+de prouver ce résultat.
+
+\begin{thm}[Inégalité de Hölder]
+  Soient $n\geq 1$ un nombre naturel, $p, q>1$ deux réels
+  conjugués, c'est-à-dire vérifiant l'égalité:
+  $$\frac{1}{p}+\frac{1}{q}=1$$
+
+  Pour tous $x=(x_1, \ldots, x_n), y=(y_1, \ldots, y_n)\in
+  \mathbb{K}^n$, l'inégalité suivante est vérifiée:
+  $$\sum_{k=1}^n|x_k\cdot y_k|\leq
+  \left(\sum_{k=1}^n|x_k|^p\right)^{\frac{1}{p}}
+  \left(\sum_{k=1}^n|y_k|^q\right)^{\frac{1}{q}}$$
+\end{thm}
+\begin{proof}
+  Prouvons préalablement que pour tous réels
+  $a, b >0$, l'inégalité suivante est vérifiée:
+  \begin{equation}\label{hold:pv1}
+    a\cdot b\leq\frac{a^p}{p}\cdot\frac{b^q}{q}
+  \end{equation}
+
+  Il est aisé de vérifier, à l'aide de la dérivation, que
+  la fonction $\ln:\left]0, +\infty\right[\mapsto\mathbb{R}$
+  est concave, c'est-à-dire:
+
+  $$  \forall  t\in [0, 1],  \forall  x, y >0,
+  \ln(tx+(1-t)y)\geq t\ln(x)+ (1-t)\ln(y)$$
+
+  Puisque $p, q >1$, on a:
+  \begin{IEEEeqnarray*}{rCl}
+    \ln\left(\frac{a^p}{p}+\frac{b^q}{q}\right)
+    & \geq & \frac{1}{p}\ln(a^p)+\frac{1}{q}\ln(b^q) \\
+    & = & \ln(a)+\ln(b) \\
+    & = & \ln(a\cdot b)
+  \end{IEEEeqnarray*}
+
+  Etant donné que la fonction exponentielle est croissante,
+  on a bien l'inégalité \ref{hold:pv1}.
+
+
+Soient $x=(x_k)_{1\leq k\leq n}, y=(y_k)_{1\leq k\leq n}\in\mathbb{K}^n$.
+Supposons les tous les deux non nuls, puisque dans ce cas, l'inégalité
+du théorème est claire.
+
+On pose, pour $j\in\{1, \ldots, n\}$:
+$$A_j = \frac{|x_j|}{\left(\sum_{k=1}^n|x_k|^p\right)^{\frac{1}{p}}}
+\mbox{ et }
+B_j = \frac{|y_j|}{\left(\sum_{k=1}^n|y_k|^q\right)^{\frac{1}{q}}}$$
+
+Ces quotients sont bien définis car $x$ et $y$ sont non nuls.
+Par l'inégalité (\ref{hold:pv1}), on a que
+\begin{IEEEeqnarray*}{rCl}
+  \left(\sum_{j=1}^n
+    \frac{|x_j|}{\left(\sum_{k=1}^n|x_k|^p\right)^{\frac{1}{p}}}
+  \cdot
+    \frac{|y_j|}{\left(\sum_{k=1}^n|y_k|^q\right)^{\frac{1}{q}}}\right)
+  & = &\sum_{j=1}^nA_j\cdot B_j
+  \\&\leq& \frac{1}{p}\sum_{j=1}^nA_j^p +\frac{1}{q}\sum_{j=1}^nB_j^q \\
+  &=& \frac{1}{p} + \frac{1}{q} = 1
+\end{IEEEeqnarray*}
+
+Ce qui implique le résultat.
+\end{proof}
+
+Introduisons maintenant une autre inégalité célèbre qui nous
+permettra de montrer que $\ell^p$ est un espace vectoriel.
+
+\begin{thm}[Inégalité de Minkowski (dimension finie)]
+  Soient $n\geq 1$  un nombre naturel,
+  $p\in\left[1, +\infty\right[$ un nombre réel,
+  $x=(x_k)_{1\leq k\leq n}, y=(y_k)_{1\leq k\leq n}\in \mathbb{K}^n$.
+
+  L'inégalité suivante est vérifiée:
+  $$\|x+y\|_p\leq \|x\|_p + \|y\|_p$$
+\end{thm}
+\begin{proof}
+
+  Supposons $x, y$ non nuls, sinon le résultat est
+  clair.
+
+  Si $p=1$, il suffit d'itérer l'inégalité triangulaire
+  pour le module afin de prouver l'assertion. Supposons
+  par conséquent que $p>1$.
+
+  \textbf{Remarque}: Cette preuve est fort calculatoire.
+  Elle n'a pas vraiment d'intérêt au niveau des idées.
+
+  \begin{IEEEeqnarray*}{rCl}
+    \|x+y\|_p^p & = &\sum_{k=1}^n|x_k+y_k|^p \\
+    & \leq & \sum_{k=1}^n |x_k+y_k|^{p-1}(|x_k|+|y_k|) \\
+    & = & \sum_{k=1}^n |x_k\|x_k+y_k|^{p-1} +
+    \sum_{k=1}^n |y_k\|x_k+y_k|^{p-1}
+  \end{IEEEeqnarray*}
+
+  Soit $q$ le réel conjugué de $p$. En appliquant l'inégalité
+  de Hölder au dernier terme de l'inégalité précédente, on
+  obtient:
+
+  \begin{IEEEeqnarray*}{rCl}
+    \|x+y\|_p^p & \leq &\left(\sum_{k=1}^n|x_k|^p\right)^\frac{1}{p}
+    \cdot \left(\sum_{k=1}^n|x_k+y_k|^{(p-1)q}\right)^\frac{1}{q} +
+    \left(\sum_{k=1}^n|y_k|^p\right)^\frac{1}{p}
+    \cdot \left(\sum_{k=1}^n|x_k+y_k|^{(p-1)q}\right)^\frac{1}{q} \\
+    & = & \left(\sum_{k=1}^n|x_k+y_k|^{p}\right)^\frac{1}{q}
+    (\|x\|_p+\|y\|_p)\\
+    & = & \left(\|x + y\|_p^{p}\right)^\frac{1}{q}(\|x\|_p+\|y\|_p)
+  \end{IEEEeqnarray*}
+
+  Ceci implique l'inégalité nous permettant de conclure:
+  $$ \|x\|_p+\|y\|_p\geq \left(\|x + y\|_p^{p}\right)^{1-\frac{1}{q}}
+  = \|x + y\|_p$$
+\end{proof}
+
+Le résultat se généralise facilement aux espaces $\ell^p$, et
+nous avons donc en même temps l'argument le plus important
+de la preuve que $\ell^p$ est un espace vectoriel, mais également
+l'inégalité triangulaire pour la norme $\|.\|_p$.
+
+\begin{thm}[Inégalité de Minkowski (Généralisation à $\ell^p$)]
+  Soient $p\in\left[1, +\infty\right[$ un nombre réel,
+  $x=(x_n)_{n\in\mathbb{N}}, y=(y_n)_{n\in\mathbb{N}}\in \ell^p$.
+
+  On a:
+  $\|x+y\|_p\leq \|x\|_p + \|y\|_p$
+\end{thm}
+\begin{proof}
+  Etant donné qu'on a le résultat pour toutes les suites de
+  sommes partielles, il suffit de passer à la limite
+  pour conclure.
+\end{proof}
+
+\begin{exo} Rédiger en détail la preuve des affirmations suivantes:
+  \begin{itemize}
+  \item L'ensemble $\ell^p$ est un espace vectoriel sur $\mathbb{K}$.
+  \item L'application $\|.\|_p$ définit bien une norme sur $\ell^p$.
+  \end{itemize}
+\end{exo}
+
+
+Il est légitime de se demander pourquoi parler de ces espaces
+dans un chapitre réservé aux espaces de Banach. C'est parce
+qu'il s'agit d'exemples classiques:
+
+\begin{prop}\label{lp:cpl}
+  Soit $p> 1$ un nombre réel. L'espace vectoriel normé $(\ell^p, \|.\|_p)$
+  est un espace de Banach.
+\end{prop}
+
+\begin{exo}
+  Effectuer la preuve de la proposition \ref{lp:cpl}
+\end{exo}
+
+Nous n'effectuerons pas la preuve dans cette section, elle
+est laissée à titre d'exercice. Nous allons toutefois
+montrer le cas $p=1$. Les idées mises
+en oeuvre dans cette preuve sont intéressantes et il est
+conseillé de les revoir.
+
+\begin{prop}
+  L'espace vectoriel normé $(\ell^1, \|.\|_1)$ est un espace de Banach.
+\end{prop}
+
+\begin{proof}
+  Soit $\left(x^{(n)}\right)_{n\in\mathbb{N}}=
+  \left(\left(x_k^{(n)}\right)_k\right)_n$\footnote{
+    On note en indice la ``composante'' dans $\ell^1$ et en
+    exposant l'indice de la suite} une suite de
+  Cauchy dans $(\ell^1, \|.\|_1)$. Montrons qu'elle est convergente
+  au sens de la norme $\|.\|_1$.
+
+  En traduisant l'hypothèse sur la suite, il est aisé de déduire que
+  pour tout $k\in\mathbb{N}$, la suite $(x_k^{(n)})_n$ est de Cauchy dans
+  $\mathbb{K}$ qui est complet. Soit $x_k\in\mathbb{K}$ la limite
+  de cette suite dans $\mathbb{K}$ .
+
+  Nous avons ainsi obtenu un candidat limite $x=(x_k)_k$. Nous devons
+  montrer qu'il s'agit bien d'un élément de $\ell^1$ et qu'il s'agit de
+  la limite de la suite $(x^{(n)})_n$.
+
+  Soit $\varepsilon>0$. Puisque la suite $(x^{(n)})$ est de
+  Cauchy, il est vrai que:
+%  $$ \exists  N \forall  p, q\geq N, \|x_p-x_q\|_1<\varepsilon$$
+  $$ \exists  N\geq 0, \forall  p, q\geq N, \forall  n\geq 0,
+  \sum_{k=0}^n| x^{(p)}_k - x^{(q)}_k|\leq\varepsilon$$
+
+  En faisant tendre $q\to+\infty$, on en déduit que:
+  $$ \exists  N\geq 0, \forall  p\geq N, \forall  n\geq 0,
+  \sum_{k=0}^n| x^{(p)}_k - x_k|\leq\varepsilon$$
+  Ce qui permet facilement de conclure que
+  $x^{(n)}\xrightarrow[n\to+\infty]{\|.\|_1}x$
+
+  Pour montrer que $x\in\ell^1$, il suffit d'observer l'inégalité
+  suivante, valable pour tous naturels $n, N$ considérés.
+  $$\sum_{k=0}^N|x_k|
+  \leq \sum_{k=0}^N|x_k-x_k^ {(n)}|+ \sum_{k=0}^N|x_k^{(n)}|
+  \leq \|x-x^{(n)}\|_1+\|x^{(n)}\|_1$$
+  Au vu de la convergence que nous venons d'établir, le premier terme
+  du membre de droite converge vers $0$. Le second quant à lui est
+  borné par une constante indépendante de $n$ car il s'agit d'un
+  élément d'une suite de Cauchy. Ceci implique que la série
+  définissant $\|x\|_1$ est bien convergente.
+
+\end{proof}
+
+Il reste encore un espace lié aux espaces $\ell^p$ que
+nous n'avons pas introduit: l'espace des suites $\ell^\infty$.
+
+\begin{df}
+  L'espace des suites bornées, noté $\ell^\infty$
+  correspond à l'ensemble suivant:
+  $$\ell^\infty=\{x\in\mathbb{K}^{\mathbb{N}}\mid
+  \sup_{n\in\mathbb{N}}|x_n|<\infty\}$$
+\end{df}
+
+\begin{rem}
+  Il est utile de remarquer que $1$ et $\infty$ sont
+  conjugués (par exemple pour les espaces duaux, cf.
+  exemples \ref{dual:ex:r2n1} et \ref{dual:ex:r2ninfty}
+  de la section \ref{dual:ex:dimf}).
+\end{rem}
+
+\begin{exo}
+  Montrer que l'application suivante définit bien une
+  norme sur $\ell^\infty$:
+  $$\|.\|_\infty:\ell^\infty\to\left[0,+\infty\right[:
+  (x_n)_{n\in\mathbb{N}}\mapsto\sup_{n\in\mathbb{N}}|x_n|$$
+\end{exo}
+
+Tout comme ses confrères, il s'agit d'un espace de
+Banach. Cela fait l'objet du résultat suivant:
+\begin{prop}
+  L'espace vectoriel $(\ell^\infty, \|.\|_\infty)$ est
+  un espace de Banach.
+\end{prop}
+La preuve est fortement similaire à celle pour l'espace
+de suites $\ell^1$. Elle sera tout de même explicitée
+afin de permettre la lecture d'une version adaptée de
+la preuve ci-dessus.
+\begin{proof}
+  Soit $\left(x^{(n)}\right)_{n\in\mathbb{N}}=
+  \left(\left(x_k^{(n)}\right)_k\right)_n$ une suite de
+  Cauchy dans $(\ell^\infty, \|.\|_\infty)$. Montrons qu'elle est convergente
+  au sens de la norme $\|.\|_\infty$.
+
+  En traduisant l'hypothèse sur la suite, il est aisé de déduire que
+  pour tout $k\in\mathbb{N}$, la suite $(x_k^{(n)})_n$ est de Cauchy dans
+  $\mathbb{K}$ qui est complet. Soit $x_k\in\mathbb{K}$ la limite
+  de cette suite dans $\mathbb{K}$ .
+
+  Nous avons ainsi obtenu un candidat limite $x=(x_k)_k$. Nous devons
+  montrer qu'il s'agit bien d'un élément de $\ell^\infty$ et qu'il s'agit de
+  la limite de la suite $(x^{(n)})_n$.
+
+  Soit $\varepsilon>0$. Puisque la suite $(x^{(n)})$ est de
+  Cauchy, il est vrai que:
+%  $$ \exists  N \forall  p, q\geq N, \|x_p-x_q\|_1<\varepsilon$$
+  $$ \exists  N\geq 0, \forall  p, q\geq N,
+   \forall {k\geq0},| x^{(p)}_k - x^{(q)}_k|\leq\varepsilon$$
+
+  En faisant tendre $q\to+\infty$, on en déduit que:
+  $$ \exists N\geq 0, \forall  p\geq N,
+   \forall {k\geq0} , | x^{(p)}_k - x_k| \leq \varepsilon$$
+  Ce qui permet facilement de conclure que
+  $x^{(n)}\xrightarrow[n\to+\infty]{\|.\|_\infty}x$
+
+  Pour montrer que $x\in\ell^\infty$, il suffit d'observer l'inégalité
+  suivante, valable pour tous naturels $n, k$ considérés.
+  $$|x_k|
+  \leq |x_k-x_k^ {(n)}|+ |x_k^{(n)}|
+  \leq \|x-x^{(n)}\|_\infty+\|x^{(n)}\|_\infty$$
+  Au vu de la convergence que nous venons d'établir, le premier terme
+  du membre de droite converge vers $0$. Le second quant à lui est
+  borné par une constante indépendante de $n$ car il s'agit d'un
+  élément d'une suite de Cauchy. Ceci implique que la suite des
+  $(x_k)_{k\in\mathbb{N}}$ est bornée et donc que $x\in\ell^\infty$.
+\end{proof}
+
+\section{Espaces de fonctions continues}
+Un autre exemple d'espace de Banach dont nous avons
+les outils pour montrer la complétude est l'espace
+des fonctions continues sur l'intervalle $[0, 1]$.
+Tout ce qui suit dans cette section peut être
+généralisé aux fonctions définie sur un intervalle
+fermé borné quelconque.
+
+\begin{df}
+  On note $$\mathscr{C}[0, 1]=\left\{
+    f:[0, 1]\to\mathbb{K}\mbox{ continue}\right\}$$
+  l'espace vectoriel de fonctions continues sur
+  l'intervalle $[0, 1].$
+  On le munit de la norme $\|.\|_\infty$ définie par:
+  $$\|.\|_\infty:\mathscr{C}[0, 1]\to \left[0, +\infty\right[:
+  f\mapsto \|f\|_\infty=\max_{x\in [0, 1]}|f(x)|$$
+\end{df}
+
+Le maximum apparaissant dans la norme est bien défini,
+car les fonctions considérées sont continues sur un
+compact et atteignent donc leurs bornes.
+
+\begin{prop}
+  L'espace des fonctions continues sur l'intervalle [0, 1]
+  est complet au sens de la norme $\|.\|_\infty$.
+\end{prop}
+
+\begin{proof}
+  Soit $(f_n)_{n\in\mathbb{N}}$ une suite de Cauchy dans
+  $\mathscr{C}[0, 1]$. En retraduisant cette hypothèse
+  en remplaçant le maximum définissant $\|.\|_\infty$
+  par un quantificateur universel, on obtient la phrase
+  quantifiée suivante:
+  \begin{equation}\label{cpl:fn}
+    \forall \varepsilon>0, \exists N\in\mathbb{N},
+  \forall p, q\geq N , \forall x\in [0, 1],
+  |f_p(x)-f_q(x)|\leq\varepsilon
+  \end{equation}
+
+  On remarque que pour tout $x\in[0, 1]$, la suite
+  $(f_n(x))_{n\in\mathbb{N}}$ est de Cauchy dans
+  $\mathbb{K}$ qui est complet. Il existe donc
+  $f$ limite ponctuelle de $(f_n)_{n\in\mathbb{N}}$.
+
+  Pour conclure, il suffit de montrer que
+  la suite $(f_n)_{n\in\mathbb{N}}$ converge
+  au sens de $\|.\|_\infty$ vers $f$. Cela
+  garantira la continuité de $f$, car $f$
+  sera la limite uniforme de la suite.
+
+  En faisant $q\to\infty$ dans la phrase quantifiée
+  \ref{cpl:fn}, on a le résultat.
+
+\end{proof}
+
+\section{Espaces d'applications linéaires}
+
+Soient $(E, \|.\|_E)$ et $(F, \|.\|_F)$ deux espaces
+vectoriels normés sur $\mathbb{K}$. Rappelons certaines
+propriétés et définitions vues l'année passée.
+\begin{df}
+  On note $\mathscr{L}(E, F)$ l'espace vectoriel des
+  applications linéaires continues de $E$
+  dans $F$. Il s'agit d'un espace vectoriel normé,
+  muni de la norme opérateur définie par:
+
+  $$\|.\|:\mathscr{L}(E, F)\to \left[0, +\infty\right[:
+  T\mapsto \|T\| = \sup_{\substack{x\in E\\\|x\|_\leq 1}}\|T(x)\|_F$$
+\end{df}
+
+On a également vu plusieurs équivalences
+pour montrer qu'une application linéaire
+est continue. Rappelons les.
+\begin{prop}\label{cont:lin}
+  Soit $T: E\to F$ linéaire. Les assertions suivantes sont équivalentes:
+  \begin{itemize}
+  \item $T$ est continue.
+  \item $T$ est continue en $0$.
+  \item $T$ est bornée sur la boule unité de $E$.
+  \item Il existe une constante $C>0$ telle que
+    pour tout $x\in E$, $\|T(x)\|_F\leq C\|x\|$
+    \footnote{La constante optimale, s'il en
+      existe une, est $\|T\|$.}.
+  \end{itemize}
+\end{prop}
+
+
+
+Remarquez également qu'il existe plusieurs
+formulations équivalentes pour la norme
+opérateur:
+\begin{prop}\label{cont:norm}
+  Soit $T\in\mathscr{L}(E, F)$. Les égalités suivantes
+  sont satisfaites:
+  \begin{IEEEeqnarray*}{rCl}
+    \|T\| & = & \sup_{\substack{x\in E\\\|x\|_E = 1}}\|T(x)\|_F \\
+    & = & \sup_{\substack{x\in E\\\|x\|_E < 1}}\|T(x)\|_F
+  \end{IEEEeqnarray*}
+
+\end{prop}
+
+Il est utile, si vous avez des difficultés avec ces objets,
+d'essayer de les manipuler en résolvant les exercices:
+\begin{exo}
+  Prouver les propositions \ref{cont:lin} et \ref{cont:norm}.
+\end{exo}
+\begin{exo}[\og Sous-multiplicativité de la norme\fg]
+  Soit $(G, \|.\|_G)$ un espace vectoriel normé sur $\mathbb{K}$.
+  Soient $f: E\to F$, $g:F\to G$ des applications linéaires
+  continues. Montrer l'inégalité
+  $$\|g\circ f\|\leq \|g\|\cdot \|f\|$$
+\end{exo}
+
+L'espace $\mathscr{L}(E, F)$ n'est \emph{pas} un espace de Banach
+en général. Il faut ajouter une hypothèse sur $F$ pour avoir
+la complétude de cet espace.
+
+\begin{prop}\label{lin:cpl:imp}
+  Si $F$ est complet, alors $\mathscr{L}(E, F)$ est un
+  espace de Banach.
+\end{prop}
+\textbf{Remarque}: il n'y a pas de condition supplémentaire
+à imposer à l'espace $E$. En particulier, le résultat n'exige
+pas sa complétude.
+
+La réciproque de ce résultat est également vraie, nous
+l'énoncerons dans un futur chapitre.
+
+\begin{proof}
+  Soit $(T_n)_{n\in\mathbb{N}}$ une suite de Cauchy dans
+  $\mathscr{L}(E, F)$, c'est-à-dire:
+  $$\forall \varepsilon>0, \exists N\geq 0, \forall p, q\geq N,
+  \|T_p-T_q\|\leq \varepsilon$$
+
+  Alors, on a l'assertion suivante:
+  \begin{IEEEeqnarray*}{rl}
+    \IEEEeqnarraymulticol{2}{l}{
+    \forall \varepsilon>0, \exists N\geq 0, \forall p, q\geq N,
+    \forall x\in E,}\\ \qquad & \|T_p(x)-T_q(x)\|\leq
+    \|T_p-T_q\|\cdot \|x\|_E\leq \varepsilon\cdot\|x\|_E
+  \end{IEEEeqnarray*}
+
+  Cela implique que pour tout $x\in E$, la suite $(T_n(x))_{n\in\mathbb{N}}$
+  est de Cauchy dans $F$ qui par hypothèse est complet. Soit $T(x)$
+  limite de cette suite dans $F$.
+
+  Montrons que $T$ est la limite, au sens de la norme opérateur, de la
+  suite $(T_n)_{n\in\mathbb{N}}$.
+
+  En reprenant la phrase quantifiée ci-dessus, en considérant $x\in E$
+  de norme inférieure à $1$ et en faisant tendre $q$ vers l'infini,
+  on est assuré de la convergence.
+
+  L'application $T$ est bien linéaire car elle est limite simple
+  d'applications
+  linéaires. Elle est bornée sur la boule unité car pour tout naturel
+  $n$ on a l'inégalité:
+  $$\|T\|\leq \|T-T_n\| + \|T_n\|$$
+\end{proof}

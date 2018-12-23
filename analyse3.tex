@@ -1,0 +1,93 @@
+\documentclass[a4paper, 12pt]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath, amssymb, amsthm, verbatim}
+\usepackage{IEEEtrantools}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage{epigraph}
+\usepackage{mathrsfs}
+\usepackage[toc,page]{appendix}
+\usepackage{tikz-cd}
+
+%Header stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{14.85pt} % space for the rule
+\fancypagestyle{plain}{%
+  \fancyhead{} % get rid of headers on plain pages
+  \renewcommand{\headrulewidth}{0pt} % and the line
+}
+
+\usepackage{dsfont}
+\newcommand{\ind}{\mathds{1}}
+\newcommand{\ssi}{si et seulement si}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\title{Analyse Mathématique III}
+\author{James Campbell Alexander Main}
+\date{\today}
+
+\theoremstyle{definition} \newtheorem{df}{D\'{e}finition}[chapter]
+\theoremstyle{definition} \newtheorem{ex}[df]{Exemple}
+\theoremstyle{definition} \newtheorem{thm}[df]{Th\'{e}or\`{e}me}
+\theoremstyle{definition} \newtheorem{cor}[df]{Corollaire}
+\theoremstyle{definition} \newtheorem{lem}[df]{Lemme}
+\theoremstyle{definition} \newtheorem{prop}[df]{Proposition}
+\theoremstyle{definition} \newtheorem{rem}[df]{Remarque}
+
+\theoremstyle{definition} \newtheorem{exo}{Exercice}[chapter]
+
+
+\usepackage{marvosym} %for smileys
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\tableofcontents
+\chapter{Un petit mot avant de commencer}
+Ce document a pour but de créer des notes de cours
+pour le cours d'Analyse Mathématique III dispensé
+à l'UMONS afin d'altérer la structure dans un format
+plus clair que les notes prises au cours.
+
+Parmi les références citées, vous pouvez trouver des exercices
+à réaliser dans les suivantes: \cite{hb:exo1}.
+
+\section*{Remerciements}
+
+Merci beaucoup à Damien Galant pour sa relecture du document.
+
+\mainmatter
+\part{Premier quadrimestre}
+\chapter{Espaces de Banach: exemples}
+\input{chapitres/banach_ex.tex}
+
+\chapter{Espaces duaux: exemples}
+\input{chapitres/dual_ex.tex}
+
+
+\chapter{Théorèmes de Hahn-Banach}
+\input{chapitres/thm_hb.tex}
+
+
+\appendix
+\input{appendice.tex}
+
+\bibliography{references}
+\bibliographystyle{ieeetr}
+\end{document}
