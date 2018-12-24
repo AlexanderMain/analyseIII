@@ -161,6 +161,14 @@ que $\forall x \in E, |g(x)|\leq p(x)$.
   désirée.
 \end{proof}
 
+\begin{rem}
+  \textcolor{red}{
+  Remarquez que le théorème n'exige \emph{pas} la complétude
+  de l'espace vectoriel normé considéré.
+}
+\end{rem}
+
+
 \subsection{Hahn-Banach et dualité}
 Prouvons plusieurs corollaires des formes analytiques
 du théorème de Hahn-Banach liés à la dualité.  Ils
@@ -553,13 +561,16 @@ d'un convexe $C$:
   Soit $C\subseteq E$ un convexe contenant 0 et ouvert.
   Pour tout $x$ dans $E$, on définit la jauge de $C$ en $x$ comme
   suit:
-  $$j_C(x) = \inf\left\{\alpha > 0\mid x\in\alpha C\right\}$$
+  $$j_C(x) = \inf\left\{\alpha > 0\mid x\in\alpha C\right\} =
+  \inf\left\{\alpha > 0\mid \alpha^{-1}x\in C\right\}$$
 \end{df}
 
+
 Pour se familiariser avec cette fonction, vous êtes invité
-à effectuer les calculs suivants:
+à effectuer les exercices suivants:
 \begin{exo}
-  On considère le convexe $C = \left]\frac{-1}{2}, 2\right[$.
+  On considère le convexe $C = \left]\frac{-1}{2}, 2\right[$
+  de $\mathbb{R}$.
   Effectuez les calculs suivants:
   \begin{IEEEeqnarray*}{rClCrCl}
     j_C\left(\frac{1}{2}\right) & = & \fbox{\phantom{AAAAAA}}
@@ -568,3 +579,341 @@ Pour se familiariser avec cette fonction, vous êtes invité
     &\qquad & j_C\left(2\right) & = & \fbox{\phantom{AAAAAA}} \\
   \end{IEEEeqnarray*}
 \end{exo}
+
+\begin{exo} \label{hb:g:j2}
+  Soit $C$ un ouvert convexe de $E$ contenant $0$. Soit $x$ un élément
+  de $E$. Montrer que quel que soit $\varepsilon > 0$,
+  $$\frac{1}{j_C(x)+\varepsilon}x\in C$$
+\end{exo}
+
+Pour prouver les formes géométriques du théorème de Hahn-Banach,
+nous allons utiliser le résultat suivant.
+
+\begin{prop}\label{hb:g:l}
+Soient $C$ un ouvert convexe non vide de $E$ et $x_0\in E\setminus
+ C$. Alors il existe un hyperplan fermé qui sépare $\{x_0\}$ et $C$
+au sens large, c'est-à-dire:
+$$\exists x^{*}\in E^*, \forall x \in C, x^*(x) < x^{*}(x_0)$$
+\end{prop}
+
+Prouvons plusieurs propriétés de la jauge d'un convexe qui serviront
+dans la preuve de la proposition \ref{hb:g:l}.
+
+\begin{lem} \label{lem:jc}
+  Soit $C$ un ouvert convexe de $E$ contenant 0. Alors:
+  \begin{enumerate}
+  \item $\exists M> 0$, $\forall x\in E$, $0\leq j_C(x)\leq M\|x\|$.
+    \label{lem:jc1}
+  \item $C = \left\{ x\in E \mid j_C(x)<1\right\}$. \label{lem:jc2}
+  \item La jauge d'un convexe est positivement homogène. \label{lem:jc3}
+  \item L'application $j_C$ est sous-additive. \label{lem:jc4}
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}
+  Montrons chaque point un à un.
+  \begin{enumerate}
+  \item Soit $r>0$ tel que $B(0, r)\subseteq C$. Posons
+    $M = 2r^{-1}$. Soit $x\in E$ non nul. On vérifie facilement
+    que $r\frac{x}{2\|x\|}\in B(0, r)\subseteq C$, d'où $x \in
+    2r^{-1}\|x\|\cdot C$, ce qui donne le résultat.
+  \item Soit $x\in C$. Soit $r> 0$ tel que $B(x, r)\subseteq C$.
+    Alors il existe $\varepsilon >0$ tel que $(1+\varepsilon)x\in
+    B(x, r)$. D'où $x\in \frac{1}{1+\varepsilon}\cdot C$ ce qui
+    montre la première inclusion.
+
+    Réciproquement, soit $x\in E$ tel que $j_C(x)<1$. Il existe
+    donc $1 > \varepsilon > 0$ tel que $x\in \varepsilon \cdot C$.
+    Par convexité de $C$, le segment joignant $0$ à
+    $\frac{1}{\varepsilon}x$ est inclus à $C$; puisque
+    ce dernier contient $x$, on a l'inclusion désirée.
+  \item Soient $x$ un élément de $E$ et $\alpha$ un réel strictement
+    positif. Pour tout $\beta > 0$, $\alpha x\in \beta\cdot C$, \ssi{}
+    $x\in \alpha^{-1}\beta C$. D'où $j_C(\alpha x) = \alpha j_C(x)$ en
+    passant à l'infimum sur $\beta$.
+  \item Soient $x$, $y$  deux éléments de $E$. Soit
+    $\varepsilon>0$. On a:%\in\left]0, 1 \right[$. Alors
+    $\frac{1}{j_C(x)+\varepsilon}x\in C$ et
+    $\frac{1}{j_C(y)+\varepsilon}y\in C$ (cf. exercice résolu \ref{hb:g:j2}).
+    Par convexité de $C$, on a pour tout $t\in [0, 1]$:
+    $$t\frac{1}{j_C(x)+\varepsilon}x +
+    (1-t)\frac{1}{j_C(y)+\varepsilon}y\in C$$
+    En prenant $\displaystyle{t = \frac{j_C(x)+\varepsilon}
+      {j_C(x) +j_C(y)+2\varepsilon}}$, on obtient
+    $$\frac{x+y}{j_C(x) +j_C(y)+2\varepsilon}\in C $$
+
+    Par le point \ref{lem:jc2} et la positive homogénéité de la jauge d'un convexe,
+    on obtient $j(x + y) < j_C(x)+j_C(y)+2\varepsilon$. On conclut
+    en prenant $\varepsilon \to 0$.
+  \end{enumerate}
+\end{proof}
+
+Nous pouvons donc procéder à la preuve de la proposition \ref{hb:g:l}
+en utilisant ces propriétés.
+
+\begin{proof}
+Sans perte de généralité, on peut supposer $0\in C$; si ce n'est pas le cas,
+on considère $y_0\in C$ et \og on translate \fg, c'est-à-dire on prouve la
+propriété pour le convexe $C' = C - y_0$ et le point $x_0' = x_0 - y_0$ et on utilise
+la linéarité de la forme obtenue pour avoir le résultat.
+
+On pose $G = \mathbb{R}x_0$ et on considère la forme linéaire définie sur $G$
+par $\forall t\in \mathbb{R}$, $f(tx_0) = t$. Alors pour tout $t$ réel, on a
+$f(tx_0)\leq j_C(tx_0)$; si $t$ est négatif, c'est clair, et si $t$ est positif,
+cela revient à montrer (puisque $j_C$ est positivement homogène)
+que $1\leq j_C(x)$, ce qui est vrai car $x\notin C$.
+
+Par la forme analytique du théorème de Hahn-Banach (théorème \ref{hb:a1}),
+$f$ se prolonge en une forme linéaire $g$ sur $E$ vérifiant $\forall x \in E$,
+$g(x)\leq j_C(x)$.
+De plus, comme il existe une constante $M >0$ telle que tout élément
+$x$ de $E$ vérifie $j_C(x) \leq M\|x\|$, la continuité de $g$ est assurée
+sur $E$.
+
+On considère l'hyperplan $H = g^{-1}(\{1\})$. Montrons qu'il sépare bien $C$ et
+le singleton $x_0$. C'est immédiat car $g(x_0) = 1$ et tout élément $y$ de $C$
+est tel que $g(y)\leq j_C(y) < 1$.
+\end{proof}
+
+Le corollaire suivant est laissé au lecteur à titre d'exercice. Vous êtes
+invités à le montrer de plusieurs manières; en utilisant la proposition
+précédente ou un des corollaires des formes analytiques.
+
+\begin{exo}
+  Montrer que $E^*$ sépare les points de $E$, c'est-à-dire si $x$, $y$
+  sont des éléments de $E$, il existe $x^*$ une forme linéaire continue
+  sur $E$ telle que $x^*(x)\neq x^*(y)$
+\end{exo}
+
+En particulier deux éléments de $E$ sont égaux \ssi{} leur image
+par toute forme linéaire continue coïncide.
+
+\subsection{Théorème de Hahn-Banach: Formes géométriques}
+Tout au long de cette section, on considère un espace vectoriel normé
+$(E, \|.\|)$ sur $\mathbb{R}$.
+\begin{thm}[Théorème de Hahn-Banach -- Première forme géométrique] \label{hb:g1}
+  Soient $A$ un ouvert convexe non vide de $E$, $B$ un convexe non vide
+  de $E$ tels que $A$ et $B$ sont disjoints. Alors il existe un hyperplan
+  fermé qui sépare $A$ et $B$ au sens large.
+\end{thm}
+
+\begin{proof}
+  Soit $C = A - B $. Il s'agit d'un convexe ouvert de $E$. La convexité
+  se vérifie par calcul et pour montrer que $C$ est ouvert,
+  il suffit de remarquer qu'il s'agit d'une union d'ouverts:
+
+  $$ C = \bigcup_{b\in B} A - b =
+  \bigcup_{b\in B} \left\{a - b \mid a\in A\right\}$$
+
+  \'{E}tant donné que $A$ et $B$ sont disjoints, $0\notin C$.
+  Par la proposition \ref{hb:g:l}, il existe une forme linéaire
+  continue $x^*$ telle que tout élément $x$ de $C$ a une image
+  strictement négative. Il s'ensuit que pour tout élément $a$ de
+  $A$, pour tout élément $b$ de $B$, $x^*(a - b) < 0$.
+
+  Puisque $B$ est non vide, $\alpha = \sup_{x\in A}x^*(a)$ est fini. L'hyperplan
+  $(x^*)^{-1}(\alpha)$ sépare $A$ et $B$ au sens large, ce qui conclut la preuve.
+\end{proof}
+
+Il existe une seconde forme géométrique du théorème de Hahn-Banach.
+
+\begin{thm}[Théorème de Hahn-Banach -- Deuxième forme géométrique] \label{hb:g2}
+  Soient $A$ un compact convexe non vide de $E$, $B$ un fermé convexe non vide
+  de $E$ tels que $A$ et $B$ sont disjoints. Alors il existe un hyperplan
+  fermé qui sépare $A$ et $B$ au sens strict.
+\end{thm}
+
+Introduisons un lemme utile dans la preuve du théorème
+
+\begin{lem}\label{hb:g:l2}
+  Soit $(F, \|.\|)$ un espace vectoriel normé sur $\mathbb{K}$ (où
+  $\mathbb{K}= \mathbb{R}$ ou $\mathbb{C}$), $A$, $B$ deux convexes
+  non vides disjoints de $F$, $A$ compact et $B$ fermé.
+
+  Alors il existe $\varepsilon > 0$ tel que $A_\varepsilon =
+  A + B(0, \varepsilon)$  et $B_\varepsilon = B
+  + B(0, \varepsilon)$ sont disjoints.
+\end{lem}
+\begin{proof}
+  Supposons par l'absurde que cela soit faux. Pour tout naturel $n$ non
+  nul, il existe $x_n\in A_{1/n}\cap B_{1/n}$. Alors $x_n$ s'écrit comme
+  $a_n + z_n$ pour certains $a_n\in A$, $z_n\in B(0, 1/n)$ et comme
+  $b_n + w_n$ pour certains $b_n\in B$, $w_n\in B(0, 1/n)$.
+
+  Par compacité séquentielle de $A$, il existe une sous-suite de
+  $(a_n)_{n\in\mathbb{N}}$, notons-la $(a_{n_k})_{k\in\mathbb{N}}$, un élément
+  $a$ dans $A$ tel que   $(a_{n_k})_{k\in\mathbb{N}}$ converge
+  vers $a$. Puisque les suites $(z_n)_{n\in\mathbb{N}}$ et
+  $(w_n)_{n\in\mathbb{N}}$ convergent vers $0$, on déduit que
+  la sous-suite  $(b_{n_k})_{k\in\mathbb{N}}$ de
+  $(b_{n})_{n\in\mathbb{N}}$ converge vers $a$, ce qui implique $a$
+  dans $B$ (car $B$ est fermé), ce qui contredit $A$ et $B$ disjoints.
+\end{proof}
+
+Prouvons la seconde forme géométrique du théorème de Hahn-Banach à l'aide
+du lemme ci-dessus.
+
+\begin{proof}
+  Soit $\varepsilon> 0 $ tel que $A_\varepsilon$ et $B_\epsilon$ (au sens du
+  lemme \ref{hb:g:l2}) sont disjoints. Puisque ce sont des ensembles ouverts,
+  convexes, non vides et disjoints, il existe $x^*$ forme linéaire continue,
+  $\alpha$ un nombre réel tel que pour tout $a\in A_\varepsilon$,
+  $x^*(a)\leq\alpha$ pour tout $b\in B_\varepsilon$, $x^*(b)\geq \alpha$.
+  (par la première forme géométrique).
+
+  On a pour tout $a$ dans $A$, $x^*(a)\leq \alpha - \varepsilon\|x^*\|$ et
+  de manière analogue,
+  pour tout $b$ dans $B$, $x^*(b)\geq \alpha +\varepsilon \|x^*\|$, ce qui
+  conclut la preuve.
+
+\end{proof}
+
+\subsection{Généralisation aux espaces vectoriels complexes}
+Soit $(E, \|.\|)$ un espace vectoriel normé sur $\mathbb{C}$. Il est
+possible de généraliser les formes géométriques du théorème de Hahn-Banach
+aux espaces vectoriels sur le corps des complexes.
+
+
+Voici une première généralisation de la première forme géométrique.
+\begin{thm}[Hahn-Banach -- Première forme géométrique, cas complexe]\label{hb:g:c1}
+  Soient $A$ un ouvert convexe non vide de $E$, $B$ un
+  convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
+  $x^*$ une forme linéaire non nulle sur $E$ et $\alpha$ un nombre réel tels que:
+  $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+\end{thm}
+
+\begin{proof}
+  Par la première forme géométrique (dans le cas réel), il existe une forme continue $f$
+  $\mathbb{R}$-linéaire sur $E$ telle que
+  $$A\subseteq \left\{x\in E\mid f(x) \leq \alpha\right\} \mbox{ et }
+  B\subseteq \left\{x\in E\mid f(x) \geq \alpha\right\} $$
+
+  On conclut en posant $x^*(x) = f(x) - if(ix)$ pour tous $x$ dans $E$.
+  La linéarité est à vérifier à titre d'exercice et
+  elle est bien continue car: $$|x^*(x)|\leq |f(x)|+|f(ix)|\leq
+  \|f\|\|x\|+\|f\|\|ix\| = 2 \|f\|\|x\|$$
+\end{proof}
+
+Il est possible d'avoir un résultat similaire en considérant
+des modules plutôt que les parties réelles de la forme linéaire,
+au coût d'une hypothèse supplémentaire sur un des ensembles.
+Introduisons d'abord une définition.
+
+\begin{df}
+  Soit $A$ un sous-ensemble de $E$. $A$ est dit équilibré
+  (ou $\mathbb{C}$-symétrique) si quel que soit
+  l'élément $v$ de $A$ et le complexe $\lambda$ de module 1 considérés, le vecteur
+  $\lambda{}v$ est un élément de $A$.
+\end{df}
+
+\begin{cor}\label{hb:g:cc1}
+  Soient $A$ un ouvert convexe non vide \emph{équilibré} de $E$, $B$ un
+  convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
+  $x^*$ une forme linéaire non nulle sur $E$ et $\alpha$ un nombre réel tels que:
+  $$A\subseteq \left\{x\in E\mid |x^*(x)| \leq \alpha\right\} \mbox{ et }
+  B\subseteq \left\{x\in E\mid |x^*(x)| \geq \alpha\right\} $$
+\end{cor}
+
+Le résultat est le suivant.
+
+\begin{proof}
+
+  Soit $x^*$ linéaire continue telle que
+  $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+
+  (donnée par le théorème \ref{hb:g:c1}). Alors pour tous $b$ dans $B$,
+  on a: $|x^*(b)|\geq \Re(x^*)(b) \alpha$.
+  Soit $a\in A$. On a (par linéarité de $x^*$ et par $\mathbb{C}$-symétrie
+  de $A$ est équilibré):
+  $$|x^*(a)| = x^*(e^{-i\arg(x^*(a))}a) =
+  \Re(x^*)(e^{-i\arg(x^*(a))}a)\leq \alpha$$
+\end{proof}
+
+Adaptons la seconde forme géométrique du théorème de Hahn-Banach.
+\begin{thm}[Hahn-Banach -- Deuxième forme géométrique, cas complexe]
+  Soient $A$ un compact convexe non vide de $E$, $B$ un fermé
+  convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
+  $x^*$ une forme linéaire non nulle sur $E$, $\alpha$ un nombre réel et
+  $\varepsilon > 0$ tels que:
+  $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha-\varepsilon\right\} \mbox{ et }
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha+\varepsilon\right\} $$
+\end{thm}
+
+\begin{proof}
+  Par le lemme \ref{hb:g:l2}, il existe $\varepsilon > 0$ tel que $A_\varepsilon$
+  et $B_\varepsilon$ (en reprenant les notations du lemme) sont disjoints.
+
+  Alors par le théorème \ref{hb:g:c1}, il existe une forme linéaire continue $x^*$,
+  un réel $\alpha$ tel que:
+  $$A_\varepsilon\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
+  B_\varepsilon \subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+
+  Alors pour tout $a$ dans $A$, pour tout $z$ dans $B(0, \varepsilon)$,
+  $\Re(x^*)(a + z) = \leq \alpha$. Par linéarité de $x^*$, cela implique
+  que $\Re(x^*)(a)\leq \alpha - \Re(x^*)(z)\leq \alpha - \varepsilon\|x^*\|$.
+  Avec un calcul similaire, on peut conclure pour $B$.
+\end{proof}
+
+\textbf{Remarque}: il est possible d'écrire une version du résultat
+utilisant des modules plutôt que des parties réelles dans les inégalités
+à la manière du corollaire \ref{hb:g:cc1}. Vous êtes invités à écrire
+le résultat et à le montrer à titre d'exercice.
+
+\subsection{Applications}
+Nous considérons à nouveau dans cette section un espace vectoriel
+normé $(E, \|.\|)$ sur le corps des nombres réels. Nous allons
+présenter plusieurs corollaires des théorèmes de Hahn-Banach.
+
+Commencer par présenter une preuve alternative du corollaire \ref{hb:a:cor4},
+qui utilise la forme géométrique du théorème de Hahn-Banach.
+\begin{cor}
+  Soit $F$ un sous-espace vectoriel de $E$ tel que $F$ n'est
+  pas dense dans $E$. Alors il existe une forme linéaire non nulle
+  continue s'annulant sur $F$.
+\end{cor}
+\begin{proof}
+  Un sous-espace vectoriel est un convexe. Soit $x_0\in E\setminus\mathrm{adh}(F)$.
+  Alors $\{x_0\}$ est un compact convexe de $E$ et $\mathrm{adh}(F)$
+  est un sous-espace vectoriel (donc convexe) fermé ne contenant pas $x_0$.
+  Par la deuxième forme géométrique de Hahn-Banach, il existe une forme
+  linéaire $x^*$, un réel $\alpha$ et $\varepsilon >0$
+  tels que $x^*(x_0)\geq \alpha + \varepsilon$  et
+  pour tout $y\in F$, $x^*(y)\leq \alpha-\varepsilon$. En particulier, $x^*$ est majorée
+  sur $F$ par une constante; il est facile de vérifier que $x^*$ s'annule
+  sur $F$. On en déduit $\alpha \geq 0$ ce qui nous permet de conclure
+  que $x^*(x_0)$ est non nul.
+\end{proof}
+
+De manière similaire à l'annulateur d'un sous-espace vectoriel, on peut
+définir un sous-espace vectoriel similaire du dual.
+\begin{df}
+  Soit $N$ un sous-espace vectoriel de $E^*$. On définit $N_\perp$
+  comme le sous-ensemble de $E$ définit par:
+  $$N_\perp = \left\{ x\in E\mid \forall x^*\in N, x^*(x) = 0\right\}$$
+\end{df}
+
+Il s'agit d'un sous-espace vectoriel fermé de $E$ :cela se peut montrer
+en écrivant l'ensemble comme l'intersection des noyaux des éléments de $N$
+qui sont fermés.
+
+\begin{prop}
+  Soit $F$ un sous-espace vectoriel de $E$. Montrer l'égalité
+  $(F^\perp)_\perp = \mathrm{adh}(F)$.
+\end{prop}
+
+\begin{proof}
+  On a clairement l'inclusion $F \subseteq (F^\perp)_\perp$, ce qui
+  fournit $\mathrm{adh}(F) \subseteq (F^\perp)_\perp$.
+
+  L'inclusion réciproque est fournie par le résultat de l'exercice
+  \ref{hb:a:exo1} (la solution de l'exercice est donnée en annexe).
+\end{proof}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:
