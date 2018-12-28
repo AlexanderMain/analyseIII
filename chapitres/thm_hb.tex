@@ -465,7 +465,7 @@ Il existe une formulation équivalente en termes de formes linéaires:
   Réciproquement supposons que $H$ est le noyau d'une application
   linéaire $f$ non nulle. Soit $e\in E$ un vecteur n'appartenant pas
   au noyau de $f$. Montrons que pour tout $x$ dans $E$, il existe
-  $\lambda\in\mathbb{K}$ tel que $x = (x-\lambda e) + \lambda e$;
+  $\lambda\in\mathbb{K}$ tel que $x-\lambda e\in H$;
   ceci impliquera $E = H + \mathbb{K}e$. Il suffit de prendre
   $\lambda = \frac{f(x)}{f(e)}$. On a bien $x-\lambda e\in H$.
 
@@ -515,8 +515,10 @@ il est trivial.
   $\forall z\in B(0, 1)$, $f(z)\neq r^{-1}$.
 
   Pour conclure, il suffit de montrer que $|f(z)|< r^{-1}$ pour tout
-  élément $z$ de la boule unité de $E$. Montrons que le
-  complémentaire  cas est impossible par l'absurde.
+  élément $z$ de la boule unité de $E$, une application linéaire
+  étant continue si et seulement si elle est bornée sur la boule
+  unité. Montrons que le
+  cas complémentaire est impossible par l'absurde.
 
   S'il existe un élément $z$ de la boule unité de $E$ tel que
   $|f(z)|\geq r^{-1}$, alors il existe $y$ dans la boule unité
@@ -826,7 +828,7 @@ Le résultat est le suivant.
   (donnée par le théorème \ref{hb:g:c1}). Alors pour tous $b$ dans $B$,
   on a: $|x^*(b)|\geq \Re(x^*)(b) \alpha$.
   Soit $a\in A$. On a (par linéarité de $x^*$ et par $\mathbb{C}$-symétrie
-  de $A$ est équilibré):
+  de $A$):
   $$|x^*(a)| = x^*(e^{-i\arg(x^*(a))}a) =
   \Re(x^*)(e^{-i\arg(x^*(a))}a)\leq \alpha$$
 \end{proof}
@@ -851,8 +853,15 @@ Adaptons la seconde forme géométrique du théorème de Hahn-Banach.
   B_\varepsilon \subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
 
   Alors pour tout $a$ dans $A$, pour tout $z$ dans $B(0, \varepsilon)$,
-  $\Re(x^*)(a + z) = \leq \alpha$. Par linéarité de $x^*$, cela implique
-  que $\Re(x^*)(a)\leq \alpha - \Re(x^*)(z)\leq \alpha - \varepsilon\|x^*\|$.
+  $\Re(x^*)(a + z) \leq \alpha$.
+
+  Soit $a\in A$. Par linéarité de $x^*$, la dernière affirmation implique
+  que pour tout $z$ dans la boule unité,
+  $\Re(x^*)(a) + \varepsilon\Re(x^*)(z) \leq \alpha$.
+  Puisque l'affirmation est vraie
+  pour tous $z$ dans la boule unité, on peut
+  passer au suprémum sur les $z$ et on obtient l'inégalité $\Re(x^*)(a)+
+  \varepsilon \|x^*\|\leq \alpha$.
   Avec un calcul similaire, on peut conclure pour $B$.
 \end{proof}
 
@@ -886,15 +895,19 @@ qui utilise la forme géométrique du théorème de Hahn-Banach.
   que $x^*(x_0)$ est non nul.
 \end{proof}
 
+\textbf{Remarque}: ce résultat a déjà été énoncé (cf. corollaire
+\ref{hb:a:cor4}). Il est répété ici pour donner une preuve différente
+qui utilise les formes géométriques de Hahn-Banach.
+
 De manière similaire à l'annulateur d'un sous-espace vectoriel, on peut
 définir un sous-espace vectoriel similaire du dual.
 \begin{df}
   Soit $N$ un sous-espace vectoriel de $E^*$. On définit $N_\perp$
-  comme le sous-ensemble de $E$ définit par:
+  comme le sous-ensemble de $E$ défini par:
   $$N_\perp = \left\{ x\in E\mid \forall x^*\in N, x^*(x) = 0\right\}$$
 \end{df}
 
-Il s'agit d'un sous-espace vectoriel fermé de $E$ :cela se peut montrer
+Il s'agit d'un sous-espace vectoriel fermé de $E$ : cela se peut montrer
 en écrivant l'ensemble comme l'intersection des noyaux des éléments de $N$
 qui sont fermés.
 
@@ -911,7 +924,157 @@ qui sont fermés.
   \ref{hb:a:exo1} (la solution de l'exercice est donnée en annexe).
 \end{proof}
 
+Maintenant nous avons tous les outils nécessaires pour démontrer la
+réciproque de la proposition \ref{lin:cpl:imp}.
+\begin{thm}\label{lin:cpl:equ}
+  Soient $(F, \|.\|_F)$, $(G, \|.\|_G)$ deux espaces vectoriels normés sur
+  sur $\mathbb{K}$ ($\mathbb{R}$ ou $\mathbb{C}$).
 
+  $\mathscr{L}(F, G)$ est un espace de Banach \ssi{} $G$ est un espace
+  de Banach.
+\end{thm}
+
+\begin{proof}
+  Il reste à prouver une implication. Supposons $\mathscr{L}(F, G)$ complet.
+  Soit $(y_n)_{n\in\mathbb{N}}$ une suite de Cauchy dans $G$.
+
+  Fixons un élément $x_0$ de la sphère unité de $F$, c'est-à-dire
+  $\|x_0\|_F = 1$. Par le corollaire \ref{hb:a:cor2}, il existe
+  donc un élément $x^*$ du dual de $F$ de norme 1 et tel que $x^*(x_0) = 1$.
+
+  Pour tout naturel $n$, on définit l'application $f_n: F\to G$
+  par $f_n(x) = x^*(x)y_n$ quel que soit $x$ dans $F$;
+  il s'agit bien d'une application linéaire
+  et continue. Montrons que la suite $(f_n)_{n\in\mathbb{N}}$ est une suite
+  de Cauchy. Soient $n$, $m$ deux naturels, on a:
+  $$\|f_n-f_m\| =
+  \sup_{\substack{x\in F\\\|x\|_F = 1}}\|x^*(x)y_n - x^*(x)y_m\|_G =
+  \|y_n - y_m\|_G \sup_{\substack{x\in F\\\|x\|_F = 1}} |x^*(x)| =
+  \|y_n - y_m\|_G $$
+
+  Puisque la suite $(y_n)_{n\in\mathbb{N}}$ est de Cauchy, il est immédiat
+  par l'égalité précédente que la suite $(f_n)_{n\in\mathbb{N}}$ l'est
+  également. Elle converge donc vers une application linéaire et continue
+  $f$.
+
+  La convergence au sens de la norme opérateur impliquant la
+  convergence ponctuelle, on a donc
+  $y_n = f_n(x_0)\xrightarrow[n\to+\infty]{} f(x_0)$, donc
+  la suite $(y_n)_{n\in\mathbb{N}}$ est convergente.
+
+\end{proof}
+
+\begin{prop}\label{ker:sub:mult}
+  Soient $\varphi$, $\psi$ deux formes linéaires sur $E$ non nulles telles
+  que $\mathrm{Ker}(\varphi) \subseteq \mathrm{Ker}(\psi)$. Alors
+  il existe $\lambda \in\mathbb{R}$ tel que $\psi = \lambda \varphi$
+\end{prop}
+
+\begin{proof}
+  Soit l'application $F: E \to \mathbb{R}^2: x\mapsto (\varphi(x), \psi(x))$.
+  Alors le vecteur $(1, 0)$ n'est pas dans l'image de $F$. Il existe,
+  par la seconde forme géométrique de Hahn-Banach, une forme linéaire
+  et continue séparant l'image de $F$ (convexe fermé) et $(1, 0)$ (convexe
+  compact) au sens strict, c'est-à-dire il existe $x^*\in (\mathbb{R}^2)^*$,
+  $\alpha\in\mathbb{R}$ et $\varepsilon > 0$ tels que $x^*((1, 0))\geq
+  \alpha +\varepsilon$ et tout vecteur $u$ de $E$ vérifie
+  $x^*(F(u)) = x^*(\varphi(u), \psi(u))\leq \alpha-\varepsilon$.
+  Notons
+  $x^*((x, y)) = x_1 x + x_2 y$, pour tout $(x, y)\in\mathbb{R}^2$.
+
+  Puisque $x^*\circ F$ est linéaire et que son image est majorée par une
+  constante, on en déduit qu'elle est nulle, c'est-à-dire $x_1 \varphi(u) +
+  x_2 \psi(u) = 0$, quel que soit $u$ dans $E$.
+  Cela implique également que $x_1 > 0$ (puisque $x_1 \geq
+  \alpha + \varepsilon > x^*(F(0_E)) = 0$).
+  On en déduit également $x_2\neq 0$ car en considérant $u\in E\setminus
+  \mathrm{Ker}(\psi)$, on a $x_2 \psi(u) = -x_1\varphi(u) \neq 0 $.
+On conclut en posant $\lambda = -x_1/x_2$
+\end{proof}
+
+\textbf{Remarque}: dans la proposition précédente, la norme sur $E$
+n'intervient pas. De plus, nous ne précisons pas de norme sur $\mathbb{R}^2$
+étant donné qu'elles sont toutes équivalentes (donc la continuité ne
+dépend pas de la norme considérée), d'autant plus que la continuité de $x^*$
+n'intervient pas dans l'argument.
+
+\begin{prop}
+  Tout hyperplan vectoriel $H$ de $E$ est soit fermé, soit dense.
+\end{prop}
+\begin{proof}
+  Soit $f$ la forme linéaire sur $E$ telle que $H = \mathrm{Ker}(f)$.
+  Si $f$ est continue, alors $H$ est fermé. Supposons que $f$ n'est
+  pas continue (c'est-à-dire $H$ n'est pas fermé)
+  et montrons que $H$ est dense.
+
+  Par contradiction on suppose que $H$ n'est pas dense dans $E$.
+  Il existe par   le corollaire \ref{hb:a:cor4} une forme linéaire
+  et continue $x^*$ non nulle s'annulant sur l'adhérence de $H$.
+  Par la proposition \ref{ker:sub:mult}, puisque
+  $H\subseteq \mathrm{Ker}(x^*)$, $x^*$ et $f$ sont multiples, donc
+  $f$ est continue, ce qui constitue une contradiction.
+\end{proof}
+
+
+\begin{prop}
+  Soient $x^*$, $y^*\in E^*$ telles que $\|x^*\| = \|y^*\| = 1$ et
+  $\varepsilon >0$. Supposons que $|x^*(x)| < \varepsilon$ pour tout
+  $x$ dans l'intersection du noyau de $y^*$ et de la boule unité de $E$.
+
+  Alors on a $\| x^* + y^*\| < 2\varepsilon$ ou
+  $\| x^* - y^*\| < 2\varepsilon$
+\end{prop}
+
+\begin{proof}
+  \textbf{\'{E}tape 1}:
+  montrons tout d'abord qu'il existe $z^*\in E^*$ et un réel $\alpha$ tels
+  que $\|z^*\|\leq \varepsilon$ et $x^* - z^* = \alpha y^*$.
+
+  Considérons la restriction de $x^*$ au noyau de $y^*$: par le
+  théorème \ref{hb:a3}, cette restriction s'étend en une forme linéaire
+  continue $z$ de même norme.
+  Or puisque par hypothèse $|x^*(x)| < \varepsilon$ pour tout $x\in B(0, 1)
+  \cap \mathrm{Ker}(y^*)$, on a $\|z\|\leq \varepsilon$. Par la proposition
+  \ref{ker:sub:mult}, puisque $\mathrm{Ker}(x^* - z^*) \subseteq
+  \mathrm{Ker}(y^*)$, il existe $\alpha \in\mathbb{R}$ tel que $x^*-z^* =
+  \alpha y^*$.
+
+  \textbf{\'{E}tape 2}: montrons ensuite que $|1- |\alpha||\leq \varepsilon$.
+
+  % Quel que soit $x$ dans la boule unité de $E$, on a $|x^*(x) -
+  % \alpha y^*(x)| = |z^*(x)|\leq \varepsilon$.
+
+  Soit $x$ un élément de boule unité de $E$. On a:
+  $$|z^*(x)| = |x^*(x)-\alpha y^*(x)| \geq |x^*(x)| - |\alpha||y^*(x)|
+  \geq |x^*(x)| - |\alpha| \|y^*\| = |x^*(x)| - |\alpha|$$
+
+  D'où $|x^*(x)| \leq |z^*(x)| + |\alpha|\leq \varepsilon + |\alpha|$.
+  Comme cette inégalité est vraie pour tout élément de la boule unité de $E$,
+  on peut passer au suprémum et on obtient $1 = \|x^*\|\leq \varepsilon
+  + |\alpha|$, ou encore $ 1 - |\alpha| \leq \varepsilon$.
+
+  On a également:
+   $$|z^*(x)| = |x^*(x)-\alpha y^*(x)| \geq |\alpha||y^*(x)| -|x^*(x)|
+   \geq |\alpha| |y^*(x)| - \|x^*\| = |\alpha||y^*(x)| - 1$$
+
+   D'où $|\alpha| |y^*(x)| \leq 1 + |z^*(x)|\leq 1 + \varepsilon$. De manière
+   analogue à ci-dessus, on en déduit $|\alpha| \leq 1 + \varepsilon$,
+   c'est-à-dire $|\alpha| - 1\leq \varepsilon$.
+
+   Ceci termine l'étape 2.
+
+   \textbf{\'{E}tape 3}: conclusion.
+
+   Soit $\eta \in\{-1, 1\}$. On a, par l'inégalité trianglaire:
+   $$\|x^*+ \eta y^*\| \leq \|x^* - \alpha y^*\| + \|\alpha y^* + \eta y^*\|
+   \leq \varepsilon + \|\alpha y^* + \eta y^*\|$$
+
+   Pour conclure il reste à choisir $\eta$ (ce choix revient à se
+   placer dans un des cas de l'alternative à montrer) tel que
+   $|\alpha + \eta| \|y^*\|= |\alpha + \eta| \leq \varepsilon$.
+   Si $\alpha$ est positif, on prend  $\eta = -1$, sinon, on choisit
+   $\eta = 1$ et on conclut par l'étape 2.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
