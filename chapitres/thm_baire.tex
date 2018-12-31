@@ -28,7 +28,7 @@ section).
 
 Par exemple, dans $\mathbb{R}$ muni de sa topologie usuelle, l'ensemble
 vide, les singletons, l'ensemble des nombres naturels et l'ensemble des
-nombres entiers sont tous nulle part dense.
+nombres entiers sont tous nulle part denses.
 
 \begin{prop}
   L'ensemble des parties nulle part denses de $X$ est héréditaire et
@@ -48,7 +48,7 @@ nombres entiers sont tous nulle part dense.
 \begin{proof}
   Il est clair que cette classe est stable par fermeture. L'hérédité est
   facile à démontrer étant donné que le passage à l'intérieur et à l'adhérence
-  préserve les inclusions.
+  préservent les inclusions.
 
   Il reste donc à montrer que cette classe est stable par union finie.
   Il suffit de le montrer pour deux ensembles (et d'itérer lorsque plus de
@@ -85,9 +85,10 @@ dénombrable de singletons) mais n'est pas nulle part dense car son
 adhérence étant $\mathbb{R}$, l'intérieur de son adhérence est non vide.
 
 En particulier, ceci montre que l'ensemble des parties de première
-catégorie de $X$ n'est pas stable par fermeture en général, en plus de
-donner un exemple de sous-ensemble de première catégorie qui n'est pas
-nulle part dense.
+catégorie de $X$ n'est pas stable par fermeture en général, en admettant
+que $\mathbb{R}$ n'est pas de première catégorie (pour sa topologie usuelle).
+En plus, il s'agit d'un exemple de sous-ensemble de première catégorie qui
+n'est pas nulle part dense.
 
 \begin{prop}
   Le sous-ensemble des parties de première catégorie de $X$ est héréditaire
@@ -107,9 +108,22 @@ La dernière définition introduite ici est celle de la propriété de Baire.
   est un espace de Baire.
 \end{df}
 
+Insistons sur l'importance de la dénombrabilité de l'intersection considérée.
+On montre plus
+tard que $\mathbb{R}$ muni de sa topologie usuelle est un espace
+de Baire. Considérons l'intersection non dénombrable d'ouverts denses
+$\bigcap_{r\in\mathbb{R}}\mathbb{R}\setminus \{r\}$. Elle est vide
+donc non dense dans $\mathbb{R}$.
+
+\textbf{Remarque}: pour rappel, une intersection infinie d'ouverts n'est
+pas ouverte en général. Il est en de même pour une intersection d'ouverts
+denses dans $X$; si $X$ a la propriété de Baire, leur intersection
+sera dense dans $X$ mais ne sera pas nécessairement ouverte.
+Essayez d'expliciter un exemple à titre d'exercice.
+
 \section{Formulations équivalentes}
 Soit $(X, \mathcal{T})$ un espace topologique fixé.
- 
+
 La propriété de Baire peut être exprimée de manière équivalente
 en termes de fermés:
 \begin{prop}
@@ -117,13 +131,18 @@ en termes de fermés:
   d'intérieur vide est d'intérieur vide.
 \end{prop}
 
+\textbf{Remarque}: une union de fermés n'est pas nécessairement
+un fermé. Vous êtes invités à produire un exemple de famille
+dénombrable de fermés d'intérieur vide tel que leur union n'est
+pas fermée.
+
 \begin{proof}
   Supposons que $X$ a la propriété de Baire. Soit $(F_n)_{n\in\mathbb{N}}$ une
   famille de fermés de $X$ d'intérieur vide. Alors la famille
   $(X\setminus F_n)_{n\in\mathbb{N}}$ est une famille d'ouverts denses dans $X$
   (car l'adhérence du complémentaire d'un ensemble correspond au complémentaire
   de son intérieur). Par la propriété de Baire,
-  $$X\setminus\mathrm{int} \left(\bigcup_{n\in\mathbb{N}} F_n \right) 
+  $$X\setminus\mathrm{int} \left(\bigcup_{n\in\mathbb{N}} F_n \right)
   =\mathrm{adh}\left(\bigcap_{n\in\mathbb{N}} X\setminus F_n\right) = X$$
   En passant au complémentaire, on a la première implication.
 
@@ -149,7 +168,9 @@ résiduels. Introduisons les:
   des sous-ensembles de $X$ nulle part denses. Alors chaque fermeture de $S_n$
   est un sous-ensemble de $X$ d'intérieur vide. Par la propriété de Baire,
   $$\mathrm{int}(X\setminus A) =
-  \mathrm{int}\left(\bigcup_{n\in\mathbb N}S_n\right)= \varnothing$$
+  \mathrm{int}\left(\bigcup_{n\in\mathbb N}S_n\right)\subseteq
+  \mathrm{int}\left(\bigcup_{n\in\mathbb N}\mathrm{adh}(S_n)\right)
+  \overset{\mbox{Baire}}{=} \varnothing$$
   En passant au complémentaire, on déduit que l'adhérence de $A$ est $X$,
   c'est-à-dire $A$ est dense dans $X$.
 
@@ -179,30 +200,30 @@ concrets d'espaces de Baire.
 
   Puisque $O_0$ est un ouvert dense dans $X$, il existe $x_0$ dans
   $O_0\cap U$. Il existe $r_0 \in \left]0, 1\right]$ tel
-  que $\bar{B}(x_0, r_0)\subseteq  O_0\cap U$\footnote{La notation
-    $\bar{B}(y, r)$ est une notation adoptée ici pour dénoter la boule
+  que $B[x_0, r_0]\subseteq  O_0\cap U$\footnote{La notation
+    $B[y, r]$ est une notation pour dénoter la boule
     fermée de centre $y$ et de rayon $r$. Pour rappel, dans un espace
     métrique, l'adhérence de la boule ouverte ne correspond pas nécessairement
-    à la boule fermée.}.
+    à la boule fermée; on a toujours $\mathrm{adh}(B(y, r))\subseteq B[y, r]$.}.
   De même, puisque $O_1$ est dense dans $X$, il existe $x_1$ dans
   $O_1\cap B(x_0, r_0)$, et $r_1\in\left]0, 2^{-1}\right]$ tels que
-  $\bar{B}(x_1, r_1)\subseteq O_1\cap B(x_0, r_0)$.
+  $B[x_1, r_1]\subseteq O_1\cap B(x_0, r_0)$.
 
   En itérant de la sorte, on construit deux suites $(x_n)_{n\in\mathbb{N}}$
   et $(r_n)_{n\in\mathbb{N}}$ telles que $x_n\in O_n\cap B(x_{n-1}, r_{n-1})$,
-  $\bar{B}(x_n, r_n)\subseteq O_n$
+  ${B}[x_n, r_n]\subseteq O_n$
   et $r_n\in\left]0, 2 ^{-n}\right]$. La suite $(x_n)_{n\in\mathbb{N}}$ ainsi
   construite est de Cauchy dans un espace métrique complet; elle converge
   donc vers un élément $x$ de $X$.
 
-  Par la première étape, on a $(x_n)_{n\in\mathbb{N}}\subseteq \bar{B}(x_0, r_0)$
+  Par la première étape, on a $(x_n)_{n\in\mathbb{N}}\subseteq {B}[x_0, r_0]$
   qui est un sous-ensemble de $U$. Ceci montre que $x$ est élément de $U$
   (puisqu'une boule fermée est fermée).
 
   Pour tous naturels $n$ et $p$, on a par construction $x_{n+p}\in
-  \bar{B}(x_n, r_n)$ et en faisant tendre $p$ vers l'infini, étant
-  donné que $\bar{B}(x_n, r_n)$ est fermée, on en déduit que $x$
-  est un élément de $\bar{B}(x_n, r_n)$ qui est contenue dans $O_n$,
+  {B}[x_n, r_n]$ et en faisant tendre $p$ vers l'infini, étant
+  donné que $B[x_n, r_n]$ est fermée, on en déduit que $x$
+  est un élément de $B[x_n, r_n]$ qui est contenue dans $O_n$,
   ce qui prouve que $x$ est bien dans l'intersection des $O_n$.
 \end{proof}
 
@@ -223,29 +244,51 @@ la topologie induite.
   induite:
   $$\mathcal{F}_B=\left\{F\cap B\mid F\in\mathcal{F}\right\}$$
 
-  En particulier, l'intérieur d'un sous-ensemble $A$ de $B$
-  au sens de $B$ correspond à l'intersection de son intérieur
-  au sens de $X$ et de $B$ (car on regarde au plus grand ouvert
-  contenu dans $A$).
-  De même, la fermeture de $A$ au sens de $B$ correspond
+  \textbf{Propriété}: la fermeture de $A$ au sens de $B$ correspond
   l'intersection de $B$ et de la fermeture de $A$ au sens
-  de $X$ (car cette fois on on regarde au plus petit fermé
-  contenant $A$).
+  de $X$ (car on regarde au plus petit fermé contenant $A$).
+
+  \begin{proof}
+  Soit $F$ un fermé de $B$ contenant $A$. Alors
+  $F = G\cap B$ pour un fermé $G$ de $X$.
+  Puisque $ A \subseteq F\subseteq G$, $G$ contient
+  l'adhérence de $A$ au sens de $X$
+  (qui est le plus petit fermé de $X$
+  contenant $A$), donc $F$ contient $\mathrm{adh}_X(A)\cap B$.
+  Ceci montre que le plus petit fermé de $B$ contenant $A$
+  est $\mathrm{adh}_X(A)\cap B$, ce qu'on voulait montrer.
+\end{proof}
+
+  \textbf{Propriété}: si on suppose que $B$ est ouvert, alors l'intérieur d'un
+  sous-ensemble $A$ de $B$ au sens de $B$ correspond à
+  son intérieur au sens de $X$
+  (car les ouverts de la topologie induite sur $B$ sont des
+  ouverts de $X$).
+
+  \begin{proof}
+    Soit $U$ contenu dans $A$ un ouvert de $B$. Alors $U$ est un
+    ouvert de $X$ (car il est l'intersection de $B$ qui est ouvert
+    et d'un ouvert de $X$). Donc $U$ est contenu dans l'intérieur
+    de $A$ au sens de $X$. Puisque l'intérieur de $A$ est un sous-ensemble
+    de $A$, il s'agit d'un ouvert de $B$ (car $B$ est ouvert),
+    et donc du plus grand
+    ouvert de $B$ contenu dans $A$, ce qu'on voulait montrer.
+    \end{proof}
 \end{rem}
 
 Nous rappelons un résultat vu l'année passée qui servira dans la preuve
 d'un lemme intermédiaire.
 \begin{lem}\label{rap:top1}
-  Soient $(X, \mathcal{T})$ un espace topologique, $U$ et $V$ deux ouverts
+  Soient $(X, \mathcal{T})$ un espace topologique, $U$ et $O$ deux ouverts
   de $X$. Si $U$ est $V$ sont disjoints, alors l'adhérence de $U$ est disjointe
-  de $V$.
+  de $O$.
 \end{lem}
 \begin{proof}
   Supposons qu'il existe $x$ un élement de $\mathrm{adh}(U)\cap O$.
   Alors pour tout voisinage $V$ de $x$, $V$ intersecte $U$ puisque
   $x$ est dans l'adhérence de $U$. Or $O$ est un voisinage de $x$
   donc son intersection avec $U$ doit être non vide. Cela constituant
-  une contradiction, que $\mathrm{adh}(U)\cap O$ est vide.
+  une contradiction, on conlut que $\mathrm{adh}(U)\cap O$ est vide.
 \end{proof}
 
 
@@ -356,8 +399,8 @@ catégorie.
 \begin{proof}
   Supposons par contradiction qu'il existe un intervalle $I$
   de première catégorie. Alors son complémentaire est dense dans
-  $\mathbb R$. Or le complémentaire de intervalle a pour
-  adhérence $\mathbb R\setminus \mathrm{int}(I)\neq \mathbb R$
+  $\mathbb R$. Or le complémentaire d'un intervalle a pour
+  adhérence $\mathbb R\setminus \mathrm{int}(I)\neq \mathbb R$.
 \end{proof}
 
 On introduit deux définitions pour les résultats à venir.
@@ -387,7 +430,7 @@ On introduit deux définitions pour les résultats à venir.
   que $\bigcap_{n\in\mathbb N}O_n$ est contenue dans $A$ et est dense. Chaque
   $O_n$ est dense dans $X$ car il contient un sous-ensemble dense dans $X$.
   Le complémentaire de $A$ est donc contenu dans le complémentaire du
-  $G_\delta$; il s'agit d'une intersection de fermés d'intérieur vide, donc
+  $G_\delta$; il s'agit d'une union de fermés d'intérieur vide, donc
   de première catégorie. Par hérédité
   (de la propriété \og être de première catégorie\fg), le complémentaire
   de $A$ est de première catégorie, c'est-à-dire $A$ est résiduel.
@@ -424,13 +467,15 @@ On introduit deux définitions pour les résultats à venir.
 
 \begin{prop}
   L'espace vectoriel normé $(\mathscr{C}[0, 1], \|.\|_1)$ n'est pas un
-  espace de Baire
+  espace de Baire.
 \end{prop}
 Un corollaire de cette proposition est qu'il ne s'agit pas d'un espace de
 Banach.
 
 \begin{proof}
   Soit $B_\infty = \{ f\in \mathscr C [0, 1]\mid \|f\|_\infty\leq 1\}$.
+  Notez qu'il ne s'agit pas de la boule unité fermée de l'espace
+  considéré; ce ne sont pas les mêmes normes.
   Montrons qu'il s'agit d'un fermé au sens de la norme 1.
 
   Soient $(f_n)_{n\in\mathbb N}$ une suite de fonctions dans $B_\infty$ et

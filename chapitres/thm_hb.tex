@@ -967,14 +967,14 @@ réciproque de la proposition \ref{lin:cpl:imp}.
 \begin{prop}\label{ker:sub:mult}
   Soient $\varphi$, $\psi$ deux formes linéaires sur $E$ non nulles telles
   que $\mathrm{Ker}(\varphi) \subseteq \mathrm{Ker}(\psi)$. Alors
-  il existe $\lambda \in\mathbb{R}$ tel que $\psi = \lambda \varphi$
+  il existe $\lambda \in\mathbb{R}$ non nul tel que $\psi = \lambda \varphi$
 \end{prop}
 
 \begin{proof}
   Soit l'application $F: E \to \mathbb{R}^2: x\mapsto (\varphi(x), \psi(x))$.
   Alors le vecteur $(1, 0)$ n'est pas dans l'image de $F$. Il existe,
   par la seconde forme géométrique de Hahn-Banach, une forme linéaire
-  et continue séparant l'image de $F$ (convexe fermé) et $(1, 0)$ (convexe
+  et continue séparant l'image de $F$ (convexe fermé) et $\{(1, 0)\}$ (convexe
   compact) au sens strict, c'est-à-dire il existe $x^*\in (\mathbb{R}^2)^*$,
   $\alpha\in\mathbb{R}$ et $\varepsilon > 0$ tels que $x^*((1, 0))\geq
   \alpha +\varepsilon$ et tout vecteur $u$ de $E$ vérifie
@@ -989,7 +989,7 @@ réciproque de la proposition \ref{lin:cpl:imp}.
   \alpha + \varepsilon > x^*(F(0_E)) = 0$).
   On en déduit également $x_2\neq 0$ car en considérant $u\in E\setminus
   \mathrm{Ker}(\psi)$, on a $x_2 \psi(u) = -x_1\varphi(u) \neq 0 $.
-On conclut en posant $\lambda = -x_1/x_2$
+On conclut en posant $\lambda = -x_1/x_2$.
 \end{proof}
 
 \textbf{Remarque}: dans la proposition précédente, la norme sur $E$
@@ -1002,17 +1002,18 @@ n'intervient pas dans l'argument.
   Tout hyperplan vectoriel $H$ de $E$ est soit fermé, soit dense.
 \end{prop}
 \begin{proof}
-  Soit $f$ la forme linéaire sur $E$ telle que $H = \mathrm{Ker}(f)$.
-  Si $f$ est continue, alors $H$ est fermé. Supposons que $f$ n'est
-  pas continue (c'est-à-dire $H$ n'est pas fermé)
-  et montrons que $H$ est dense.
+  Soit $f$ la forme linéaire (non nulle)
+  sur $E$ telle que $H = \mathrm{Ker}(f)$.
+  Si $H$ est dense on a le résultat (en particulier $f$ n'est pas continue
+  car son noyau n'est pas fermé).
 
-  Par contradiction on suppose que $H$ n'est pas dense dans $E$.
+  Supposons maintenant que $H$ n'est pas dense dans $E$ et
+  montrons que $H$ est fermé.
   Il existe par   le corollaire \ref{hb:a:cor4} une forme linéaire
   et continue $x^*$ non nulle s'annulant sur l'adhérence de $H$.
   Par la proposition \ref{ker:sub:mult}, puisque
   $H\subseteq \mathrm{Ker}(x^*)$, $x^*$ et $f$ sont multiples, donc
-  $f$ est continue, ce qui constitue une contradiction.
+  $f$ est continue. On en conclut que $H$ est fermé.
 \end{proof}
 
 
