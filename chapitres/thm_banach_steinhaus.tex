@@ -1,0 +1,198 @@
+\section{Théorème}
+
+Il est conseillé de se remémorer les équivalences pour
+la continuité d'applications linéaires (le résultat
+\ref{cont:lin}) avant de procéder à la lecture de ce
+chapitre.
+
+
+\begin{thm}[Théorème de Banach-Steinhaus (Principle of uniform boundedness)]
+  Soient $(E, \|.\|_E)$ et $(F, \|.\|_F)$ deux espaces de Banach,
+  $I$ un ensemble non vide et $(T_i)_{i\in I}$ une famille telle que
+  pour tout $i\in I$, $T_i\in \mathscr{L}(E, F)$
+
+  Supposons que pour tout $x\in E$, $\sup_{i\in I}\|T_i(x)\|_F$ est fini.
+
+  Alors on a que $\sup_{i\in I}\|T_i\|$ est fini.
+\end{thm}
+
+L'hypothèse de ce théorème équivaut à dire que pour tout $x$ dans $E$,
+l'ensemble $\{\|T_i(x)\|_F\mid i\in I\}$ est borné, ou encore
+$$\forall x\in E, \exists C_x, \forall i\in I, \|T_i(x)\|_F \leq C_x$$
+
+La conclusion, quant à elle, équivaut à dire que l'ensemble
+$\{\|T_i\|\mid i\in I\}$ est borné. De manière équivalente:
+$$\exists C, \forall x\in E, \forall i\in I, \|T_i(x)\|_F\leq C\|x\|_E$$
+
+\begin{proof}
+  Pour rappel, $(E, \|.\|_F)$ est un espace de Baire, car il est complet.
+
+  Pour tout naturel $n$, on considère l'ensemble $E_n$ défini par:
+  $$E_n = \left\{x\in E\mid \forall i\in I, \|T_i(x)\|_F\leq n\right\}
+  =\bigcap_{i\in I}T_i^{-1}(B_F[0, n])$$
+
+  On déduit de la seconde écriture que $E_n$ est
+  fermé pour tout $n$ (par continuité des $T_i$). De plus,
+  les $E_n$ sont non vides car ils contiennent tous $0$.
+
+  On a l'égalité $E = \bigcup_{n\in\mathbb N}E_n$ car pour tout
+  $x$ dans $E$, l'ensemble $\{\|T_i(x)\|_F\mid i\in I\}$ est borné.
+  Il existe donc un naturel $n_0$ tel que $\mathrm{int}(E_{n_0})$
+  est non vide (par la proposition \ref{baire:cor:intf}),
+  c'est-à-dire il existe
+  un élément $x_0$ de $E_{n_0}$ et un réel $r>0$ tels que $B_E(x_0, r)
+  \subseteq E_{n_0}$.
+
+  Ceci implique que pour tout $z$ de la boule unité de $E$ et
+  pour tout $i$ dans $I$, on a l'inégalité
+  $\|T_i(x_0 + r z)\|_F\leq n_0$. D'où les inégalités (en utilisant
+  l'inégalité triangulaire renversée et la linéarité):
+  $$\|T_i(z)\|_F \leq \frac 1 r \left( n_0 + \left\|T_i (x)\right\|_F \right) \leq
+  \frac{1}{r} \left( n_0 + \sup_{i\in I}\|T_i(x_0)\|_F \right)$$
+
+  Ceci implique que pour tout $i$ dans $I$, $\|T_i\|$ est
+  majorée par une constante indépendante de $i$, ce qui
+  fournit le résultat.
+
+\end{proof}
+
+Soit $ \mathbb K$ un corps (le corps des réels ou des complexes)
+et $(E, \|.\|)$ un espace de Banach sur $\mathbb K$. Soit
+$(x^*_n)_{n\in\mathbb N}$, telle que $x^*_n\in E^*$ pour tout naturel $n$.
+
+En particulier, si on suppose que pour tout élément $x$ de $E$,
+$\sup_{n\in\mathbb N}|x^*(x)|$ est fini, alors
+$\sup_{n\in\mathbb N}\|x^*_n\|$  est fini.
+
+Le résultat n'est plus vrai si on ne suppose pas la complétude de
+$E$.
+\begin{ex}
+  Soit $E$ l'espace des fonctions polynomiales de $[0, 1]$
+  dans $\mathbb R$. Pour $p\in E$, $p(t) =
+  \sum_{n=0}^Na_n t$ pour tout $t\in [0, 1]$, on pose
+  $\|p\| = \max_{0\leq n\leq N}|a_n|$.
+
+  Alors $E$ n'est pas complet; on peut voir cela comme une conséquence
+  du résultat qui affirme que tout espace de Banach n'admet pas
+  de base algébrique dénombrable.
+
+  Alternativement, il s'agit d'une conséquence du théorème d'approximation
+  de Weierstrass\footnote{
+    Il affirme que toute fonction
+    continue sur l'intervalle $[0, 1]$ peut être approchée uniformément
+    par une suite de polynômes.}.
+
+  Une troisième manière est de montrer
+  que la suite $\displaystyle{
+    \left(x\mapsto \sum_{n=0}^N\frac{x^n}{n!}\right)_{N\in\mathbb N}}
+  $ est de
+  Cauchy au sens de la norme que nous nous sommes fixés, mais n'est
+  pas convergente car sa limite n'est pas un polynôme (exercice).
+
+  Pour tout naturel $n$, on considère la forme linéaire et continue
+  $$x^*_n: E\to \mathbb R: \sum_{k=0}^Na_kt^k\mapsto n \cdot a_n$$
+
+  La norme de $x^*_n$ est $n$ quel que soit $n$. Or, quel que
+  soit le polynôme $p\in E$, l'ensemble $\{|x^*_n(p)|\mid n\in\mathbb N\}$
+  est fini donc borné. Toutefois, $\sup_{n\in\mathbb N} \|x^*_n\|$
+  n'est pas fini!
+\end{ex}
+
+\section{Conséquences du théorème}
+
+\begin{cor}
+  Soient $(E, \|.\|_E)$, $(F, \|.\|_F)$ des espaces de Banach et
+  $(T_n)_{n\in\mathbb N}$ une suite d'éléments de $\mathscr{L}(E, F)$
+  convergeant ponctuellement vers une fonction $T: E\to F$.
+
+  La fonction $T$ est linéaire et on a les inégalités:
+  $$\|T\| \leq \sup_{n\in\mathbb N}\|T_n\| < \infty$$
+  En particulier, $T$ est continue.
+\end{cor}
+
+\begin{proof}
+  Soient $a$ un scalaire et $x, y$ deux éléments de $E$. Pour tout
+  naturel $n$, on a par linéarité de $T_n$ que
+  $T_n(ax + y) = a T_n(x) + T_n(y)$. En passant à la limite sur $n$,
+  on a par unicité de la limite que $T(ax + y) = aT(x) + T(y)$, ce qui
+  montre la linéarité.
+
+  Puisque $T_n$ converge ponctuellement vers $T$, on a que pour
+  tout $x$ dans $E$, $\|T_n(x)\|$ converge vers $\|T(x)\|$. Ceci
+  implique que pour tout $x$ dans $E$, $\sup_{n\in\mathbb N} \|T_n(x)\|$
+  est fini (car toute suite convergente est bornée). Par le
+  théorème de Banach-Steinhaus, $\sup_{n\in\mathbb N}\|T_n\|$ est fini.
+
+  Il reste à montrer l'inégalité $\|T\|\leq \sup_{n\in\mathbb N}\|T_n\|$
+  pour conclure. Soit $x$ un élément de $E$. Quel que soit le naturel
+  $n$ considéré, on a:
+  $$\|T_n(x)\|_F\leq \|T_n\|\|x\|_E\leq
+  \left(\sup_{k\in\mathbb N}\|T_k\|\right)\|x\|_E$$
+
+  On conclut en passant à la limite sur $n$.
+\end{proof}
+
+\begin{prop}
+  Soient $(E, \|.\|_E)$, $(F, \|.\|_F)$ des espaces de Banach et
+  $(T_n)_{n\in\mathbb N}$ une suite d'éléments de $\mathscr{L}(E, F)$
+  convergeant ponctuellement vers une fonction $T: E\to F$.
+
+  Pour tout compact $K$ de $E$, la suite des $T_n$ converge
+  uniformément sur $K$ vers $T$.
+\end{prop}
+
+\begin{proof}
+  On a $T\in\mathscr{L}(E, F)$ (par le résultat précédent).
+
+  Soit $K$ un compact de $E$. Supposons par l'absurde que
+  la suite des $T_n$ ne converge pas uniformément vers $T$
+  sur $K$, c'est-à-dire qu'il existe $\varepsilon > 0$ tel
+  que pour tout naturel $N$, il existe un naturel $n > N$
+  et un élément $x$ de $K$ tels que $\|T_n(x)-T(x)\| > \varepsilon$.
+
+  Il existe donc, pour $N=0$, un naturel $n_0>0$ et un élément $x_0$
+  de $K$ tel que $\|T_{n_0}(x_0)-T(x_0)\|> \varepsilon$.
+  En continuant
+  ainsi, on construit une suite $(x_k)_{k\in\mathbb{N}}$ et une suite
+  $(n_k)_{k\in\mathbb N}$ telles que pour tout naturel $k$,
+  $\|T_{n_k}(x_k)-T(x_k)\|> \varepsilon$ et $n_k > k$.
+
+  Par compacité séquentielle, il existe un élément $x$ de $K$
+  et une sous-suite $(x_j)_{j\in J}$ de $(x_k)_{k\in \mathbb N}$
+  convergeant vers $x$. On a, pour tout $j$ dans $J$:
+  \begin{IEEEeqnarray*}{rCl}
+    \varepsilon &\leq & \|T_{n_j}(x_j)-T(x_j)\| \\
+    & \leq & \|T_{n_j}(x_j) - T_{n_j}(x)\| + \|T_{n_j}(x)-T(x)\| \\
+    & \leq & \|T_{n_j}\|\cdot \|x_j-x\| + \|T_{n_j}(x)-T(x)\| \\
+    & \leq & \sup_{n\in\mathbb N} \|T_n\|\cdot \|x_j-x\| + \|T_{n_j}(x)-T(x)\|
+  \end{IEEEeqnarray*}
+
+  Or puisque le dernier membre de cette inégalité converge vers $0$
+  lorsque $j$ tend vers l'infini (par convergence ponctuelle des $T_n$
+  et car $x_j\xrightarrow{j\in J}x$), il y a contradiction avec la
+  stricte positivité de $\varepsilon$.
+\end{proof}
+
+\begin{prop}
+  Soit $(E, \|.\|)$ un espace de Banach et $B$ un sous-ensemble
+  de $E$. Supposons que quel que soit $x^*\in E^*$ que l'on considère,
+  $x^*(B)$ est borné. Alors $B$ est borné.
+\end{prop}
+
+\begin{proof}
+  Soit pour $b\in B$, l'application linéaire $T_b: E^*\to\mathbb{K}:
+  x^*\mapsto x^*(b)$. On a par le corollaire \ref{hb:a:cor2} que
+  $\displaystyle{\|b\| =
+    \max_{\substack{\|x^*\|\leq 1 \\ x^*\in E^*}}|x^*(b)| =\|T_b\|}$
+
+  Par hypothèse, quel que soit $x^*\in E^*$,
+  $\sup_{b\in B}|T_b(x^*)| = \sup_{b\in B}|x^*(b)|$
+  est fini. Alors par le théorème de Banach-Steinhaus,
+  $\sup_{b\in B}\|T_b\| = \sup_{b\in B}\|b\|$ est fini, ce qui
+  montre que $B$ est borné.
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:
