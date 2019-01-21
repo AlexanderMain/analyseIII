@@ -47,7 +47,7 @@ $$\exists C, \forall x\in E, \forall i\in I, \|T_i(x)\|_F\leq C\|x\|_E$$
   pour tout $i$ dans $I$, on a l'inégalité
   $\|T_i(x_0 + r z)\|_F\leq n_0$. D'où les inégalités (en utilisant
   l'inégalité triangulaire renversée et la linéarité):
-  $$\|T_i(z)\|_F \leq \frac 1 r \left( n_0 + \left\|T_i (x)\right\|_F \right) \leq
+  $$\|T_i(z)\|_F \leq \frac 1 r \left( n_0 + \left\|T_i (x_0)\right\|_F \right) \leq
   \frac{1}{r} \left( n_0 + \sup_{i\in I}\|T_i(x_0)\|_F \right)$$
 
   Ceci implique que pour tout $i$ dans $I$, $\|T_i\|$ est
@@ -69,25 +69,25 @@ $E$.
 \begin{ex}
   Soit $E$ l'espace des fonctions polynomiales de $[0, 1]$
   dans $\mathbb R$. Pour $p\in E$, $p(t) =
-  \sum_{n=0}^Na_n t$ pour tout $t\in [0, 1]$, on pose
+  \sum_{n=0}^Na_n t^n$ pour tout $t\in [0, 1]$, on pose
   $\|p\| = \max_{0\leq n\leq N}|a_n|$.
 
   Alors $E$ n'est pas complet; on peut voir cela comme une conséquence
   du résultat qui affirme que tout espace de Banach n'admet pas
   de base algébrique dénombrable.
 
-  Alternativement, il s'agit d'une conséquence du théorème d'approximation
-  de Weierstrass\footnote{
-    Il affirme que toute fonction
-    continue sur l'intervalle $[0, 1]$ peut être approchée uniformément
-    par une suite de polynômes.}.
+  % Alternativement, il s'agit d'une conséquence du théorème d'approximation
+  % de Weierstrass\footnote{
+  %   Il affirme que toute fonction
+  %   continue sur l'intervalle $[0, 1]$ peut être approchée uniformément
+  %   par une suite de polynômes.}.
 
-  Une troisième manière est de montrer
-  que la suite $\displaystyle{
-    \left(x\mapsto \sum_{n=0}^N\frac{x^n}{n!}\right)_{N\in\mathbb N}}
-  $ est de
-  Cauchy au sens de la norme que nous nous sommes fixés, mais n'est
-  pas convergente car sa limite n'est pas un polynôme (exercice).
+  % Une troisième manière est de montrer
+  % que la suite $\displaystyle{
+  %   \left(x\mapsto \sum_{n=0}^N\frac{x^n}{n!}\right)_{N\in\mathbb N}}
+  % $ est de
+  % Cauchy au sens de la norme que nous nous sommes fixés, mais n'est
+  % pas convergente car sa limite n'est pas un polynôme (exercice).
 
   Pour tout naturel $n$, on considère la forme linéaire et continue
   $$x^*_n: E\to \mathbb R: \sum_{k=0}^Na_kt^k\mapsto n \cdot a_n$$

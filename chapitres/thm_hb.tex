@@ -451,7 +451,7 @@ Soit $E$ un espace vectoriel sur $\mathbb{K}$
 Il existe une formulation équivalente en termes de formes linéaires:
 \begin{prop}
   Soit $H$ un sous-espace vectoriel de $H$.
-  Il s'agit d'un sous-espace vectoriel \ssi{} il existe une
+  Il s'agit d'un hyperplan vectoriel \ssi{} il existe une
   forme linéaire $f$ non identiquement nulle dont $H$ est
   le noyau.
 \end{prop}
@@ -809,6 +809,8 @@ Introduisons d'abord une définition.
   $\lambda{}v$ est un élément de $A$.
 \end{df}
 
+Le résultat est le suivant:
+
 \begin{cor}\label{hb:g:cc1}
   Soient $A$ un ouvert convexe non vide \emph{équilibré} de $E$, $B$ un
   convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
@@ -817,16 +819,15 @@ Introduisons d'abord une définition.
   B\subseteq \left\{x\in E\mid |x^*(x)| \geq \alpha\right\} $$
 \end{cor}
 
-Le résultat est le suivant.
 
 \begin{proof}
 
-  Soit $x^*$ linéaire continue telle que
+  Par le théorème \ref{hb:g:c1}, il existe $x^*$ linéaire continue telle que
   $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
   B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
 
-  (donnée par le théorème \ref{hb:g:c1}). Alors pour tous $b$ dans $B$,
-  on a: $|x^*(b)|\geq \Re(x^*)(b) \alpha$.
+  Alors pour tous $b$ dans $B$,
+  on a: $|x^*(b)|\geq \Re(x^*)(b) \geq \alpha$.
   Soit $a\in A$. On a (par linéarité de $x^*$ et par $\mathbb{C}$-symétrie
   de $A$):
   $$|x^*(a)| = x^*(e^{-i\arg(x^*(a))}a) =

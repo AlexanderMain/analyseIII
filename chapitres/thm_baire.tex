@@ -9,7 +9,7 @@ elle est vérifiée l'ensemble complet hormis un sous-ensemble de mesure
 nulle.
 
 \textbf{Baire} (1874-1932): point de vue topologique; tout intervalle
-n'est pas n'est pas de première catégorie; une propriété $P$ est dite
+n'est pas de première catégorie; une propriété $P$ est dite
 vraie presque partout au sens de Baire si elle est vérifiée sur tout
 l'ensemble hormis un sous-ensemble de première catégorie.
 
@@ -246,7 +246,7 @@ la topologie induite.
 
   \textbf{Propriété}: la fermeture de $A$ au sens de $B$ correspond
   l'intersection de $B$ et de la fermeture de $A$ au sens
-  de $X$ (car on regarde au plus petit fermé contenant $A$).
+  de $X$ (car on regarde le plus petit fermé contenant $A$).
 
   \begin{proof}
   Soit $F$ un fermé de $B$ contenant $A$. Alors
@@ -280,8 +280,8 @@ Nous rappelons un résultat vu l'année passée qui servira dans la preuve
 d'un lemme intermédiaire.
 \begin{lem}\label{rap:top1}
   Soient $(X, \mathcal{T})$ un espace topologique, $U$ et $O$ deux ouverts
-  de $X$. Si $U$ est $V$ sont disjoints, alors l'adhérence de $U$ est disjointe
-  de $O$.
+  de $X$. Si $U$ et $O$ sont disjoints, alors l'adhérence de $U$ est
+  disjointe de $O$.
 \end{lem}
 \begin{proof}
   Supposons qu'il existe $x$ un élement de $\mathrm{adh}(U)\cap O$.
@@ -319,16 +319,27 @@ Nous pouvons donc prouver assez facilement le théorème \ref{baire:ind} en util
 le lemme \ref{baire:ind:help}
 
 \begin{proof}[Preuve du théorème \ref{baire:ind}]
-  Soit $S$ un sous-ensemble de première catégorie de $O$.
-  Montrons que $\mathrm{adh}_O(O\setminus S) = O$.
-  Par le lemme \ref{baire:ind:help}, $U$ est de première
-  catégorie au sens de $\mathcal{T}$. Donc l'ensemble $X\setminus
-  S$ est dense dans $X$. On a:
-  $$\mathrm{adh}_O(O\setminus S) = \mathrm{adh}_X(O\setminus S)\cap O
-  = \mathrm{adh}_X((X\setminus S)\cap O)\cap O\supseteq
-  \mathrm{adh}_X((X\setminus S)) \cap \mathrm{adh}_X(O)\cap O = O$$
+  Soit $(F_n)_{n\in\mathbb N}$ une famille de fermés d'intérieur
+  vide de $O$. Chaque $F_n$ étant nulle part dense au sens
+  de $O$, il l'est au sens de $X$ par le lemme \ref{baire:ind:help}.
 
-  L'inclusion réciproque étant toujours vraie, on a l'égalité.
+  La famille $(\mathrm{adh}_X(F_n))_{n\in\mathbb N}$ est donc une
+  famille de fermés de $X$ d'intérieur vide. Par la propriété
+  de Baire, leur union est d'intérieur vide. On a le résultat car:
+  $$\mathrm{int}_O\left(\bigcup_{n\in\mathbb N}F_n\right) =
+  \mathrm{int}_X\left(\bigcup_{n\in\mathbb N}F_n\right) \subseteq
+  \mathrm{int}_X\left(\bigcup_{n\in\mathbb N}\mathrm{adh}_X(F_n)\right) =\varnothing$$
+
+  % Soit $S$ un sous-ensemble de première catégorie de $O$.
+  % Montrons que $\mathrm{adh}_O(O\setminus S) = O$.
+  % Par le lemme \ref{baire:ind:help}, $S$ est de première
+  % catégorie au sens de $\mathcal{T}$. Donc l'ensemble $X\setminus
+  % S$ est dense dans $X$. On a:
+  % $$\mathrm{adh}_O(O\setminus S) = \mathrm{adh}_X(O\setminus S)\cap O
+  % = \mathrm{adh}_X((X\setminus S)\cap O)\cap O\supseteq
+  % \mathrm{adh}_X((X\setminus S)) \cap \mathrm{adh}_X(O)\cap O = O$$
+
+  % L'inclusion réciproque étant toujours vraie, on a l'égalité.
 \end{proof}
 
 \section{Corollaires et applications}
@@ -371,7 +382,7 @@ On peut raffiner ce résultat:
   $F_n$ et de $X\setminus U$, c'est-à-dire il existe un ouvert $O_1$
   (resp. $O_2$) contenant $x$ inclus dans $F_n$ (resp. $X\setminus U$),
   ce qui implique que $x$ est dans $O_1\cap O_2$ qui est inclus dans
-  l'intersection de l'intérieur de $F_n$ et de $E\setminus U$ qui est vide.
+  l'intersection de l'intérieur de $F_n$ et de $X\setminus U$ qui est vide.
 
   Par la propriété de Baire, l'intérieur de l'union des $F'_n$ est vide,
   c'est-à-dire l'ensemble
@@ -487,7 +498,7 @@ Banach.
   $|f(x)| > 1 + \frac \delta 2$. Pour tout naturel $n$, on a:
   \begin{IEEEeqnarray*}{rCl}
     \int_0^1 |f_n(x) - f(x)|\mathrm{d}x&\geq & \int_I |f_n(x) - f(x)|\mathrm{d}x \\
-    & \geq & \int_I (|f_n(x)| - |f(x)|)\mathrm{d}x \\
+    & \geq & \int_I (|f(x)| - |f_n(x)|)\mathrm{d}x \\
     & \geq & \int_I \left(\left(1 +\frac \delta 2\right) - 1\right)\mathrm{d}x \\
     & \geq & \frac{\delta r}{2} > 0
   \end{IEEEeqnarray*}
@@ -506,9 +517,9 @@ Banach.
 
   Montrons maintenant qu'il existe une constante $K$ telle que toute fonction $f$
   continue sur $[0, 1]$ vérifie $\|f\|_\infty \leq K \|f\|_1$.
-  Supposons $f$ non nulle, alors $\frac{r\cdot f}{\|f\|_1}$ est élément
+  Supposons $f$ non nulle, alors $\frac{r\cdot f}{2\|f\|_1}$ est élément
   de $B(0, r)$, donc de $B_\infty$, et on a donc $\|f\|_\infty\leq
-  \frac{1}{r}\|f\|_1$.
+  \frac{2}{r}\|f\|_1$.
 
   Toutefois cette dernière affirmation est une contradiction! Il suffit
   de considérer la fonction $f_n(x) = x^n$ où $n$ est un nombre naturel;
@@ -517,7 +528,7 @@ Banach.
 \end{proof}
 
 \begin{thm}
-  Les limites ponctuelles de fonctions définies sur un
+  La limite ponctuelle d'une suite de fonctions continues définies sur un
   espace de Baire à image dans $\mathbb{R}$ sont
   continues sur un $G_\delta$ dense.
 \end{thm}
