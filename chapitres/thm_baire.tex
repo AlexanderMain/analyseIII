@@ -67,7 +67,7 @@ nombres entiers sont tous nulle part denses.
   O \cap (X\setminus \mathrm{adh}(A))\cap (X\setminus \mathrm{adh}(B))\neq\varnothing$$
   Soit $O$ un ouvert de $X$.
   Puisque le complémentaire de l'adhérence de $A$ est un ouvert dense,
-  $O\cap (X\setminus \mathrm{adh}(A))$ est un ouvert non vide. Puique
+  $O\cap (X\setminus \mathrm{adh}(A))$ est un ouvert non vide. Puisque
   le complémentaire de l'adhérence de $B$ est dense, on a le résultat.
 \end{proof}
 
@@ -283,12 +283,13 @@ d'un lemme intermédiaire.
   de $X$. Si $U$ et $O$ sont disjoints, alors l'adhérence de $U$ est
   disjointe de $O$.
 \end{lem}
+\input{figures/ouverts_disjoints.tex}
 \begin{proof}
   Supposons qu'il existe $x$ un élement de $\mathrm{adh}(U)\cap O$.
   Alors pour tout voisinage $V$ de $x$, $V$ intersecte $U$ puisque
   $x$ est dans l'adhérence de $U$. Or $O$ est un voisinage de $x$
   donc son intersection avec $U$ doit être non vide. Cela constituant
-  une contradiction, on conlut que $\mathrm{adh}(U)\cap O$ est vide.
+  une contradiction, on conclut que $\mathrm{adh}(U)\cap O$ est vide.
 \end{proof}
 
 
@@ -480,8 +481,6 @@ On introduit deux définitions pour les résultats à venir.
   L'espace vectoriel normé $(\mathscr{C}[0, 1], \|.\|_1)$ n'est pas un
   espace de Baire.
 \end{prop}
-Un corollaire de cette proposition est qu'il ne s'agit pas d'un espace de
-Banach.
 
 \begin{proof}
   Soit $B_\infty = \{ f\in \mathscr C [0, 1]\mid \|f\|_\infty\leq 1\}$.
@@ -526,6 +525,9 @@ Banach.
   on a $\|f_n\|_\infty = 1$ et $\|f_n\|_1 = \frac{1}{n+1}$. Or l'affirmation
   qu'on a montré implique que pour tout $n$ naturel, $1\leq \frac{K}{n+1}$.
 \end{proof}
+
+\emph{Un corollaire de cette proposition est qu'il ne s'agit pas d'un espace de
+Banach}.
 
 \begin{thm}
   La limite ponctuelle d'une suite de fonctions continues définies sur un

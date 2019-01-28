@@ -380,15 +380,10 @@ de Riesz-Fréchet:
   $x^*(y) = \langle y, x\rangle$.
 \end{thm}
 
-\begin{exo}
-  Soit $H$ un espace de Hilbert.
-  Prouvez que le représentant donné par le théorème
-  pour une forme linéaire continue $x^*\in H^*$ est de même
-  norme que celle-ci.
-\end{exo}
-
-\textbf{Remarque}: en particulier, tout espace de Hilbert
-est isométrique à son dual.
+\textbf{Remarque}: Soit $H$ un espace de Hilbert.
+L'application $H\to H^*: y \mapsto \langle$ $.$ $, y\rangle$ est
+bijective (par le théorème de Riesz-Fréchet), une isométrie
+et \emph{antilinéaire} (exercice).
 
 Nous sommes maintenant armés pour montrer que tous les espaces
 de Hilbert sont réflexifs.
@@ -407,9 +402,11 @@ de Hilbert sont réflexifs.
   alors:
   $$\langle u^*, v^*\rangle = \langle v, u \rangle$$
 
-  Il s'agit bien d'un produit scalaire; il hérite des
-  propriétés du produit scalaire défini sur $H$, en plus
-  d'engendrer la même distance que la norme opérateur
+  Il s'agit bien d'un produit scalaire; les détails sont
+  laissés à titre d'exercice (l'échange est important pour
+  assurer la linéarité par rapport à la première composante).
+  Ce produit scalaire engendre la même norme que la norme
+  opérateur
   (puisque les représentants sont de même norme que
   les formes considérées). La complétude de $H^*$
   est assurée par la proposition \ref{lin:cpl:imp}.
@@ -417,7 +414,7 @@ de Hilbert sont réflexifs.
   De la même manière, on munit le bidual de $H$ d'un
   produit scalaire, pour tous $u^{**}, v^{**}$ du bidual,
   soient $u^*, v^*$ leur représentants du dual, on pose:
-    $$\langle u^{**}, v^{**}\rangle = \langle u^*, v^* \rangle$$
+    $$\langle u^{**}, v^{**}\rangle = \langle v^*, u^* \rangle$$
 
   Soit $y^{**}\in H^{**}$. Montrons qu'il existe un élément
   de $y$ de $H$ tel que $y^{**}$ est l'image de $y$ par
@@ -476,10 +473,10 @@ Il existe une formulation équivalente en termes de formes linéaires:
 \end{proof}
 
 En plus des hyperplans vectoriels, on définit également les
-hyperplans dits affins. Il s'agit de translatés d'hyperplans
+hyperplans dits affines. Il s'agit de translatés d'hyperplans
 vectoriels.
 \begin{df}
-  Un sous-ensemble $H$ de $E$ est dit hyperplan affin s'il
+  Un sous-ensemble $H$ de $E$ est dit hyperplan affine s'il
   existe $f$ une forme linéaire sur $E$, un scalaire $\alpha$
   tels que $H = f^{-1}(\{\alpha\})$.
 \end{df}
@@ -546,7 +543,7 @@ illustré à la figure \ref{sep:ill}. Plus formellement:
 \begin{df}
   Soient $A$, $B$ deux sous-ensembles disjoints de $E$,
   $f:E\to\mathbb{R}$ une forme linéaire continue, $\alpha$ un
-  réel et $H = f^{-1}(\{\alpha\})$ un hyperplan affin.
+  réel et $H = f^{-1}(\{\alpha\})$ un hyperplan affine.
 
   $H$ sépare $A$ et $B$ au sens large si $\forall x\in A,
   f(x)\leq \alpha$ et $\forall x\in B, f(x)\geq \alpha$.
@@ -1067,7 +1064,7 @@ n'intervient pas dans l'argument.
 
    \textbf{\'{E}tape 3}: conclusion.
 
-   Soit $\eta \in\{-1, 1\}$. On a, par l'inégalité trianglaire:
+   Soit $\eta \in\{-1, 1\}$. On a, par l'inégalité triangulaire:
    $$\|x^*+ \eta y^*\| \leq \|x^* - \alpha y^*\| + \|\alpha y^* + \eta y^*\|
    \leq \varepsilon + \|\alpha y^* + \eta y^*\|$$
 

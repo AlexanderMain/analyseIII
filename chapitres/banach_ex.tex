@@ -489,6 +489,67 @@ l'énoncerons dans un futur chapitre.
   $$\|T\|\leq \|T-T_n\| + \|T_n\|$$
 \end{proof}
 
+\section{Sous-espaces vectoriels et complétude}
+Lorsqu'on considère un espace de Banach et un sous-espace vectoriel de ce
+dernier, on peut se poser la question suivante: \og Ce sous-espace est-il
+complet pour la norme induite?\fg.
+Le résultat suivant permet de donner un critère pour vérifier cela.
+
+\begin{thm}
+  Soit $(E, \|.\|)$ un espace de Banach et $F$ un sous-espace vectoriel de $E$.
+  Alors $(F, \|.\|)$ est un espace de Banach si et seulement si $F$ est fermé
+  dans $E$.
+\end{thm}
+\begin{proof}
+  Supposons que $F$ est complet et montrons qu'il s'agit d'un fermé au
+  sens de $E$. Soient $(x_n)_{n\in\mathbb{N}}$ une suite d'éléments de $F$
+  et $x\in E$ tels que $x_n\to x$. Puisque la suite $(x_n)_{n\in\mathbb{N}}$
+  est convergente, elle est de Cauchy. Par complétude de $F$, elle admet
+  une limite $y\in F$. Par unicité de la limite, $x = y\in F$.
+
+  Réciproquement supposons que $F$ est fermé. Soit $(x_n)_{n\in\mathbb{N}}$
+  une suite de Cauchy dans $F$. Alors c'est une suite de Cauchy d'éléments
+  de $E$; elle admet une limite $x$ dans $E$. Puisque $F$ est fermé, la
+  suite considérée converge bien dans $F$.
+\end{proof}
+
+Le résultat est également vrai dans le cadre des espaces métriques (la même
+preuve fonctionne).
+
+Fournissons une application de ce résultat à un exemple. On introduit
+un sous-espace d'un des exemples présentés ci-avant.
+
+\begin{df}
+  L'espace $c_0$ est l'espace des suites dans $\mathbb{K}$
+  convergeant vers $0$. On le munit de la norme $\|.\|_\infty$.
+\end{df}
+
+Etant donné que toutes les suites convergentes sont bornées,
+$c_0$ est un sous-espace vectoriel de $\ell^\infty$.
+
+\begin{prop}
+  $(c_0, \|.\|_\infty)$ est un espace de Banach.
+\end{prop}
+
+\begin{proof}
+  Au vu du résultat ci-avant, il suffit de montrer que $c_0$ est
+  fermé dans $\ell^\infty$.
+
+  Soit $(x^{(n)})_{n\in\mathbb N}$ une suite d'éléments de $c_0$
+  convergeant vers $x$ un élément de $\ell^\infty$. Montrons que
+  $x\in c_0$.
+
+  Soit $\varepsilon > 0$. Il existe $N$ tel que pour tout naturel $n\geq N$,
+  $\|x^{(n)}-x\|_\infty\leq \varepsilon/2$. \'{E}tant donné que $x^{(N)}$
+  est un élément de $c_0$, il existe $k_0$ tel que pour tout $k\geq k_0$,
+  $|x^{(N)}_k|\leq \varepsilon /2$. Pour tout $k\geq k_0$, on a
+  $$|x_k|\leq |x_k - x^{(N)}_k| + |x^{(N)}_k|
+  \leq \|x - x^{(N)}\|_\infty + |x^{(N)}_k| \leq \varepsilon$$
+  ce qui montre bien que $x$ est élément de $c_0$.
+\end{proof}
+
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"

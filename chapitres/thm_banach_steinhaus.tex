@@ -7,9 +7,11 @@ chapitre.
 
 
 \begin{thm}[Théorème de Banach-Steinhaus (Principle of uniform boundedness)]
-  Soient $(E, \|.\|_E)$ et $(F, \|.\|_F)$ deux espaces de Banach,
-  $I$ un ensemble non vide et $(T_i)_{i\in I}$ une famille telle que
-  pour tout $i\in I$, $T_i\in \mathscr{L}(E, F)$
+  Soient $(E, \|.\|_E)$ un espace de Banach
+  et $(F, \|.\|_F)$ un espace vectoriel normé,
+  $I$ un ensemble non vide et $(T_i)_{i\in I}$ une famille d'opérateurs
+  linéaires continus (c'est-à-dire pour tout $i\in I$,
+  $T_i\in \mathscr{L}(E, F)$).
 
   Supposons que pour tout $x\in E$, $\sup_{i\in I}\|T_i(x)\|_F$ est fini.
 
@@ -61,7 +63,7 @@ et $(E, \|.\|)$ un espace de Banach sur $\mathbb K$. Soit
 $(x^*_n)_{n\in\mathbb N}$, telle que $x^*_n\in E^*$ pour tout naturel $n$.
 
 En particulier, si on suppose que pour tout élément $x$ de $E$,
-$\sup_{n\in\mathbb N}|x^*(x)|$ est fini, alors
+$\sup_{n\in\mathbb N}|x^*_n(x)|$ est fini, alors
 $\sup_{n\in\mathbb N}\|x^*_n\|$  est fini.
 
 Le résultat n'est plus vrai si on ne suppose pas la complétude de
@@ -90,7 +92,13 @@ $E$.
   % pas convergente car sa limite n'est pas un polynôme (exercice).
 
   Pour tout naturel $n$, on considère la forme linéaire et continue
-  $$x^*_n: E\to \mathbb R: \sum_{k=0}^Na_kt^k\mapsto n \cdot a_n$$
+  \begin{equation*}
+  x^*_n: E\to \mathbb R: \sum_{k=0}^Na_kt^k\mapsto
+  \begin{cases}
+    n a_n \mbox{ si $n\leq N$} \\
+    0 \mbox{ sinon}
+  \end{cases}
+  \end{equation*}
 
   La norme de $x^*_n$ est $n$ quel que soit $n$. Or, quel que
   soit le polynôme $p\in E$, l'ensemble $\{|x^*_n(p)|\mid n\in\mathbb N\}$
@@ -173,8 +181,17 @@ $E$.
   stricte positivité de $\varepsilon$.
 \end{proof}
 
+Le résultat précédent n'est pas vrai si on considère un ensemble borné
+non compact. Prenons $E = c_0$, $F=\mathbb R$ et pour tout
+naturel $n$, $e_n^*: c_0\to\mathbb R: x\mapsto x_n$ qui est linéaire continue.
+Alors $e_n^*$ converge ponctuellement vers $0$ (par définition de $c_0$),
+mais sur la boule unité de $c_0$ (qui est bornée), la suite des $e_n^*$ ne
+converge pas uniformément vers $0$. En effet, quel que soit $n$ le naturel
+considéré, il existe un élément $x$ de la boule unité de $c_0$ tel que
+$|e_n^*(x)| > 1/2$ (prendre $x = e_n$).
+
 \begin{prop}
-  Soit $(E, \|.\|)$ un espace de Banach et $B$ un sous-ensemble
+  Soit $(E, \|.\|)$ un espace vectoriel normé et $B$ un sous-ensemble
   de $E$. Supposons que quel que soit $x^*\in E^*$ que l'on considère,
   $x^*(B)$ est borné. Alors $B$ est borné.
 \end{prop}
