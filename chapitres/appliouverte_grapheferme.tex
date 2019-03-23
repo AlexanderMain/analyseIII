@@ -99,7 +99,7 @@ suivants, implicitement:
   l'application ouverte.
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{ao:de}
   Soient $\|.\|_1$, $\|.\|_2$ deux normes sur un même espace
   vectoriel $E$ telles que $(E, \|.\|_i)$ est un espace de Banach
   pour $i =1, 2$.
@@ -170,6 +170,111 @@ Prouvons la proposition.
   Par le lemme, on a $B_F(0, s)\subseteq\frac{1}{1-\frac{1}{2}}S(B_E(0, 1))$.
   On en déduit que $B_F(0, \frac{s}{2})\subseteq L(B_E(0, 1))$
 \end{proof}
+
+\section{Théorème du graphe fermé}
+Soient $E$, $F$ des espaces vectoriels normés, et $T: E\to F$.
+
+\begin{df}
+  On note $\mathrm{Gr}(T) = \{(x, T(x))\mid x\in E\}$ le graphe
+  de $T$, qui est un sous-ensemble de $E\times F$.
+\end{df}
+
+On munit $E\times F$ de la norme $\|(x, y)\| = \max (\|x\|_E, \|y\|_F)$.
+Cette norme engendre bien la topologie produit (pour le prouver, vous
+pouvez procéder comme suit: dans un premier temps, montrer que les rectangles
+ouverts sont bien des ouverts pour cette norme et ensuite montrer que
+les boules sont bien des ouverts au sens de la topologie produit).
+
+\begin{exo}
+  Si $T$ est continue, alors $\mathrm{Gr}(T)$ est fermé.
+\end{exo}
+
+Le théorème du graphe fermé est une sorte de réciproque partielle
+pour le résultat précédent.
+\begin{thm}
+  Supposons que $E$ et $F$ sont complets et que $T$ est linéaire.
+  Alors $T$ est continue si et seulement si le graphe de $T$ est
+  fermé.
+\end{thm}
+
+\begin{proof}
+  Supposons que le graphe de $T$ est fermé, c'est-à-dire si
+  $(x_n)_n$ est une suite d'éléments de $E$ et
+  $(x, y)\in E\times F$, si $(x_n, T(x_n))\to (x, y)$, alors
+  $y = T(x)$.
+
+  On définit une nouvelle norme sur $E$, pour $x\in E$, on
+  pose $\|\!|x \|\!| = \|x\|_E + \|T(x)\|_F$, appelée norme du graphe.
+  Montrons que $E$ muni de cette norme est complet.
+
+  Soit $(x_n)_n$ une suite de Cauchy au sens de la norme du graphe.
+  Alors pour tout $\varepsilon >0$, il existe $n_0$ naturel,
+  pour tout $p, q\geq n_0$,
+  $$\|x_q-x_p\|_E + \|T(x_q)-T(x_p)\|\leq \varepsilon.$$
+  Il s'en suit que $(x_n)_n$ et $(T(x_n))_n$ sont de Cauchy (au
+  sens de $\|.\|_E$ et de $ \|.\|_F$ respectivement) et convergent
+  respectivement vers $x\in E$ et $y\in F$.
+  Puisqu'on suppose le graphe de $T$ fermé, on a $y = T(x)$.
+  Dès lors $\||x_n -x \|| = \|x_n - x\| + \|T(x_n)-T(x)\|$
+  ce qui converge bien vers $0$.
+
+  De plus, on remarque que la norme du graphe (de $T$)
+  domine la norme $\|.\|_E$. Par le corollaire \ref{ao:de},
+  les deux normes sont équivalentes. En particulier,
+  il existe $c > 0$ tel que pour tout $x$ dans $E$,
+  $\|x\|_E + \|T(x)\|_F\leq c\|x\|_E$. Ceci implique
+  que $\|T(x)\|_F\leq c\|x\|_E$ donc $T$ est continue.
+\end{proof}
+
+\begin{prop}
+  Soit $E$ un espace de Banach. Soit $T: E\to E^*$ linéaire
+  telle que
+  $$\forall x, y \in E, (Tx)(y) = (Ty)(x)$$
+  (c'est-à-dire $T$ est symétrique). Alors $T$ est continue.
+\end{prop}
+
+\begin{proof}
+  Montrons que le graphe de $T$ est fermé (on a bien $E$, et $E^*$
+  complets). Soit $(x_n)_n$ une suite d'éléments de $E$, soit
+  $(x, S)\in E \times E^*$ tels que $(x_n, Tx_n)\to (x, S)$.
+  Soit $z\in E$. Montrons que $S(z) = (Tx)(z)$.
+  On a, pour tout $n$, $(Tx_n)(z) = (Tz)(x_n)$. Le premier
+  membre converge vers $S(z)$ par hypothèse et le second
+  vers $(Tz)(x)$ par continuité. D'où $S = Tx$ (unicité
+  de la limite).
+\end{proof}
+
+\begin{exo}
+  On a utilisé implicitement dans l'exercice précédent
+  que si $(T_n)_n$, est une suite d'opérateurs $E\to F$ convergeant
+  vers un opérateur $T$ au sens de la norme opérateur,
+  alors pour tout $x$ dans $E$, $T_n(x) \to T(x)$. Prouvez
+  cette affirmation.
+\end{exo}
+
+\begin{exo}
+  Soient $E$ un espace de Banach et $T: E\to E^*$ linéaire vérifiant
+  $\forall x\in E, \langle Tx, x\rangle\geq 0$. Montrer que $T$
+  est continue.
+\end{exo}
+
+
+\begin{exo}
+  Soit $(c_{00})$ l'espaces des suites à support fini, c'est-à-dire
+  des suites qui ont un nombre fini d'éléments non nuls. On munit
+  $(c_{00})$ de la norme du maximum, ie. pour tout $x=(x_n)_n\in c_{00}$,
+  $\|x\| = \max_{n}|x_n|$.
+
+  Soit $T:c_{00}\to c_{00}$ définie par $T((x_n)) = ((n+1)x_n)_n$
+  pour tout $(x_n)_n$ dans $c_{00}$.
+  \begin{enumerate}
+  \item $T$ est-elle linéaire?
+  \item $T$ est-elle continue?
+  \item Qu'en est-il du graphe de $T$?
+  \item Qu'en déduit-on?
+  \end{enumerate}
+\end{exo}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
