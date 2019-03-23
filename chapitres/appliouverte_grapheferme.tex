@@ -1,0 +1,176 @@
+\section{Théorème de l'application ouverte}
+On rappelle qu'une application $f(X, \tau_X)\to(Y, \tau_Y)$ est ouverte
+si l'image de tout ouvert de $X$ par $f$ est un ouvert de $Y$.
+\'{E}nonçons le théorème de l'application ouverte.
+
+\begin{thm}[Théorème de l'application ouverte]
+  Soient $E$, $F$ deux espaces de Banach et $T\in\mathscr{L}(E, F)$.
+
+  Si $T$ est une surjection, alors $T$ est ouverte.
+\end{thm}
+
+Prouvons tout d'abord un résultat qui nous permet de montrer
+qu'un opérateur est ouvert.
+\begin{prop}
+  Soit $T: E\to F$ une application linéaire. $T$ est ouverte si et seulement
+  si il existe $r>0$ tel que $T\left(B_E(0, 1)\right)\supseteq B_F(0, r)$.
+\end{prop}
+
+Remarquez que de manière équivalente, $T$ linéaire est ouverte si et seulement
+si il existe $s>0$ tel que $T\left(B_E(0, s)\right)\supseteq B_F(0, 1)$.
+
+\begin{proof}
+  Supposons $T$ ouverte. Alors l'image par $T$ de $B_E(0, 1)$ est un ouvert
+  de $F$ contenant $0$, ce qui fournit le résultat.
+
+  Réciproquement, supposons qu'il existe $r>0$ tel que
+  $T\left(B_E(0, 1)\right)\supseteq B_F(0, r)$. Soit $O$ un ouvert de $E$.
+  Soit $T(x)$ un élément de $f(O)$. Il existe $s>0$ tel que $B_E(x, s)%
+  \subseteq O$. Puisque $B_E(x, s) = x + s B_E(0, 1)$, on a que $T(O)$ contient
+  l'ensemble $T(x) + s T(B_E(0, 1))$ est un sous-ensemble de $f(O)$.
+  Par hypothèse, ce sous-ensemble contient $T(x) + s B_F(0, r)$, ce qui
+  implique $B_F(T(x), r\cdot{}s)\subseteq T(O)$.
+\end{proof}
+
+Nous pouvons désormais prouver le théorème. Nous utilisons les résultats
+suivants, implicitement:
+\begin{exo}
+  Soient $A\subseteq E$ et $T\in\mathscr{L}(E, F)$.
+  \begin{enumerate}
+  \item On a que $A + A$ comprend $2A$;
+  \item Si $A$ est convexe, $A+A = 2A$;
+  \item Si $A$ est convexe, alors $T(A)$ est convexe;
+  \item Si $A$ est convexe, alors son adhérence aussi.
+  \end{enumerate}
+\end{exo}
+\begin{proof}
+  Montrons premièrement qu'il existe $r>0$ tel que $\mathrm{adh}(T(B_E(0, 1)))%
+  \supseteq B_F(0, r)$. Afin de faire cela, on utilise le théorème de Baire.
+
+  Pour tout naturel $n\geq 1$, on pose $F_n = n\cdot\mathrm{adh}(T(B_E(0, 1)))$
+  qui est un fermé de $F$. Dès lors, l'union des $F_n$ est $F$ est $F$
+  par surjectivité de $T$. En effet, il suffit de constater que
+  $F_n\supseteq n\cdot T(B_E(0, 1)) =T(B_E(0, n))$.
+
+  Dès lors le théorème de Baire assure qu'il existe $n_0$ tel que
+  l'intérieur de $F_{n_0}$ est non vide. On en déduit que l'intérieur
+  de $F_1$ est non vide. Soit $x_0$ un élément de l'intérieur de $F_1$.
+  Alors il existe $s>0$ tel que
+  $B_F(x_0, s)\subseteq  \mathrm{adh}(T(B_E(0, 1)))$. Puisque
+  $\mathrm{adh}(T(B_E(0, 1)))$ est symétrique ($A$ est symétrique
+  si pour tout élément $a$ de $A$, $-a$ est dans $A$), $B_F(-x_0, s)$
+  est également contenue dans $\mathrm{adh}(T(B_E(0, 1)))$. Par convexité
+  de $\mathrm{adh}(T(B_E(0, 1)))$, on déduit que
+  $B_F(0, s)\subseteq \mathrm{adh}(T(B_E(0, 1)))$.
+
+  Maintenant, on a montré que $\exists r' > 0$, $\mathrm{adh}(T(B_E(0, 1))%
+  \supseteq B_F(0, r')$. On en déduit que $\mathrm{adh}(T(B_E(0, r))%
+  \supseteq B_F(0, 1)$ où $r= 1/r'$. Pour conclure, on doit montrer l'existence
+  de $s>0$ tel que $B_F(0, 1)\subseteq T(B_E(0, s))$, par la proposition.
+
+  Soit $y\in F$, $\|y\| < 1$. Alors, $y\in\mathrm{adh}(T(B_E(0, r)))$.
+
+  Par définition d'adhérence, il existe $x_0\in B_E(0, r)$ tel que
+  $\|y-T(x_0)\| < \frac{1}{2}$. Dès lors, $y-T(x_0)$ est élément
+  de l'ensemble $\mathrm{adh}(T(B_E(0, r/2)))$. Il existe donc
+  $x_1\in B_E(0, r/2)$ tel que $\|y-T(x_0 + x_1)\| < \frac{1}{2^2}$.
+
+  \`{A} l'étape $n$, on a $y - T(x_0 + \cdots + x_{n-1}\in%
+  \mathrm{adh}(T(B(0, \frac{r}{2^n})))$. Il existe donc
+  $x_n\in B(0, \frac{r}{2 ^{n}})$ tel que
+  $\|y - T(x_1 + \cdots + x_n)\| < \frac{1}{2^{n+1}}$.
+
+  La série des $x_n$ converge car elle est absolument convergente (on a
+  pour tout naturel $n$, $\|x_n\|<\frac{r}{2^{n}}$). Soit $x$ la limite
+  de cette série. Alors,$\|x\|\leq 2r$ et on a $T(x) = y$.
+  D'où $y\in T(B(0, 2r))$.
+
+  Il suffit donc de prendre $s = 2r$ pour conclure.
+\end{proof}
+\begin{cor}[Théorème d'isomorphisme de Banach]
+  Soient $E$, $F$ deux espaces de Banach, $T\in\mathscr L(E, F)$.
+  Si $T$ est bijective, alors elle est bicontinue (c'est-à-dire sa
+  réciproque est également continue).
+\end{cor}
+
+\begin{proof}
+  Toute application bijective, continue et ouverte est un
+  homéomorphisme. Le résultat est immédiat par le théorème de
+  l'application ouverte.
+\end{proof}
+
+\begin{cor}
+  Soient $\|.\|_1$, $\|.\|_2$ deux normes sur un même espace
+  vectoriel $E$ telles que $(E, \|.\|_i)$ est un espace de Banach
+  pour $i =1, 2$.
+
+  S'il existe $c > 0$ tel que pour tout $x\in E$, $\|x\|_1\leq c\|x\|_2$ 
+  (c'est-à-dire que la norme $\|.\|_2$ domine la norme $\|.\|_1$), alors elles
+  sont équivalentes.
+\end{cor}
+
+\begin{proof}
+  L'application $\mathrm{Id}: (E, \|.\|_2)\to (E, \|.\|_1)$ est linéaire,
+  continue et bijective. Par le théorème d'isomorphisme de Banach, l'identité
+  est bien un homéomorphisme.
+\end{proof}
+
+\begin{prop}
+  Soient $E$, $F$ des espaces de Banach. L'ensemble des applications
+  linéaires et continues ouvertes $O(E, F)$ est un ouvert de $\mathscr L(E, F)$.
+\end{prop}
+
+Avant de prouver la proposition, on introduit le lemme suivant:
+\begin{lem}
+  Soit $\varepsilon \in \left]0, 1\right[$ et $A\subseteq F$ un sous-ensemble
+  borné tels que $A\subseteq T(B_E(0, 1)) + \varepsilon A$.
+  Alors $A\subseteq \frac{1}{1-\varepsilon} T(B_E[0, 1])$.
+\end{lem}
+\begin{rem}
+  Le lemme ne requiert pas la complétude de $F$.
+\end{rem}
+
+\begin{proof}
+  Soit $a = a_0$ un élément de $A$. Il existe $x_0$ un élément
+  de $B_E(0, 1)$ et $a_1\in A$ tels que $a_0 = T(x_0) + \varepsilon a_1$.
+  De même, il existe $x_1$ un élément de $B_E(0, 1)$ et $a_2$ un élément
+  de $A$ tels que $a_1 = T(x_1) + \varepsilon a_2$, ce qui implique
+  que
+  $$a_0 = T(x_0) + \varepsilon (T(x_1) +\varepsilon a_2).$$
+
+  En continuant ainsi, pour $a_n\in A$, il existe $x_n\in B_E(0, 1)$
+  et $a_{n+1}\in A$ tels que $a_n = T(x_n) + \varepsilon a_{n+1}$. On en déduit
+  $$a_0 = T(x_0 + \varepsilon x_1 + \cdots + \varepsilon^nx_n)+%
+  \varepsilon^{n+1}a_{n+1}.$$
+  Puisque $A$ est borné et que $0 < \varepsilon < 1$, on a
+  $\varepsilon^na_n \to 0$. De plus, on a:
+  $$\sum_{k=0}^{\infty}\varepsilon^k\|x_k\| \leq%
+  \sum_{k=0}^{\infty}\varepsilon^k = \frac{1}{1-\varepsilon}$$
+
+  Puisque $E$ est complet, la série des $\varepsilon^kx_k$ converge
+  vers un élément $x\in E$. Alors $a_0 = T(x)$ et $\|x\|\leq
+  \frac{1}{1-\varepsilon}$ implique $(1-\varepsilon)x \in B_E[0, 1]$.
+\end{proof}
+Prouvons la proposition.
+\begin{proof}
+  Soit $T$ une application linéaire et continue ouverte de $E$ dans $F$.
+  On recherche $r>0$ tel que $B_{\mathscr L(E, F)}(T, r)\subseteq O(E, F)$.
+  Puisque $T$ est une application ouverte, il existe $s>0$ tel que
+  $B_F(0, s)\subseteq T(B_E(0, 1))$. Soit $S\in B_{\mathscr L(E, F)}(T, s/2)$,
+  montrons que $S$ est une application ouverte.
+
+  Par hypothèse sur $S$, $\|T-S\| < s/2$. Cela implique que pour tout
+  $x\in B_E(0, 1)$, $\|T(x) - S(x)\|< s/2$, d'où $\|T(x)\|\leq \| S(x)\| + s/2$.
+
+  En termes d'inclusions d'ensembles, on obtient
+  $$T(B_E(0, 1)) \subseteq S(B_E(0, 1))+\frac{1}{2}B_F(0, s).$$
+  De l'hypothèse, on déduit,
+  $$B_F(0, s) \subseteq S(B_E(0, 1))+\frac{1}{2}B_F(0, s).$$
+
+  Par le lemme, on a $B_F(0, s)\subseteq\frac{1}{1-\frac{1}{2}}S(B_E(0, 1))$.
+  On en déduit que $B_F(0, \frac{s}{2})\subseteq L(B_E(0, 1))$
+\end{proof}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:
