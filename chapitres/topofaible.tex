@@ -1,0 +1,100 @@
+\section{Rappels sur la notion de topologie initiale}
+On se fixe $E$ un ensemble non vide, $(E_j, \tau_j)_{j\in J}$ une famille
+d'espaces topologiques et pour chaque $j$ dans $J$ une fonction
+$f_j: E\to E_j$.
+\begin{df}[Base d'ouverts pour la topologie initiale]
+  On prend comme base d'ouverts les \og rectangles
+  ouverts \fg{} suivants:
+  \begin{equation*}
+    \bigcap_{i\in I}f^{-1}_i(O_i), \mbox{ où }I\subseteq J \mbox{ fini et }
+    O_i\in\tau_i, \forall i \in I
+  \end{equation*}
+  Pour rappel, tout ouvert est une union (quelconque) d'éléments
+  de la base d'ouverts.
+\end{df}
+
+\begin{prop}
+  La topologie initiale est la topologie la moins fine
+  qui rend les $f_j$ continue.
+\end{prop}
+
+\begin{proof}
+  On fixe $j\in J$. Soit $O_j$ un ouvert de $\tau_j$.
+  Alors son image réciproque par $f_j$ est un ouvert
+  de la topologie initiale par définition. De plus,
+  si une topologie rend continue les $f_j$, elle
+  contiendra nécessairement la topologie initiale
+  par construction (on vérifie facilement que les
+  éléments de la base d'ouverts sont ouverts si une
+  topologie rend les $f_j$ continues)..
+\end{proof}
+
+\begin{prop}\label{init:cont}
+  Soient $(F, \tau_F)$ et $f: F\to E$ où $E$ est
+  muni de la topologie initiale. Alors $f$ est
+  continue si et seulement si pour tout $j\in J$,
+  $f_j\circ f$ est continue.
+\end{prop}
+
+\begin{proof}
+  Supposons que $f$ est continue. Alors le résultat est
+  immédiat car la continuité est préservée par composition.
+
+  Supposons maintenant que pour tout $j\in J$, $f_j\circ f$
+  est continue. Soit $\bigcap_{i\in I}f^{-1}_i(O_i)$,
+  où $I\subseteq J$ fini et $O_i\in\tau_i$, $\forall i \in I$,
+  un ouvert de la base d'ouverts de $E$. Alors
+  $$f^{-1}\left(\bigcap_{i\in I}f^{-1}_i(O_i)\right) =
+  \bigcap_{i\in I} \left(f_i\circ f\right)^{-1}(O_i)$$
+  est, par hypothèse, une intersection finie d'ouverts
+  de $f$ (par continuité des $f_i$, $i\in I$) donc est
+  ouverte. Donc $f$ est continue.
+\end{proof}
+Notez que la preuve fonctionne aussi ponctuellement;
+$f$ est continue en $x\in E$ si et seulement si
+les $f_j\circ f$ sont continues en $x$. Pour montrer cela
+on se rappelle que tout voisinage d'un point contient
+un ouvert de la base d'ouverts contenant ce point.
+
+\begin{cor}\label{init:lim}
+  Soient $(x_n)_n\subseteq (E, \tau_{\mathrm{init}})$ et $x\in E$.
+  Alors $x_n\xrightarrow{\tau_{\mathrm{init}}} x$ si et seulement
+  si pour tout $j\in J$, $f(x_n)\xrightarrow{\tau_{\mathrm{init}}} f(x)$.
+\end{cor}
+
+Afin de prouver le corollaire, on montre le résultat suivant (qui
+est un rappel):
+\begin{lem}\label{lim:topo}
+  Soit $(X, \tau)$ un espace topologique, $(x_n)_n$ une
+  suite d'éléments de $X$, et $x\in X$. On munit $\bar{\mathbb{N}}=%
+  \mathbb{N}\cup\{+\infty\}$ de la topologie dont une base d'ouverts
+  est les singletons et les ensembles de la forme
+  $\{n\geq n_0\}\cup\{+\infty\}$, où $n_0\in\mathbb N$.
+
+  Dès lors, $x_n\to x$ si et seulement si l'application
+  $n\mapsto x_n$, $+\infty\mapsto x$ est continue en $+\infty$.
+\end{lem}
+
+\begin{proof}
+  On traduit ce que signifient chacune de ces assertions.
+  Dire que cette application est continue en $+\infty$ est,
+  par définition:
+  \begin{equation*}
+    \forall V_x \mbox{ voisinage de $x$}, \exists n_0,
+    \forall n\geq n_0, x_n\in V_x.
+  \end{equation*}
+  Dire que $x_n\to x$, revient à dire:
+  \begin{equation*}
+    \forall V_x\mbox{ voisinage de $x$},
+    \exists V_\infty \mbox{ voisinage de $+\infty$},
+    \forall n\in V_\infty, x_n\in V_x
+  \end{equation*}
+  Il est clair que ces assertions sont équivalentes.
+\end{proof}
+
+Le corollaire \ref{init:lim} découle immédiatement de la proposition
+\ref{init:cont} et du lemme \ref{lim:topo}.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:
