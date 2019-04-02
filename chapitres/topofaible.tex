@@ -141,7 +141,7 @@ sur $E$ vérifie $\sigma(E, E^*)\preceq \mathcal{T}_{\|.\|}$.
 
 Les éléments de la base d'ouvert de $\sigma(E, E^*)$ sont de la forme
 \begin{equation*}
-  \bigcap_{j=1}^n (x_j^*)(O_j) =
+  \bigcap_{j=1}^n (x_j^*)^{-1}(O_j) =
   \left\{ x\in E\mid \forall 1\leq j\leq n,\quad x_j^*(x)\in O_j\right\}
 \end{equation*}
 où $n$ est un naturel non nul, $x_j^*$ sont des formes linéaires et continues
@@ -253,7 +253,62 @@ assure l'unicité de la limite faible:
   Toutefois, elle ne converge pas vers $0$ au sens de la norme
   car pour tout $n$, $\|e_n\|_2 = 1$.
 \end{rem}
-%%%Local Variables:
+
+\section{Topologie préfaible}
+\subsection{Définition et voisinages}
+On se fixe à nouveau un espace vectoriel normé $(E, \|.\|)$. On introduit
+une nouvelle topologie sur $E^*$, le dual de $E$, appelée topologie
+préfaible. On la notera $\sigma(E^*, E)$ ou encore $\omega^2$.
+
+Il s'agit encore une fois d'une topologie initiale. On considère pour
+chaque élément $x\in E$ la fonction linéaire et continue
+$$\phi_x: E^*\to\mathbb R: x^*\mapsto x^*(x).$$
+
+\begin{df}
+  La topologie initiale sur $E^*$ associée à la famille de fonctions
+  $\left(\phi_x\right)_{x\in E}$ est appelée topologie préfaible sur $E^*$.
+\end{df}
+
+Les éléments de la base d'ouverts de $\sigma(E^*, E)$ sont
+de la forme
+\begin{equation*}
+  \bigcap_{j=1}^n (\phi_{x_j})^{-1}(O_j) =
+  \left\{ x^*\in E^*\mid \forall 1\leq j\leq n,\quad x^*(x_j)\in O_j\right\}
+\end{equation*}
+où les $x_j$ sont des éléments de $E$ et les $O_j$ des ouverts de $\mathbb R$.
+
+On définit (comme dans la section précédente) pour $a^*\in E^*$ le voisinage
+$V_{\epsilon, x_1, \ldots, x_n}(a^*)$ pour $\epsilon > 0$ et
+$x_1, \ldots x_n\in E$ comme l'ensemble:
+$$ V_{\epsilon, x_1, \ldots, x_n}(a^*) = \left\{
+ x^*\in E^* \mid |(x^*-a^*)(x_j) | <\epsilon, \forall j = 1, \ldots n\right\}.$$
+On montre comme pour la topologie faible que l'ensemble de ces voisinages
+$$\left\{V_{\epsilon, x_1, \ldots, x_n}(a^*)\mid
+  \epsilon > 0, x_1, \ldots, x_n\in E, n\geq 1\right\}$$
+est un système fondamental de voisinages de $a^*$.
+
+\subsection{Comparaison de topologies}
+On a désormais trois topologies sur le dual de $E$; la topologie forte
+(de la norme), la topologie faible $\sigma(E^*, E^{**})$ et la topologie
+préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
+\begin{prop}
+  On a les comparaisons suivantes:
+  $$\sigma(E^*, E) \preceq \sigma(E^*, E^{**}) \preceq \mathcal{T}_{\|.\|}$$
+\end{prop}
+\begin{proof}
+  Au vu de la section précédente, il suffit de vérifier que tout ouvert
+  préfaible de $E^*$ est un ouvert faible. Toutefois, puisque
+  les $\phi_x$ sont des éléments de $E^{**}$, on en déduit facilement
+  que tout ouvert de la base d'ouverts de la topologie préfaible
+  est un ouvert de la topologie faible, ce qui donne le résultat.
+\end{proof}
+
+\begin{rem}
+  Si $E$ est réflexif, alors la topologie faible
+  et préfaible sur $E^*$ coïncident.
+\end{rem}
+%\section{Résultats sur la topologie faible}
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
 %%% End:
