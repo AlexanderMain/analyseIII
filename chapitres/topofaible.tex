@@ -1,13 +1,13 @@
 \section{Rappels sur la notion de topologie initiale}
-On se fixe $E$ un ensemble non vide, $(E_j, \tau_j)_{j\in J}$ une famille
+On se fixe $E$ un ensemble non vide, $(E_j, \mathcal{T}_j)_{j\in J}$ une famille
 d'espaces topologiques et pour chaque $j$ dans $J$ une fonction
 $f_j: E\to E_j$.
-\begin{df}[Base d'ouverts pour la topologie initiale]
+\begin{df}[Base d'ouverts pour la topologie initiale]\label{init:df}
   On prend comme base d'ouverts les \og rectangles
   ouverts \fg{} suivants:
   \begin{equation*}
     \bigcap_{i\in I}f^{-1}_i(O_i), \mbox{ où }I\subseteq J \mbox{ fini et }
-    O_i\in\tau_i, \forall i \in I
+    O_i\in\mathcal{T}_i, \forall i \in I
   \end{equation*}
   Pour rappel, tout ouvert est une union (quelconque) d'éléments
   de la base d'ouverts.
@@ -19,18 +19,19 @@ $f_j: E\to E_j$.
 \end{prop}
 
 \begin{proof}
-  On fixe $j\in J$. Soit $O_j$ un ouvert de $\tau_j$.
+  On fixe $j\in J$. Soit $O_j$ un ouvert de $\mathcal{T}_j$.
   Alors son image réciproque par $f_j$ est un ouvert
   de la topologie initiale par définition. De plus,
   si une topologie rend continue les $f_j$, elle
   contiendra nécessairement la topologie initiale
   par construction (on vérifie facilement que les
-  éléments de la base d'ouverts sont ouverts si une
-  topologie rend les $f_j$ continues)..
+  éléments de la base d'ouverts  de la topologie initiale
+  sont ouverts pour la topologie considérée si elle
+  rend les $f_j$ continues).
 \end{proof}
 
 \begin{prop}\label{init:cont}
-  Soient $(F, \tau_F)$ et $f: F\to E$ où $E$ est
+  Soient $(F, \mathcal{T}_F)$ et $f: F\to E$ où $E$ est
   muni de la topologie initiale. Alors $f$ est
   continue si et seulement si pour tout $j\in J$,
   $f_j\circ f$ est continue.
@@ -42,30 +43,31 @@ $f_j: E\to E_j$.
 
   Supposons maintenant que pour tout $j\in J$, $f_j\circ f$
   est continue. Soit $\bigcap_{i\in I}f^{-1}_i(O_i)$,
-  où $I\subseteq J$ fini et $O_i\in\tau_i$, $\forall i \in I$,
+  où $I\subseteq J$ fini et $O_i\in\mathcal{T}_i$, $\forall i \in I$,
   un ouvert de la base d'ouverts de $E$. Alors
   $$f^{-1}\left(\bigcap_{i\in I}f^{-1}_i(O_i)\right) =
   \bigcap_{i\in I} \left(f_i\circ f\right)^{-1}(O_i)$$
   est, par hypothèse, une intersection finie d'ouverts
-  de $f$ (par continuité des $f_i$, $i\in I$) donc est
+  de $F$ (par continuité des $f_i$, $i\in I$) donc est
   ouverte. Donc $f$ est continue.
 \end{proof}
 Notez que la preuve fonctionne aussi ponctuellement;
 $f$ est continue en $x\in E$ si et seulement si
-les $f_j\circ f$ sont continues en $x$. Pour montrer cela
+les $f_j\circ f$ sont continues en $x$ (\textbf{exercice}).
+Pour montrer cela
 on se rappelle que tout voisinage d'un point contient
 un ouvert de la base d'ouverts contenant ce point.
 
 \begin{cor}\label{init:lim}
-  Soient $(x_n)_n\subseteq (E, \tau_{\mathrm{init}})$ et $x\in E$.
-  Alors $x_n\xrightarrow{\tau_{\mathrm{init}}} x$ si et seulement
-  si pour tout $j\in J$, $f(x_n)\xrightarrow{\tau_{\mathrm{init}}} f(x)$.
+  Soient $(x_n)_n\subseteq (E, \mathcal{T}_{\mathrm{init}})$ et $x\in E$.
+  Alors $x_n\xrightarrow{\mathcal{T}_{\mathrm{init}}} x$ si et seulement
+  si pour tout $j\in J$, $f_j(x_n)\xrightarrow{\mathcal{T}_{\mathrm{init}}} f_j(x)$.
 \end{cor}
 
 Afin de prouver le corollaire, on montre le résultat suivant (qui
 est un rappel):
 \begin{lem}\label{lim:topo}
-  Soit $(X, \tau)$ un espace topologique, $(x_n)_n$ une
+  Soit $(X, \mathcal{T})$ un espace topologique, $(x_n)_n$ une
   suite d'éléments de $X$, et $x\in X$. On munit $\bar{\mathbb{N}}=%
   \mathbb{N}\cup\{+\infty\}$ de la topologie dont une base d'ouverts
   est les singletons et les ensembles de la forme
@@ -80,21 +82,178 @@ est un rappel):
   Dire que cette application est continue en $+\infty$ est,
   par définition:
   \begin{equation*}
-    \forall V_x \mbox{ voisinage de $x$}, \exists n_0,
-    \forall n\geq n_0, x_n\in V_x.
-  \end{equation*}
-  Dire que $x_n\to x$, revient à dire:
-  \begin{equation*}
     \forall V_x\mbox{ voisinage de $x$},
     \exists V_\infty \mbox{ voisinage de $+\infty$},
     \forall n\in V_\infty, x_n\in V_x
+  \end{equation*}
+  Dire que $x_n\to x$, revient à dire:
+  \begin{equation*}
+    \forall V_x \mbox{ voisinage de $x$}, \exists n_0,
+    \forall n\geq n_0, x_n\in V_x.
   \end{equation*}
   Il est clair que ces assertions sont équivalentes.
 \end{proof}
 
 Le corollaire \ref{init:lim} découle immédiatement de la proposition
 \ref{init:cont} et du lemme \ref{lim:topo}.
-%%% Local Variables:
+
+\subsection*{Exemples}
+On rappelle deux exemples vus en deuxième année.
+\begin{ex}
+  Soit $(X, \mathcal{T})$ un espace topologique et $Y\subseteq X$ un
+  sous-ensemble non vide de $X$. Alors, la topologie initiale sur $Y$
+  associée à l'injection $Y\hookrightarrow X: y\mapsto y$ est la topologie
+  induite.
+\end{ex}
+
+\begin{ex}
+  Soient $((E_i, \mathcal{T}_i))_{i\in I}$ une famille d'espaces topologiques.
+  Soit $E = \prod_{i\in I} E_i$. La topologie initiale sur $E$ associée
+  aux projections $p_i: E\to E_i$ est la topologie produit.
+\end{ex}
+
+
+\section{Topologie faible}
+Soit $(E, \|.\|)$ un espace vectoriel normé réel. La topologie
+faible sur $E$ est une topologie initiale sur $E$.
+\begin{df}
+  La topologie initiale associée aux éléments de $E^*$
+  s'appelle topologie faible sur $E$ et est notée $\sigma(E, E^*)$
+  (ou encore $\omega$).
+\end{df}
+
+La topologie faible est la topologie la moins fine qui rend les
+éléments de $E^*$ continus. En particulier, la topologie faible
+sur $E$ vérifie $\sigma(E, E^*)\preceq \mathcal{T}_{\|.\|}$.
+
+\begin{lem}
+  Soit $f: E\to\mathbb R$ une application linéaire
+  continue au sens de la topologie faible. Alors,
+  $f$ est continue au sens de la norme $\|.\|$
+\end{lem}
+
+\begin{proof}
+  Puisque $\sigma(E, E^*)\preceq \mathcal{T}_{\|.\|}$, et
+  que tout ouvert $O$ de $\mathbb R$ vérifie, par
+  hypothèse que $f^{-1}(O)\in\sigma(E, E^*)$, le
+  résultat est immédiat.
+\end{proof}
+
+Les éléments de la base d'ouvert de $\sigma(E, E^*)$ sont de la forme
+\begin{equation*}
+  \bigcap_{j=1}^n (x_j^*)(O_j) =
+  \left\{ x\in E\mid \forall 1\leq j\leq n,\quad x_j^*(x)\in O_j\right\}
+\end{equation*}
+où $n$ est un naturel non nul, $x_j^*$ sont des formes linéaires et continues
+sur $E$ et $O_j$ sont des ouverts de $\mathbb R$.
+
+\'{E}tudions les voisinages de $0$. Soit $V_0\subseteq E$ un voisinage
+de $0$ au sens de la topologie faible. Alors, il existe $\varepsilon > 0$,
+$n\geq 1$ un naturel et $x_j^*\in E^*$, pour $1\leq j\leq n$ tels que
+\begin{equation*}
+  V_0\supseteq V_{\varepsilon, x_1^*, \ldots, x_n^*}(0) :=
+  \left\{ x\in E\mid \forall 1\leq j\leq n,\quad
+    |x_j^*(x)| < \varepsilon\right\}
+\end{equation*}
+
+\textbf{Explication}: il existe un ouvert $U$ de la base
+donnée par la définition de topologie initiale (\ref{init:df})
+contenu dans $V_0$, c'est-à-dire
+il existe donc un nombre fini (disons $n$) de $x_j^*\in E^*$ et d'ouverts de
+$\mathbb R$ contenant $0$ tels que
+$U=\bigcap_{j}(x_j^*)^{-1}(O_j)\subseteq V_0$.
+Puisque chaque $O_j$ contient un intervalle ouvert centré
+en $0$,
+on prend pour $\varepsilon$ le minimum des rayons de ces intervalles.
+Dès lors, on a:
+$$V_{\varepsilon, x_1^*, \ldots, x_n^*}(0)\subseteq U \subseteq V_0.$$
+
+Ceci montre que l'ensemble suivant est un système fondamental
+de voisinages de $0$:
+$$\left\{V_{\varepsilon, x_1^*, \ldots, x_n^*}(0)\mid \varepsilon > 0,
+  n\geq 1, x_j\in E^*, \forall 1\leq j\leq n\right\}. $$
+
+En raisonnant de la même manière, on montre que pour tout $a\in E$,
+l'ensemble
+$$\left\{V_{\varepsilon, x_1^*, \ldots, x_n^*}(a)\mid \varepsilon > 0,
+  n\geq 1, x_j\in E^*, \forall 1\leq j\leq n\right\}$$
+est un système fondamental de voisinages de $a\in E$
+où $$V_{\varepsilon, x_1^*, \ldots, x_n^*}(a) =
+   \left\{ x\in E\mid \forall 1\leq j\leq n,\quad
+    |x_j^*(x-a)| < \varepsilon\right\}.$$
+
+
+\begin{ex}
+  Soit $E = \mathbb R^2$. On a vu $E \equiv E^*$.
+  Soit $x^*=(x_1, x_2)$ une forme linéaire non nulle sur $E$. L'ensemble
+  $\{y = (y_1, y_2)\in \mathbb R^2\mid x^*(y)=0\} = \mathrm{Ker}(x^*)$
+  est une droite du plan. Si on fixe $\varepsilon > 0$, on trouve
+  que l'ensemble $V_{\varepsilon, x^*}(0)$ est une \og bande\fg dans le plan
+  (voir figure \ref{w:ill}).
+
+  En particulier, un tel ouvert contient une droite passant par $0$ et
+  tout ouvert de la base d'ouverts est une intersection de telles bandes.
+\end{ex}
+\input{figures/ouvert_faible.tex}
+On peut généraliser cet exemple: soit $x^*\in E^*$
+non nul, alors l'ensemble $V_{\varepsilon, x^*}(0)$ contient un hyperplan
+contenant $0$ (car il contient le noyau de $x^*$).
+
+\begin{df}
+  Soient $(x_n)$ une suite d'éléments de $E$ et $x\in E$.
+  On dit que $(x_n)$ converge faiblement vers $x$ si la suite
+  $x_n\xrightarrow{\sigma(E, E^*)}x$ (\emph{ie}. converge au sens de la topologie
+  faible).
+
+  Les notations $x_n\xrightarrow{\omega}x$ et $x_n\rightharpoonup x$ sont
+  également employées pour la convergence faible.
+\end{df}
+\begin{lem}
+  Soient $(x_n)$ une suite d'éléments de $E$ et $x\in E$.
+  Par le corollaire \ref{init:lim}, pour avoir
+  $x_n\xrightarrow{\sigma(E, E^*)}x$,  il suffit de vérifier que pour
+  toute forme linéaire $x^*$, on a $$x^*(x_n)\to x^*(x).$$
+\end{lem}
+
+Dans le cas d'un espace de Hilbert $H$ sur $\mathbb R$, puisque $H\equiv H^*$
+(théorème de Riesz-Fréchet), on a:
+$$x_n\xrightarrow{\sigma(E, E^*)}x \iff
+\left(\forall y\in H, \langle x_n, y\rangle \to \langle x, y\rangle\right).$$
+
+Il est tout à légitime de se demander s'il y a unicité de la limite
+lorsqu'on considère la convergence faible. On a le résultat suivant, qui
+assure l'unicité de la limite faible:
+\begin{prop}
+  $(E, \sigma(E, E^*))$ est séparé.
+\end{prop}
+
+\begin{proof}
+  Soient $x$, $y$ deux éléments distincts de $E$. Alors $\{x\}$ et
+  $\{y\}$ sont deux convexes compacts.
+  Par la forme géométrique du théorème de Hahn-Banach, il existe
+  un réel $\alpha$, une forme linéaire et continue $x^*$ sur $E$
+  tels que $x^*(x) < \alpha < x^*(y)$.
+  Alors les ouverts faibles $(x^*)^{-1}(\left]-\infty, a\right[)$
+  et $(x^*)^{-1}(\left]a, +\infty\right[)$ contiennent $x$
+  et $y$ respectivement et sont clairement disjoints.
+\end{proof}
+
+\begin{rem}
+  La convergence d'une suite au sens de $\|.\|$ implique la converge faible
+  de cette dernière vers la même limite. Toutefois, l'implication réciproque
+  n'est pas vraie en général.
+
+  Soit $\ell^2$ l'espace des suites de carré sommable
+  (pour rappel il s'agit d'un espace
+  de Hilbert), et la suite $(e_n)_{n\in\mathbb N}\in \ell^2$.
+
+  Cette suite converge faiblement vers $0$, car pour tout élément
+  $y$ de $\ell^2$, $\langle e_n, y\rangle = y_n \to 0$ (car
+  les termes d'une série convergente convergent vers $0$).
+  Toutefois, elle ne converge pas vers $0$ au sens de la norme
+  car pour tout $n$, $\|e_n\|_2 = 1$.
+\end{rem}
+%%%Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
 %%% End:
