@@ -307,7 +307,102 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
   Si $E$ est réflexif, alors la topologie faible
   et préfaible sur $E^*$ coïncident.
 \end{rem}
-%\section{Résultats sur la topologie faible}
+\section{Résultats sur la topologie faible}
+
+\begin{thm}
+  Soit $(E, \|.\|)$ un espace vectoriel normé.
+  Si $E$ est de dimension finie, alors la topologie forte et faible
+  coïncident.
+\end{thm}
+
+\begin{proof}
+  On a déjà $\sigma(E, E^*)\preceq \mathcal T_{\|.\|}$. Il reste à montrer
+  l'inclusion réciproque.
+
+  Soit $U\in\mathcal T_{\|.\|}$ un ouvert fort. Il suffit de montrer que
+  $U$ est un voisinage faible de tout ses points pour avoir le résultat.
+  Soit $x_0\in U$.
+
+  Par hypothèse, il existe $r > 0$ tel que $B(x_0, r)\subseteq U$.
+  Pour conclure, il suffit de trouver $\epsilon > 0$ et
+  $x_1^*, \ldots, x_m^*\in E^*$ ($m$ à déterminer) tels que
+  $V_{\epsilon, x_1^*\ldots, x_m^*}(x_0)\subseteq B(x_0, r)$ pour conclure.
+
+  Notons $n$ la dimension de $E$ et soit $B = (e_i)_{1\leq i\leq n}$ une base
+  de $E$ dont tous les vecteurs sont de norme $1$.
+  Pour $i = 1, \ldots,  n$, on considère
+  $$e_i^*: E\to \mathbb K: x=\sum_{j=1}^nx_je_j \mapsto x_j$$
+  (les éléments de la base duale de $B$).
+
+  On recherche désormais $\epsilon > 0$ tel que
+  $V_{\epsilon, e_1^*, \ldots, e_n^*}\subseteq B(x_0, r)$.
+  Soit $x\in V_{\epsilon, e_1^*, \ldots, e_n^*}$. Alors, on a:
+  \begin{IEEEeqnarray*}{rCl}
+    \|x - x_0\|&=& \left\|
+      \sum_{j= 1}^n e_j^*(x)e_j - \sum_{j= 1}^n e_j^*(x_0)e_j\right\| \\
+    & = & \left\|\sum_{j=1}^n e^*_j(x - x_0) e_j\right\| \\
+    & \leq &  \sum_{j=1}^n \left|e^*_j(x - x_0)\right| \left\|e_j\right\|
+    \leq n\epsilon
+  \end{IEEEeqnarray*}
+  Il suffit donc de choisir $\epsilon < r/n$.
+\end{proof}
+
+\begin{prop}
+  Soient $(E, \|.\|)$ un espace de Banach, $(x_n)_{n\in\mathbb N}$ une suite
+  d'éléments de $E$ et $x\in E$. Supposons que $(x_n)$ converge faiblement
+  vers $x$.
+  Alors
+  \begin{enumerate}
+  \item La suite $(x_n)$ est bornée;
+  \item $\|x\|\leq\liminf\|x_n\|$.
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  Pour tout $x^*\in E^*$, la suite $(x^*(x_n))_n$ est bornée car convergente.
+  Par la propriété \ref{bs:borne} (découlant du théorème de Banach-Steinhaus),
+  la suite $(x_n)_n$ est bornée.
+
+  Pour la seconde partie, on considère $x^*\in E^*$, $\|x^*\|\leq 1$
+  Alors, pour tout naturel $n$, $|x^*(x_n)|\leq \|x_n\|$, ce qui
+  implique $|x^*(x)| = \liminf|x^*(x_n)| \leq \liminf \|x_n\|$ (notez que
+  cette limite inférieure est bien un réel car la suite est
+  bornée inférieurement).
+  La remarque \ref{hb:a:norme} (un corollaire du théorème de Hahn-Banach)
+  assure qu'il existe $x^*\in E^*$, $\|x^*\|\leq 1$ telle que
+  $|x^*(x)| = \|x\|$, ce qui donne l'inégalité désirée.
+\end{proof}
+
+\begin{prop}
+  Soit $(E, \|.\|)$ un espace de Banach. On considère $C\subseteq E$
+  un sous-ensemble convexe de $E$. Alors
+  $C$ est fermé pour $\sigma(E, E^*)$ si et seulement si $C$ est fermé
+  pour la topologie de la norme.
+\end{prop}
+\begin{proof}
+  On peut supposer que $C$ est non vide sans perte de généralité, le cas
+  $C = \varnothing$ étant trivial.
+
+  Puisque $\sigma(E, E^*)\preceq \mathcal T_{\|.\|}$, si $C$ est fermé
+  pour la topologie faible, alors il est fermé pour la topologie de la norme.
+
+  Réciproquement, supposons que $C$ est fermé pour la topologie de la
+  norme. Il faut montrer que $\mathrm{adh}_{\sigma(E, E^*)}(C) = C$.
+  L'inclusion $\mathrm{adh}_{\sigma(E, E^*)}(C) \supseteq C$ est toujours vraie
+  dans un espace topologique.
+
+  Pour montrer que $\mathrm{adh}_{\sigma(E, E^*)}(C)\subseteq C$, on
+  montre plutôt que $(E\setminus C) \subseteq (E\setminus
+  \mathrm{adh}_{\sigma(E, E^*)}(C))$. Soit $x\in (E\setminus C)$. Puisque
+  $x\notin C = \mathrm{adh}_{\|.\|}(C)$, on peut appliquer une forme géométrique
+  du théorème de Hahn-Banach; puisque $C$ est un convexe fermé et $\{x\}$
+  est un compact convexe et que ces ensembles sont disjoints,
+  il existe $x^*\in E^*$ et un réel $\alpha$
+  tels que $x^*(x)< \alpha$ et $x^*(C)\subseteq \left]\alpha, +\infty\right[$.
+  En posant $U_x = (x^*)^{-1}(\left]-\infty, \alpha\right[)$, on a un ouvert
+  faible tel que $U_x\cap C = \varnothing$ ce qui montre
+  $x\notin \mathrm{adh}_{\sigma(E, E^*)}(C)$.
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
