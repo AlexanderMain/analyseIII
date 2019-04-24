@@ -127,7 +127,7 @@ La topologie faible est la topologie la moins fine qui rend les
 éléments de $E^*$ continus. En particulier, la topologie faible
 sur $E$ vérifie $\sigma(E, E^*)\preceq \mathcal{T}_{\|.\|}$.
 
-\begin{lem}
+\begin{lem}\label{lem:formfaib}
   Soit $f: E\to\mathbb R$ une application linéaire
   continue au sens de la topologie faible. Alors,
   $f$ est continue au sens de la norme $\|.\|$
@@ -373,7 +373,7 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
   $|x^*(x)| = \|x\|$, ce qui donne l'inégalité désirée.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{faib:conv}
   Soit $(E, \|.\|)$ un espace de Banach. On considère $C\subseteq E$
   un sous-ensemble convexe de $E$. Alors
   $C$ est fermé pour $\sigma(E, E^*)$ si et seulement si $C$ est fermé
@@ -518,6 +518,71 @@ Prouvons désormais le proposition:
 
 Notez que dans la preuve précédente, la valeur choisie pour $\varepsilon$
 n'a pas d'importance dans les calculs, tant qu'elle est strictement positive.
+
+\begin{prop}
+  Soient $E$, $F$ deux espaces de Banach et $T: E\to F$ une application
+  linéaire. Si $T: (E, \|.\|_E)\to (F, \|.\|_F)$ est continue, alors
+  $T: (E, \sigma(E, E^*))\to (F, \sigma(F, F^*))$ continue (on dit que
+  $T$ est faiblement continue. Réciproquement, si $T$ est faiblement
+  continue, alors $T$ est continue.
+\end{prop}
+
+\begin{proof}
+  Supposons que $T$ est continue. Au vu de la linéarité de $T$, il suffit
+  de montrer la continuité en $0$.
+
+  Soient $\varepsilon>0$, $n\geq 1$ et
+  $x_1^*$, \ldots, $x_n^*\in F^*$. Afin d'établir la continuité faible de
+  $T$, il suffit de montrer que
+  $T^{-1}\left(V_{\epsilon, x_1^*, \ldots, x_n^*}(0_F)\right)$ est un ouvert faible
+  de $E$ (ainsi, on montre que l'image réciproque de tout voisinage
+  de $0_F=T(0_E)$ est un voisinage de $0_E$).
+  Pour tout $i$ allant de $1$ à $n$, $x_i\circ T\in E^*$ d'où
+  \begin{IEEEeqnarray*}{rCl}
+    T^{-1}(V_{\epsilon, x_1^*, \ldots, x_n^*}(0_F))&=&
+    T^{-1}\left( \bigcap_{1\leq i \leq n} (x_i^*)^{-1}
+      (\left]-\epsilon, \epsilon\right[ ) \right) \\
+    & = & \bigcap_{1\leq i \leq n} (x_i^*\circ T)^{-1}
+      (\left]-\epsilon, \epsilon\right[)
+  \end{IEEEeqnarray*}
+  est bien un voisinage faible de $E$ contenant $0$.
+
+  Réciproquement, supposons que $T$ est faiblement continue.
+  Alors le graphe de $T$ est fermé pour la topologie produit
+  $(E, \sigma(E, E^*))\times (F, \sigma(F, F^*))$ et puisque
+  le graphe d'une application linéaire est convexe, la proposition
+  \ref{faib:conv} assure qu'il est fortement fermé. Par le théorème
+  du graphe fermé, $T$ est fortement continue.
+\end{proof}
+
+Notez qu'une assertion qui n'est à première vue pas évidente est utilisée
+dans la preuve précédente. Elle fait l'objet de l'exercice suivant:
+\begin{exo}
+  Soient $E$, $F$ deux espaces vectoriels normés. La topologie faible
+  associée à la topologie produit sur $E\times F$ (\emph{i.e.}
+  $\sigma\left(E\times F, (E\times F)^*\right)$) correspond à la
+  topologie produit $\mathcal{T}_\pi$ sur
+  $(E, \sigma(E, E^*))\times (F, \sigma(F, F^*))$
+\end{exo}
+
+\begin{exo}
+  Soient $(E, \|.\|)$ un espace vectoriel normé, $(x_n)_n$ une suite
+  d'éléments de $E$ et $x\in E$ tels que $x_n\xrightarrow{\omega}x$.
+  Montrer que la suite $(x_n)_n$ converge faiblement en moyenne
+  de Césaro vers $x$, c'est-à-dire,
+  \begin{equation*}
+    \frac{1}{n}\sum_{i=1}^nx_n\xrightarrow[n\to +\infty]{\omega} x
+  \end{equation*}
+\end{exo}
+
+\begin{thm}[Théorème d'Alaoglu]
+  Soit $(E, \|.\|)$ un espace de Banach. La boule unité
+  $B(E^*)=\{x\in E^*\mid \|x\|\leq 1\}$ est $\sigma(E^*, E)$-compacte.
+\end{thm}
+\begin{proof}
+  Admis.
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
