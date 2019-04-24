@@ -48,7 +48,7 @@ $f_j: E\to E_j$.
   $$f^{-1}\left(\bigcap_{i\in I}f^{-1}_i(O_i)\right) =
   \bigcap_{i\in I} \left(f_i\circ f\right)^{-1}(O_i)$$
   est, par hypothèse, une intersection finie d'ouverts
-  de $F$ (par continuité des $f_i$, $i\in I$) donc est
+  de $F$ (par continuité des $f_i\circ f$, $i\in I$) donc est
   ouverte. Donc $f$ est continue.
 \end{proof}
 Notez que la preuve fonctionne aussi ponctuellement;
@@ -70,7 +70,8 @@ est un rappel):
   Soit $(X, \mathcal{T})$ un espace topologique, $(x_n)_n$ une
   suite d'éléments de $X$, et $x\in X$. On munit $\bar{\mathbb{N}}=%
   \mathbb{N}\cup\{+\infty\}$ de la topologie dont une base d'ouverts
-  est les singletons et les ensembles de la forme
+  est formée des singletons $\{n\}$ (où $n$ est un nombre naturel)
+  et des ensembles de la forme
   $\{n\geq n_0\}\cup\{+\infty\}$, où $n_0\in\mathbb N$.
 
   Dès lors, $x_n\to x$ si et seulement si l'application
@@ -139,7 +140,7 @@ sur $E$ vérifie $\sigma(E, E^*)\preceq \mathcal{T}_{\|.\|}$.
   résultat est immédiat.
 \end{proof}
 
-Les éléments de la base d'ouvert de $\sigma(E, E^*)$ sont de la forme
+Les éléments de la base d'ouverts de $\sigma(E, E^*)$ sont de la forme
 \begin{equation*}
   \bigcap_{j=1}^n (x_j^*)^{-1}(O_j) =
   \left\{ x\in E\mid \forall 1\leq j\leq n,\quad x_j^*(x)\in O_j\right\}
@@ -202,7 +203,7 @@ contenant $0$ (car il contient le noyau de $x^*$).
 \begin{df}
   Soient $(x_n)$ une suite d'éléments de $E$ et $x\in E$.
   On dit que $(x_n)$ converge faiblement vers $x$ si la suite
-  $x_n\xrightarrow{\sigma(E, E^*)}x$ (\emph{ie}. converge au sens de la topologie
+  $x_n\xrightarrow{\sigma(E, E^*)}x$ (\emph{i.e.} converge au sens de la topologie
   faible).
 
   Les notations $x_n\xrightarrow{\omega}x$ et $x_n\rightharpoonup x$ sont
@@ -239,7 +240,7 @@ assure l'unicité de la limite faible:
 \end{proof}
 
 \begin{rem}
-  La convergence d'une suite au sens de $\|.\|$ implique la converge faible
+  La convergence d'une suite au sens de $\|.\|$ implique la convergence faible
   de cette dernière vers la même limite. Toutefois, l'implication réciproque
   n'est pas vraie en général.
 
@@ -258,7 +259,7 @@ assure l'unicité de la limite faible:
 \subsection{Définition et voisinages}
 On se fixe à nouveau un espace vectoriel normé $(E, \|.\|)$. On introduit
 une nouvelle topologie sur $E^*$, le dual de $E$, appelée topologie
-préfaible. On la notera $\sigma(E^*, E)$ ou encore $\omega^2$.
+préfaible. On la notera $\sigma(E^*, E)$ ou encore $\omega^*$.
 
 Il s'agit encore une fois d'une topologie initiale. On considère pour
 chaque élément $x\in E$ la fonction linéaire et continue
@@ -281,7 +282,7 @@ On définit (comme dans la section précédente) pour $a^*\in E^*$ le voisinage
 $V_{\epsilon, x_1, \ldots, x_n}(a^*)$ pour $\epsilon > 0$ et
 $x_1, \ldots x_n\in E$ comme l'ensemble:
 $$ V_{\epsilon, x_1, \ldots, x_n}(a^*) = \left\{
- x^*\in E^* \mid |(x^*-a^*)(x_j) | <\epsilon, \forall j = 1, \ldots n\right\}.$$
+ x^*\in E^* \mid |(x^*-a^*)(x_j) | <\epsilon, \forall j = 1, \ldots, n\right\}.$$
 On montre comme pour la topologie faible que l'ensemble de ces voisinages
 $$\left\{V_{\epsilon, x_1, \ldots, x_n}(a^*)\mid
   \epsilon > 0, x_1, \ldots, x_n\in E, n\geq 1\right\}$$
@@ -311,7 +312,7 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
 
 \begin{thm}
   Soit $(E, \|.\|)$ un espace vectoriel normé.
-  Si $E$ est de dimension finie, alors la topologie forte et faible
+  Si $E$ est de dimension finie, alors les topologies forte et faible
   coïncident.
 \end{thm}
 
@@ -326,12 +327,12 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
   Par hypothèse, il existe $r > 0$ tel que $B(x_0, r)\subseteq U$.
   Pour conclure, il suffit de trouver $\epsilon > 0$ et
   $x_1^*, \ldots, x_m^*\in E^*$ ($m$ à déterminer) tels que
-  $V_{\epsilon, x_1^*\ldots, x_m^*}(x_0)\subseteq B(x_0, r)$ pour conclure.
+  $V_{\epsilon, x_1^*\ldots, x_m^*}(x_0)\subseteq B(x_0, r)$.
 
   Notons $n$ la dimension de $E$ et soit $B = (e_i)_{1\leq i\leq n}$ une base
   de $E$ dont tous les vecteurs sont de norme $1$.
   Pour $i = 1, \ldots,  n$, on considère
-  $$e_i^*: E\to \mathbb K: x=\sum_{j=1}^nx_je_j \mapsto x_j$$
+  $$e_i^*: E\to \mathbb K: x=\sum_{j=1}^nx_je_j \mapsto x_i$$
   (les éléments de la base duale de $B$).
 
   On recherche désormais $\epsilon > 0$ tel que
@@ -403,6 +404,120 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
   $x\notin \mathrm{adh}_{\sigma(E, E^*)}(C)$.
 \end{proof}
 
+\begin{prop}
+  Soit $(E, \|.\|)$ un espace de Banach de dimension infinie.\\
+  Soit $S := S(E) = \{x\in E\mid \|x\| = 1\}$. Alors
+  $\mathrm{adh}_{\sigma(E, E^*)}(S) = \{x\in \mid \|x\|\leq 1\}$.
+\end{prop}
+Avant de prouver la proposition, on introduit le résultat intermédiaire
+suivant:
+\begin{lem}
+  Soit $(E, \|.\|)$ un espace vectoriel de dimension infinie. Soient
+  $n\geq 1$ un nombre naturel et $x_1^*$, $\ldots$, $x_n^*\in E^*$.
+
+  Il existe $y_0\in E$ tel que pour tout $i\in \{1$, $\ldots$, $n\}$,
+  $x_i^*(y_0)=0$.
+\end{lem}
+
+\begin{proof}\label{sph:lem}
+  Supposons par l'absurde que pour tout $y\in E\setminus \{0\}$,
+  il existe $i\in\{1, \ldots, n\}$, $x_i^*(y)\neq 0$. Alors l'application
+  $$\phi: E\to\mathbb{R}^n: y\mapsto (x_i^*(y))_{i=1}^n$$
+  est une application linéaire et injective. Dès lors $\dim E\leq n$
+  contradiction.
+\end{proof}
+
+Prouvons désormais le proposition:
+\begin{proof}
+  Soit $x_0\in E$, $\|x_0\| < 1$. Montrons que
+  $x_0\in \mathrm{adh}_{\sigma(E, E^*)}S$.
+
+  Soit $\epsilon >0$, $n\geq 1$, $x_1^*$, \ldots, $x_n^*\in E^*$,
+  montrons que $V:=V_{\epsilon, x_1^*, \ldots, x_n^*}(x_0)$ intersecte $S$.
+  Soit $y_0\neq 0$ fourni par le lemme \ref{sph:lem}. On définit une
+  application $g:\left[0, +\infty\right[: t\mapsto \|x_0 + ty_0\|$.
+  Cette application est continue, $g(0)<1$ et $g$ tend vers l'infini
+  quand $t$ tend vers l'infini, il existe $t_0$ tel que $g(t_0) = 1$
+  c'est-à-dire $z_0:=x_0 + t_0y_0\in S$.
+
+  Montrons que $z_0\in V$. On a $|x_i^*(x_0 - z_0)|= |t_0x^*_i(y_0)| =
+  0 < \epsilon$ par choix de $y_0$, et ce pour tout $i\in\{1$, \ldots, $n\}$.
+\end{proof}
+
+\begin{rem}
+  On remarque dans la preuve que si $E$ est de dimension infinie,
+  tout voisinage (du système fondamental) d'un point $x_0$ contient
+  une droite passant par $x_0$, car $x_0 + ty_0$ appartient à ce voisinage
+  où $y_0$ est obtenu de la même manière que dans la preuve précédente.
+\end{rem}
+
+\begin{exo}
+  Soit $(E, \|.\|)$ un espace de dimension infinie. Montrer l'égalité
+  $$\mathrm{int}_{\sigma(E, E^*)}(\{x\in E\mid \|x\|<1\})=\varnothing.$$
+\end{exo}
+
+\begin{prop}
+  Soit $(E, \|.\|)$ un espace vectoriel normé. Alors
+  $$(E^*, \sigma(E^*, E))^*\equiv E.$$
+\end{prop}
+\begin{proof}
+  On sait déjà que pour tout $x\in E$, l'application
+  $x^{**}: E^*\to \mathbb R: y^*\to x^{**}(y^*) = y^*(x)$ est
+  élément de $(E^*, \sigma(E^*, E))^*$ (par définition de la
+  topologie préfaible, on retrouve simplement l'application
+  qui avait été appelée $\phi_x$).
+
+  Il reste à montrer que pour tout élément $x^{**}$ de
+  $(E^*, \sigma(E^*, E))^*$, il existe $x\in E$ tel que
+  pour tout $x^*\in E^*$, $x^{**}(x^*) = x^*(x)$.
+
+  Soit $\epsilon=\frac{1}{2}$. Par continuité de $x^{**}$,
+  $$U = (x^{**})^{-1}\left(\{\lambda\in\mathbb R\mid
+    |\lambda|<\epsilon\}\right)$$
+  est un voisinage faible de $0$. Il existe un voisinage de $0$ du système
+  fondamental de voisinages énoncé précédemment contenu dans $U$, c'est-à-dire
+  il existe $\eta > 0$ et $x_1$,
+  \ldots, $x_n\in E$ tels que $V_0:=V_{\eta, x_1, \ldots, x_n}(0)\subseteq U$.
+
+  Soit $x^*\in E^*$. On note ($\star$) l'affirmation suivante:
+  si pour tous $i$ allant de $1$ à $n$,
+  $x^*(x_i) = 0$, alors $x^*\in V_0$ et $x^{**}(x^*) = 0$.
+  L'appartenance $x^*\in V_0$ est claire. Par l'absurde,
+  on suppose que $x^{**}(x^*)\neq 0$. Alors $\frac{x^*(x_i)}{x^{**}(x^*)}=0$
+  pour tous $i\in\{1, \ldots, n\}$ donc $\frac{x^*}{x^{**}(x^*)}\in
+  V_0$ mais
+  $x^{**}\left( \frac{x^*}{x^{**}(x^*)}\right)=1\geq\epsilon$ ce qui contredit
+  l'inclusion $V_0\subseteq U$.
+
+  Soit $F = \langle x_1, \ldots, x_n\rangle$ et $(x_1, \ldots, x_r)$ une base
+  de $F$, $r\leq n$ (quitte à réindicer les $x_i$). Soit pour
+  chaque $i$ variant de $1$ à $r$, l'application linéaire et continue
+  $x^*_i:F\to\mathbb R$  définie par $x^*_i(x_j) =
+  \delta_{i}(\{j\})$ (où $\delta_i$ est le delta de Dirac) pour tous $j$
+  allant de $1$ à $r$.
+  Par le théorème de Hahn-Banach, chacune de ces fonctions s'étend
+  en une fonction $\widetilde{x}_i^*: E\to \mathbb R$.
+  On pose $$w^* = x^* - \sum_{i=1}^rx^*(x_i)\widetilde{x}_i^*$$
+  (même si ce n'est pas explicitement apparent dans la notation,
+  $w^*$ dépend du $x^*$ considéré).
+
+  Pour chaque $j\in\{1, \ldots, r\}$, on a $w^*(x_j)=0$, donc par l'affirmation
+  ($\star$), $x^{**}(w^*)=0$. Par linéarité de $x^{**}$, on déduit
+  \begin{equation*}
+    x^{**}(w^*) = x^{**}(x^*)-\sum_{i=1}^rx^*(x_i)x^{**}(\widetilde{x}_i^*)=0.
+  \end{equation*}
+  On en déduit
+  \begin{equation*}
+    x^{**}(x^*)=\sum_{i=1}^rx^*(x_i)x^{**}(\widetilde{x}_i^*)
+    = x^*\left(\sum_{i=1}^rx^{**}(\widetilde{x}_i^*)x_i\right),
+  \end{equation*}
+  et on en déduit que le $x$ recherché est
+  $\sum_{i=1}^rx^{**}(\widetilde{x}_i^*)x_i$ (il ne dépend pas
+  de $x^*$).
+\end{proof}
+
+Notez que dans la preuve précédente, la valeur choisie pour $\varepsilon$
+n'a pas d'importance dans les calculs, tant qu'elle est strictement positive.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"

@@ -25,9 +25,9 @@ si il existe $s>0$ tel que $T\left(B_E(0, s)\right)\supseteq B_F(0, 1)$.
 
   Réciproquement, supposons qu'il existe $r>0$ tel que
   $T\left(B_E(0, 1)\right)\supseteq B_F(0, r)$. Soit $O$ un ouvert de $E$.
-  Soit $T(x)$ un élément de $f(O)$. Il existe $s>0$ tel que $B_E(x, s)%
+  Soit $T(x)$ un élément de $T(O)$. Il existe $s>0$ tel que $B_E(x, s)%
   \subseteq O$. Puisque $B_E(x, s) = x + s B_E(0, 1)$, on a que $T(O)$ contient
-  l'ensemble $T(x) + s T(B_E(0, 1))$ est un sous-ensemble de $f(O)$.
+  l'ensemble $T(x) + s T(B_E(0, 1))$.
   Par hypothèse, ce sous-ensemble contient $T(x) + s B_F(0, r)$, ce qui
   implique $B_F(T(x), r\cdot{}s)\subseteq T(O)$.
 \end{proof}
@@ -48,7 +48,7 @@ suivants, implicitement:
   \supseteq B_F(0, r)$. Afin de faire cela, on utilise le théorème de Baire.
 
   Pour tout naturel $n\geq 1$, on pose $F_n = n\cdot\mathrm{adh}(T(B_E(0, 1)))$
-  qui est un fermé de $F$. Dès lors, l'union des $F_n$ est $F$ est $F$
+  qui est un fermé de $F$. Dès lors, l'union des $F_n$ est égale à $F$
   par surjectivité de $T$. En effet, il suffit de constater que
   $F_n\supseteq n\cdot T(B_E(0, 1)) =T(B_E(0, n))$.
 
@@ -66,23 +66,23 @@ suivants, implicitement:
   Maintenant, on a montré que $\exists r' > 0$, $\mathrm{adh}(T(B_E(0, 1))%
   \supseteq B_F(0, r')$. On en déduit que $\mathrm{adh}(T(B_E(0, r))%
   \supseteq B_F(0, 1)$ où $r= 1/r'$. Pour conclure, on doit montrer l'existence
-  de $s>0$ tel que $B_F(0, 1)\subseteq T(B_E(0, s))$, par la proposition.
+  de $s>0$ tel que $B_F(0, 1)\subseteq T(B_E(0, s))$.
 
   Soit $y\in F$, $\|y\| < 1$. Alors, $y\in\mathrm{adh}(T(B_E(0, r)))$.
 
   Par définition d'adhérence, il existe $x_0\in B_E(0, r)$ tel que
-  $\|y-T(x_0)\| < \frac{1}{2}$. Dès lors, $y-T(x_0)$ est élément
-  de l'ensemble $\mathrm{adh}(T(B_E(0, r/2)))$. Il existe donc
+  $\|y-T(x_0)\| < \frac{1}{2}$. Dès lors, $y-T(x_0)$ appartient
+  à $\mathrm{adh}(T(B_E(0, r/2)))$. Il existe donc
   $x_1\in B_E(0, r/2)$ tel que $\|y-T(x_0 + x_1)\| < \frac{1}{2^2}$.
 
-  \`{A} l'étape $n$, on a $y - T(x_0 + \cdots + x_{n-1}\in%
+  \`{A} l'étape $n$, on a $y - T(x_0 + \cdots + x_{n-1})\in%
   \mathrm{adh}(T(B(0, \frac{r}{2^n})))$. Il existe donc
   $x_n\in B(0, \frac{r}{2 ^{n}})$ tel que
   $\|y - T(x_1 + \cdots + x_n)\| < \frac{1}{2^{n+1}}$.
 
   La série des $x_n$ converge car elle est absolument convergente (on a
   pour tout naturel $n$, $\|x_n\|<\frac{r}{2^{n}}$). Soit $x$ la limite
-  de cette série. Alors,$\|x\|\leq 2r$ et on a $T(x) = y$.
+  de cette série. Alors, $\|x\|\leq 2r$ et on a $T(x) = y$.
   D'où $y\in T(B(0, 2r))$.
 
   Il suffit donc de prendre $s = 2r$ pour conclure.
@@ -168,7 +168,7 @@ Prouvons la proposition.
   $$B_F(0, s) \subseteq S(B_E(0, 1))+\frac{1}{2}B_F(0, s).$$
 
   Par le lemme, on a $B_F(0, s)\subseteq\frac{1}{1-\frac{1}{2}}S(B_E(0, 1))$.
-  On en déduit que $B_F(0, \frac{s}{2})\subseteq L(B_E(0, 1))$
+  On en déduit que $B_F(0, \frac{s}{2})\subseteq S(B_E(0, 1))$
 \end{proof}
 
 \section{Théorème du graphe fermé}
@@ -189,8 +189,10 @@ les boules sont bien des ouverts au sens de la topologie produit).
   Si $T$ est continue, alors $\mathrm{Gr}(T)$ est fermé.
 \end{exo}
 
-Le théorème du graphe fermé est une sorte de réciproque partielle
-pour le résultat précédent.
+Le théorème du graphe fermé est une réciproque partielle
+pour le résultat précédent; il nécessite comme hypothèse additionnelle
+la complétude de l'espace de départ et de l'espace d'arrivée.
+
 \begin{thm}
   Supposons que $E$ et $F$ sont complets et que $T$ est linéaire.
   Alors $T$ est continue si et seulement si le graphe de $T$ est
@@ -204,19 +206,19 @@ pour le résultat précédent.
   $y = T(x)$.
 
   On définit une nouvelle norme sur $E$, pour $x\in E$, on
-  pose $\|\!|x \|\!| = \|x\|_E + \|T(x)\|_F$, appelée norme du graphe.
+  pose $|\!|\!|x |\!|\!|= \|x\|_E + \|T(x)\|_F$, appelée norme du graphe.
   Montrons que $E$ muni de cette norme est complet.
 
   Soit $(x_n)_n$ une suite de Cauchy au sens de la norme du graphe.
   Alors pour tout $\varepsilon >0$, il existe $n_0$ naturel,
-  pour tout $p, q\geq n_0$,
-  $$\|x_q-x_p\|_E + \|T(x_q)-T(x_p)\|\leq \varepsilon.$$
+  pour tous $p, q\geq n_0$,
+  $$\|x_q-x_p\|_E + \|T(x_q)-T(x_p)\|_F\leq \varepsilon.$$
   Il s'en suit que $(x_n)_n$ et $(T(x_n))_n$ sont de Cauchy (au
   sens de $\|.\|_E$ et de $ \|.\|_F$ respectivement) et convergent
   respectivement vers $x\in E$ et $y\in F$.
   Puisqu'on suppose le graphe de $T$ fermé, on a $y = T(x)$.
   Dès lors $\||x_n -x \|| = \|x_n - x\| + \|T(x_n)-T(x)\|$
-  ce qui converge bien vers $0$.
+  qui converge bien vers $0$.
 
   De plus, on remarque que la norme du graphe (de $T$)
   domine la norme $\|.\|_E$. Par le corollaire \ref{ao:de},
@@ -234,7 +236,7 @@ pour le résultat précédent.
 \end{prop}
 
 \begin{proof}
-  Montrons que le graphe de $T$ est fermé (on a bien $E$, et $E^*$
+  Montrons que le graphe de $T$ est fermé (on a bien $E$ et $E^*$
   complets). Soit $(x_n)_n$ une suite d'éléments de $E$, soit
   $(x, S)\in E \times E^*$ tels que $(x_n, Tx_n)\to (x, S)$.
   Soit $z\in E$. Montrons que $S(z) = (Tx)(z)$.
