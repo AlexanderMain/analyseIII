@@ -1,8 +1,84 @@
 \section{Opérateurs adjoints}
 \subsection{Adjoints dans les espaces de Hilbert }
+\begin{prop}\label{adj:hilb}
+  Soient $H$ un espace de Hilbert et $T\in\mathcal L(H)$. Il existe un opérateur
+  linéaire $T^*$ tel que pour tous $x$, $y\in H$, on a
+  $$\langle Tx, y\rangle = \langle x, T^*y\rangle$$
+  et on a $\|T\| = \|T^*\|$.
+\end{prop}
 
+\begin{proof}
+  Pour $y\in H$, on définit $y^*:H\to\mathbb K: x\mapsto \langle Tx, y\rangle$.
+  Le théorème de Riesz-Fréchet assure dès lors qu'il existe un unique
+  $z_y\in H$, tel que pour tout $x$ dans $H$, $\langle x, z_y\rangle =
+  \langle Tx, y\rangle$. On pose $T^*y = z_y$.
+
+  Montrons que $T^*$ est linéaire. Soient $y$, $z\in H$ et $a$,
+  $b\in\mathbb K$. Pour tout $x\in H$,
+  \begin{IEEEeqnarray*}{rCl}
+    \langle x, T^*(ay + bz)\rangle & = & \langle Tx, ay + bz\rangle \\
+    & = & \bar a \langle Tx, y\rangle + \bar b \langle Tx, z\rangle \\
+    & = & \bar a \langle x, T^*y\rangle + \bar b \langle x, T^*z\rangle \\
+    & = & \langle x, a T^*(y) + bT^*(z)\rangle.
+  \end{IEEEeqnarray*}
+  Par non-dégénérescence du produit scalaire, on a
+  $T^*(ay + bz) = a T^*(y) + bT^*(z)$, ce qui montre la linéarité.
+
+  Montrons maintenant la continuité de $T^*$. Pour tous $x$, $y\in H$,
+  l'inégalité de Cauchy-Schwarz assure que
+  $|\langle x, T^*y\rangle| = |\langle Tx, y\rangle| \leq
+  \|Tx\|\cdot \|y\| \leq \|T\|\cdot \|x\|\cdot\|y\|$. Rappelons que
+  $\|T^*y\| = \sup_{\|x\|\leq 1}|\langle x, T^*y\rangle$, et on déduit de
+  ces inégalités que $\|T^*y\| \leq \|T\| \cdot\|y\|$. Ceci montre la continuité
+  de $T^*$.
+
+  Il reste à démontrer la deuxième inégalité pour clôturer la preuve de la
+  proposition. Or, pour tous $x\in H$, on a
+  $$\|Tx\| = \sup_{\|y\|\leq 1}\langle Tx, y\rangle =
+  \sup_{\|y\|\leq 1}\langle x, T^*y\rangle \leq \|x\|\cdot \|T^*\|$$
+  ce qui conclut la preuve.
+\end{proof}
+
+\begin{df}
+  Soient $H$ un espace de Hilbert et $T\in\mathcal L(H)$. On appelle l'opérateur
+  $T^*$ donné par la proposition \ref{adj:hilb} est appelé l'adjoint de $T$.
+\end{df}
+
+\begin{rem}
+  L'adjoint d'un opérateur linéaire $T$ est unique. L'application
+  $\mathcal L(H)\to\mathcal L(H): T\mapsto T^*$ est bijective, car elle
+  est son propre inverse, c'est-à-dire $T^{**} = T$.
+\end{rem}
+
+\begin{exo}
+  Soit $T: \ell^2\to \ell^2: (x_1, x_2, \ldots)\mapsto (0, x_1, x_2, \ldots)$.
+  Déterminez $T^*$.
+\end{exo}
 \subsection{Adjoints dans les espaces de Banach}
+\begin{df}
+  Soient $X$, $Y$ des espaces de Banach et $T\in \mathcal L(X, Y)$.
+  On définit l'adjointe de $T$ (également appelée transposée ou application
+  duale) par $$T^*: Y^*\to X^*: y^*\mapsto y^*\circ T.$$
+\end{df}
 
+\begin{prop}
+  Soient $X$, $Y$ des espaces de Banach et $T\in \mathcal L(X, Y)$.
+  L'application $T^*$ est linéaire et continue et on a l'égalité
+  $\|T^*\| = \|T\|$.
+\end{prop}
+\begin{proof}
+  La preuve de la linéarité est laissée en exercice.
+
+  Pour tout $y^*\in Y^*$, on a $\|T^*(y^*)\| \leq \|y^*\| \cdot \|T\|$ (par
+  sous-multiplicativité de la norme opérateur), ce qui montre que
+  $\|T^*\| \leq \|T\|$. En particulier, $T^*$ est continue.
+
+  L'inégalité réciproque se déduit du corollaire \ref{hb:a:norme} du théorème
+  de Hahn-Banach; pour tout $x\in X$, on a:
+  $$\|Tx\| = \max_{\substack{\|y^*\|\leq 1 \\ y^*\in Y^*}}|y^*(T(x))|
+  =\max_{\substack{\|y^*\|\leq 1 \\ y^*\in Y^*}}|T^*(y^*)(x)|
+  \leq \|T^*\|\cdot \|x\|.$$
+\end{proof}
 \section{Théorie ergodique}
 
 

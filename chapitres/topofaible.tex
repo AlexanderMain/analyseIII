@@ -474,7 +474,7 @@ Prouvons désormais le proposition:
   Soit $\epsilon=\frac{1}{2}$. Par continuité de $x^{**}$,
   $$U = (x^{**})^{-1}\left(\{\lambda\in\mathbb R\mid
     |\lambda|<\epsilon\}\right)$$
-  est un voisinage faible de $0$. Il existe un voisinage de $0$ du système
+  est un voisinage préfaible de $0$. Il existe un voisinage de $0$ du système
   fondamental de voisinages énoncé précédemment contenu dans $U$, c'est-à-dire
   il existe $\eta > 0$ et $x_1$,
   \ldots, $x_n\in E$ tels que $V_0:=V_{\eta, x_1, \ldots, x_n}(0)\subseteq U$.
@@ -557,7 +557,7 @@ n'a pas d'importance dans les calculs, tant qu'elle est strictement positive.
 
 Notez qu'une assertion qui n'est à première vue pas évidente est utilisée
 dans la preuve précédente. Elle fait l'objet de l'exercice suivant:
-\begin{exo}
+\begin{exo}\label{faib:ex:prod}
   Soient $E$, $F$ deux espaces vectoriels normés. La topologie faible
   associée à la topologie produit sur $E\times F$ (\emph{i.e.}
   $\sigma\left(E\times F, (E\times F)^*\right)$) correspond à la
@@ -581,6 +581,29 @@ dans la preuve précédente. Elle fait l'objet de l'exercice suivant:
 \end{thm}
 \begin{proof}
   Admis.
+\end{proof}
+
+\begin{thm}
+  Soient $E$, $F$ deux espaces de Banach et $T:E\to F$ une application
+  linéaire. Si $T$ est continue, alors $T$ est faiblement continue
+  (\emph{i.e.} $T: (E, \omega_E)\to(F, \omega_F)$ est continue),
+  et réciproquement.
+\end{thm}
+
+\begin{proof}
+  Supposons que $T$ est continue. Au vu de la linéarité de $T$, il suffit
+  de montrer que $T$ est faiblement continue en $0$. Soit
+  $V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)$ un voisinage du système fondamental
+  de voisinages de $0_F=T(0_E)$.
+  Alors $T^{-1}\left(V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)\right) =
+  V_{\varepsilon, (x^*_1\circ T), \ldots, (x^*_n\circ T)}(0_E)$ est bien un
+  voisinage faible de $0_E$.
+
+  Réciproquement, supposons que $T$ est faiblement continue. Alors, le
+  graphe de $T$ est un fermé convexe de $(E\times F, \omega_{E\times F})$
+  (cf. exercice ci-avant),
+  donc il est également fermé au sens de $(E\times F, \|.\|_E\times \|.\|_F)$
+  et par le théorème du graphe fermé, $T$ est continue.
 \end{proof}
 
 %%% Local Variables:

@@ -2,7 +2,7 @@
 Tous les exercices ne seront pas corrigés.
 
 \section{Hahn-Banach (Formes analytiques)}
-\textbf{Solution de l'exercice \ref{hb:a:exo1}}
+\subsubsection*{Solution de l'exercice \ref{hb:a:exo1}}
 
 \begin{enumerate}
 \item Supposons que $x_0\in \mathrm{adh(F)}$.
@@ -29,7 +29,7 @@ Tous les exercices ne seront pas corrigés.
 \end{enumerate}
 
 \section{Hahn-Banach (Formes géométriques)}
-\textbf{Solution de l'exercice \ref{hb:g:j2}}
+\subsubsection*{Solution de l'exercice \ref{hb:g:j2}}
 
 On vérifie facilement que si $x\in \alpha C$, alors pour tout
 $\beta >\alpha$, $x\in \beta C$;
@@ -42,6 +42,58 @@ Soit $\varepsilon >0$, alors il existe $\alpha > 0$ tel que $j_C(x)\leq
 \alpha \leq j_C(x) + \varepsilon$ et $x\in\alpha C$. Par ce qui précède,
 on peut conclure.
 
+\section{Topologie faible}
+\subsubsection*{Solution de l'exercice \ref{faib:ex:prod}}
+\begin{lem}
+  Soient $(E, \|.\|_E)$ et $(F, \|.\|_F)$ deux espaces vectoriels normés.
+  Notons $\pi_E$ (resp. $\pi_F$) la projection sur $E$ (resp. $F$).
+  Pour tout élément $z^*$ de $(E\times F)^*$, il existe $x^*\in E^*$,
+  $y^*\in F^*$ tels que $z^* = (x^*\circ \pi_E) + (y^*\circ\pi_F)$.
+\end{lem}
+\begin{proof}
+  Soient les applications linéaires
+  $\sigma_E:E\to E\times F: x\mapsto (x, 0)$ et
+  $\sigma_F:F\to E\times F: y\mapsto (0, y)$. Elles sont clairement
+  continues (sur le produit on considère la norme du maximum).
+  Posons $x^* = z^*\circ \sigma_E$ et $y^* = z^*\circ \sigma_F$. Puisque
+  $\pi_E\circ \sigma_E =\mathrm{Id}_E$ et  $\pi_F\circ \sigma_F =\mathrm{Id}_F$,
+  on a bien l'égalité ci-dessus.
+\end{proof}
+Notons $\mathcal{T}_\pi$ la topologie sur le produit
+$(E, \omega_E)\times(F, \omega_F)$ et $\mathcal{T}_\omega$ la topologie
+faible sur $(E, \|.\|_E)\times(F, \|.\|_F)$.
+
+En utilisant ce lemme, on peut résoudre l'exercice. Il suffit de montrer
+$\mathcal{T}_\pi$ rend les formes linéaires de $(E\times F)^*$
+continues et que $\mathcal{T}_\omega$ rend continues les projections
+$\pi_E$ et $\pi_F$.
+
+Soit $z^*\in(E\times F)^*$. Soit $x^*\in E^*$ et $y^*\in F^*$ donnés par
+le lemme ci-dessus. Comme les projections sont continues pour la topologie
+produit, et que la continuité est préservée par la somme et la composition,
+on en déduit que $z^*$ est continue au sens de la topologie produit. Ceci
+montre que la topologie produit est plus fine que la topologie faible,
+c'est-à-dire $\mathcal{T}_\pi\supseteq \mathcal{T}_\omega$.
+
+Soit $U$ un ouvert élémentaire de $\mathcal{T}_\pi$.
+On veut montrer qu'il s'agit d'un ouvert au sens de la topologie faible
+sur le produit. Soient $V_i$ et $W_i$ des ouverts de $(E, \omega_E)$ et
+$(F, \omega_F)$, $i\in I$, tels que
+$$U=\bigcup_{i\in I} V_i\times W_i.$$
+
+Pour conclure que $U\in\mathcal{T}_\omega$, il suffit de montrer que chaque
+$V_i\times W_i$ est ouvert au sens de $\mathcal{T}_\omega$. Soit $i\in I$.
+Alors $V_i$ est une union d'ouverts éléments, qui sont
+des intersections de $(x_{i, j}^*)^{-1}(O_{i, j})$
+avec $O_{i, j}$ ouverts de $\mathbb R$ et $x_{i, j}^*\in E^*$ pour $j = 1, \ldots, m$.
+En considérant $z_{i, j}^*=x^*_{i, j}\circ\pi_E\in (E\times F)^*$, on a
+$$V_i\times F = \bigcup\bigcap_{j=1}^m (z_{i, j}^*)^{-1}(O_{i, j})$$
+qui montre que $V_i\times F$ est un ouvert au sens de $\mathcal{T}_\omega$.
+
+De la même manière, on montre que $E\times W_i$ est un ouvert de
+la topologie $\mathcal{T}_\omega$ pour chaque $i\in I$ et on conclut
+par l'égalité
+$$V_i\times W_i = (V_i\times F)\cap(E\times W_i).$$
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "analyse3"

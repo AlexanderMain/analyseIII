@@ -47,13 +47,13 @@ que $\forall x \in E, g(x)\leq p(x)$.
   condition:
   $$\forall z\in G, g(x_0)\leq p(z + x_0) - f(z)$$
 
-  \textbf{Cas 2, $t>0$}: la condition devient, par positive
+  \textbf{Cas 2, $t<0$}: la condition devient, par positive
   homogénéité de $p$ et linéarité de $f$
   $$\forall y\in G, g(x_0)\geq  f\left(\frac{-y}{t}\right)
   - p\left(\frac{-y}{t} - x_0\right)$$
   Puisque $G$ est un sous-espace vectoriel, on peut réécrire la
   condition:
-  $$\forall w\in G, g(x_0)\leq f(w) - p(w - x_0) $$
+  $$\forall w\in G, g(x_0)\geq f(w) - p(w - x_0) $$
 
   La question qu'on se posait revient donc à se demander s'il existe
   un réel satisfaisant les inégalités:
@@ -74,8 +74,9 @@ que $\forall x \in E, g(x)\leq p(x)$.
   l'ensemble suivant, avec comme ordre l'inclusion (en considérant
   qu'une fonction $h_1$ prolonge une fonction $h_2$ \ssi{} le
   graphe de $h_1$ est inclus à celui de $h_2$):
-  $$\mathcal{M}= \left\{(V, h)\mid G\subseteq V\mbox{ sev. de $E$},
-    h: V\to\mathbb{R} \mbox{ linéaire, $h$ prolongement de $f$}\right\}$$
+  $$\mathcal{M}= \left\{(V, h)\mid  V\mbox{ sev. de $E$}, G\subseteq V,
+    h: V\to\mathbb{R} \mbox{ linéaire, $h$ prolongement de $f$},
+    h\leq p_{|V}\right\}$$
 \end{proof}
 
 \subsection{Espaces vectoriels sur $\mathbb{C}$}
