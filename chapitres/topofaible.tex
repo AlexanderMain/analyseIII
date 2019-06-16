@@ -189,7 +189,7 @@ où $$V_{\varepsilon, x_1^*, \ldots, x_n^*}(a) =
   Soit $x^*=(x_1, x_2)$ une forme linéaire non nulle sur $E$. L'ensemble
   $\{y = (y_1, y_2)\in \mathbb R^2\mid x^*(y)=0\} = \mathrm{Ker}(x^*)$
   est une droite du plan. Si on fixe $\varepsilon > 0$, on trouve
-  que l'ensemble $V_{\varepsilon, x^*}(0)$ est une \og bande\fg dans le plan
+  que l'ensemble $V_{\varepsilon, x^*}(0)$ est une \og bande\fg{} dans le plan
   (voir figure \ref{w:ill}).
 
   En particulier, un tel ouvert contient une droite passant par $0$ et
@@ -218,7 +218,7 @@ contenant $0$ (car il contient le noyau de $x^*$).
 
 Dans le cas d'un espace de Hilbert $H$ sur $\mathbb R$, puisque $H\equiv H^*$
 (théorème de Riesz-Fréchet), on a:
-$$x_n\xrightarrow{\sigma(E, E^*)}x \iff
+$$x_n\xrightarrow{\sigma(H, H^*)}x \iff
 \left(\forall y\in H, \langle x_n, y\rangle \to \langle x, y\rangle\right).$$
 
 Il est tout à légitime de se demander s'il y a unicité de la limite
@@ -363,7 +363,7 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
   Par la propriété \ref{bs:borne} (découlant du théorème de Banach-Steinhaus),
   la suite $(x_n)_n$ est bornée.
 
-  Pour la seconde partie, on considère $x^*\in E^*$, $\|x^*\|\leq 1$
+  Pour la seconde partie, on considère $x^*\in E^*$, $\|x^*\|\leq 1$.
   Alors, pour tout naturel $n$, $|x^*(x_n)|\leq \|x_n\|$, ce qui
   implique $|x^*(x)| = \liminf|x^*(x_n)| \leq \liminf \|x_n\|$ (notez que
   cette limite inférieure est bien un réel car la suite est
@@ -407,7 +407,7 @@ préfaible $\sigma(E^*, E)$. On peut les comparer comme suit:
 \begin{prop}
   Soit $(E, \|.\|)$ un espace de Banach de dimension infinie.\\
   Soit $S := S(E) = \{x\in E\mid \|x\| = 1\}$. Alors
-  $\mathrm{adh}_{\sigma(E, E^*)}(S) = \{x\in \mid \|x\|\leq 1\}$.
+  $\mathrm{adh}_{\sigma(E, E^*)}(S) = \{x\in E\mid \|x\|\leq 1\}$.
 \end{prop}
 Avant de prouver la proposition, on introduit le résultat intermédiaire
 suivant:
@@ -423,11 +423,11 @@ suivant:
   Supposons par l'absurde que pour tout $y\in E\setminus \{0\}$,
   il existe $i\in\{1, \ldots, n\}$, $x_i^*(y)\neq 0$. Alors l'application
   $$\phi: E\to\mathbb{R}^n: y\mapsto (x_i^*(y))_{i=1}^n$$
-  est une application linéaire et injective. Dès lors $\dim E\leq n$
+  est une application linéaire et injective. Dès lors $\dim E\leq n$,
   contradiction.
 \end{proof}
 
-Prouvons désormais le proposition:
+Prouvons désormais la proposition:
 \begin{proof}
   Soit $x_0\in E$, $\|x_0\| < 1$. Montrons que
   $x_0\in \mathrm{adh}_{\sigma(E, E^*)}S$.
@@ -493,7 +493,7 @@ Prouvons désormais le proposition:
   de $F$, $r\leq n$ (quitte à réindicer les $x_i$). Soit pour
   chaque $i$ variant de $1$ à $r$, l'application linéaire et continue
   $x^*_i:F\to\mathbb R$  définie par $x^*_i(x_j) =
-  \delta_{i}(\{j\})$ (où $\delta_i$ est le delta de Dirac) pour tous $j$
+  \delta_{i}(\{j\})$ (où $\delta_i$ est la mesure de Dirac en $i$) pour tous $j$
   allant de $1$ à $r$.
   Par le théorème de Hahn-Banach, chacune de ces fonctions s'étend
   en une fonction $\widetilde{x}_i^*: E\to \mathbb R$.
@@ -523,7 +523,7 @@ n'a pas d'importance dans les calculs, tant qu'elle est strictement positive.
   Soient $E$, $F$ deux espaces de Banach et $T: E\to F$ une application
   linéaire. Si $T: (E, \|.\|_E)\to (F, \|.\|_F)$ est continue, alors
   $T: (E, \sigma(E, E^*))\to (F, \sigma(F, F^*))$ continue (on dit que
-  $T$ est faiblement continue. Réciproquement, si $T$ est faiblement
+  $T$ est faiblement continue). Réciproquement, si $T$ est faiblement
   continue, alors $T$ est continue.
 \end{prop}
 
@@ -583,28 +583,28 @@ dans la preuve précédente. Elle fait l'objet de l'exercice suivant:
   Admis.
 \end{proof}
 
-\begin{thm}
-  Soient $E$, $F$ deux espaces de Banach et $T:E\to F$ une application
-  linéaire. Si $T$ est continue, alors $T$ est faiblement continue
-  (\emph{i.e.} $T: (E, \omega_E)\to(F, \omega_F)$ est continue),
-  et réciproquement.
-\end{thm}
+% \begin{thm}
+%   Soient $E$, $F$ deux espaces de Banach et $T:E\to F$ une application
+%   linéaire. Si $T$ est continue, alors $T$ est faiblement continue
+%   (\emph{i.e.} $T: (E, \omega_E)\to(F, \omega_F)$ est continue),
+%   et réciproquement.
+% \end{thm}
 
-\begin{proof}
-  Supposons que $T$ est continue. Au vu de la linéarité de $T$, il suffit
-  de montrer que $T$ est faiblement continue en $0$. Soit
-  $V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)$ un voisinage du système fondamental
-  de voisinages de $0_F=T(0_E)$.
-  Alors $T^{-1}\left(V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)\right) =
-  V_{\varepsilon, (x^*_1\circ T), \ldots, (x^*_n\circ T)}(0_E)$ est bien un
-  voisinage faible de $0_E$.
+% \begin{proof}
+%   Supposons que $T$ est continue. Au vu de la linéarité de $T$, il suffit
+%   de montrer que $T$ est faiblement continue en $0$. Soit
+%   $V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)$ un voisinage du système fondamental
+%   de voisinages de $0_F=T(0_E)$.
+%   Alors $T^{-1}\left(V_{\varepsilon, x^*_1, \ldots, x^*_n}(0_F)\right) =
+%   V_{\varepsilon, (x^*_1\circ T), \ldots, (x^*_n\circ T)}(0_E)$ est bien un
+%   voisinage faible de $0_E$.
 
-  Réciproquement, supposons que $T$ est faiblement continue. Alors, le
-  graphe de $T$ est un fermé convexe de $(E\times F, \omega_{E\times F})$
-  (cf. exercice ci-avant),
-  donc il est également fermé au sens de $(E\times F, \|.\|_E\times \|.\|_F)$
-  et par le théorème du graphe fermé, $T$ est continue.
-\end{proof}
+%   Réciproquement, supposons que $T$ est faiblement continue. Alors, le
+%   graphe de $T$ est un fermé convexe de $(E\times F, \omega_{E\times F})$
+%   (cf. exercice ci-avant),
+%   donc il est également fermé au sens de $(E\times F, \|.\|_E\times \|.\|_F)$
+%   et par le théorème du graphe fermé, $T$ est continue.
+% \end{proof}
 
 %%% Local Variables:
 %%% mode: latex

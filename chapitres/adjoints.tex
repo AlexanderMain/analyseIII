@@ -28,7 +28,7 @@
   l'inégalité de Cauchy-Schwarz assure que
   $|\langle x, T^*y\rangle| = |\langle Tx, y\rangle| \leq
   \|Tx\|\cdot \|y\| \leq \|T\|\cdot \|x\|\cdot\|y\|$. Rappelons que
-  $\|T^*y\| = \sup_{\|x\|\leq 1}|\langle x, T^*y\rangle$, et on déduit de
+  $\|T^*y\| = \sup_{\|x\|\leq 1}|\langle x, T^*y\rangle|$, et on déduit de
   ces inégalités que $\|T^*y\| \leq \|T\| \cdot\|y\|$. Ceci montre la continuité
   de $T^*$.
 
@@ -41,7 +41,7 @@
 
 \begin{df}
   Soient $H$ un espace de Hilbert et $T\in\mathcal L(H)$. On appelle l'opérateur
-  $T^*$ donné par la proposition \ref{adj:hilb} est appelé l'adjoint de $T$.
+  $T^*$ donné par la proposition \ref{adj:hilb} l'adjoint de $T$.
 \end{df}
 
 \begin{rem}
@@ -80,9 +80,84 @@
   \leq \|T^*\|\cdot \|x\|.$$
 \end{proof}
 \section{Théorie ergodique}
+\subsection{Espaces de Hilbert}
+\begin{thm}[Théorème ergodique de Von Neumann]
+  Soient $H$ un espace de Hilbert et $T\in\mathcal L(H)$ tel que $\|T\|\leq 1$
+  (on dit dans ce contexte que $T$ est une contraction).
+  Soit
+  $$S_n = \frac{1}{n}\sum_{k=0}^{n-1}T^n.$$
+  La suite $(S_n)_{n\in\IN}$ converge dans $\mathcal L(H)$ et l'opérateur
+  limite est la projection orthogonale sur
+  $\mathrm{Fix}(T) = \{x\in H\mid T(x) = x\}$.
+\end{thm}
+
+\begin{proof}
+  Posons $F = \mathrm{adh}( (\mathrm{Id}-T)(H) )$. Tout élément $x\in H$
+  s'écrit de manière unique $x = y +z$ avec $y\in F$ et $z\in F^\perp$ (théorème
+  du supplémentaire orthogonal d'un sous-espace vectoriel fermé).
+  On considère trois cas avant de les combiner pour conclure.
+
+  \textbf{Cas 1}: $y\in (\mathrm{Id}-T)(H)$. Alors il existe $w\in H$
+  tel que $y = w - T(w)$. Alors, pour tout naturel $k$,
+  $T^k(y) = T^k(w) - T^{k+1}(w)$. On en déduit que $S_n(y) = 1/n (w - T^n(w))$.
+  Comme $T$ est une contraction, on a l'inégalité
+  $$\|S_n(y)\| \leq \frac{1}{n}(\|w\| + \|T^n(w)\|) \leq \frac{2\|w\|}{n}$$
+  qui implique $S_n(y) \xrightarrow[n\to+\infty]{}0$.
+
+  \textbf{Cas 2}: $y\in \mathrm{adh}((\mathrm{Id}-T)(H))$. Alors pour tout
+  $\epsilon >0$, il existe $z\in (\mathrm{Id}-T)(H)$ tel que
+  $\|y - z\|\leq \epsilon$. Du cas précédent, on déduit qu'il existe
+  $N$ tel que pour tout $n\geq N$, $\|S_n(z)\| \leq \epsilon$.
+  Comme $T$ est une contraction et $S_n$ est linéaire, on peut affirmer que
+  \begin{IEEEeqnarray*}{rCl}
+    \|S_n(y)\| & \leq & \|S_n(y -z)\| + \|S_n(z)\| \\
+    & \leq & \frac{1}{n}\left\|\sum_{k=0}^{n-1}T^n(y - z)\right\| + \epsilon \\
+    & \leq & \frac{1}{n}\sum_{k=0}^{n-1}\|y - z\| + \epsilon \\
+    & \leq & 2\epsilon.
+  \end{IEEEeqnarray*}
+  On a donc montré que $S_n(y) \xrightarrow[n\to+\infty]{}0$.
+
+  \textbf{Cas 3}: $z\in \mathrm{adh}((\mathrm{Id}-T)(H))^\perp =
+  \mathrm{Ker}(\mathrm{Id} - T^*)$. Alors $z$ est un point fixe de $T^*$.
+  Montrons que $z$ est un point fixe de $T$. On a:
+  \begin{IEEEeqnarray*}{rCl}
+    \|z-T(z)\|^2 & = & \|z\|^2 + \|T(z)\|^2- 2 \Re\langle z, T(z)\rangle \\
+    & = & \|z\|^2 + \|T(z)\|^2- 2 \Re\langle T^*(z), z\rangle \\
+    & = & \|T(z)\|^2 - \|x\|^2 \leq 0.
+  \end{IEEEeqnarray*}
+  Cette inégalité implique que $\|z-T(z)\| = 0$, c'est-à-dire $z = T(z)$.
+  Il en découle que $S_n(z) = z$.
+
+  On combine maintenant les cas présentés. Soit $x\in H$, alors il existe
+  d'uniques $y\in F$, $z\in F^{\perp}$ tels que $x = y + z$. On en déduit que
+  $$\lim_{n\to+\infty}S_n(x) =
+  \lim_{n\to+\infty}S_n(y) + \lim_{n\to+\infty}S_n(z)=
+  0 + z = z.$$
+  Ceci montre que $S_n$ converge ponctuellement vers l'opérateur annoncé.
+
+  % L'application $\sigma: F \times F^\perp\to H: (y, x) \mapsto y + z$
+  % est linéaire,  continue. Comme $F$ et $F^\perp$
+  % sont fermés dans $H$, ils sont complets. Par le théorème d'isomorphisme
+  % de Banach, $sigma^{-1}$ est continue. Sur $F$, on a par continuité de $S_n$
+  % que $S_n = (1/n) (\mathrm{Id} - T^n)$. Sur $F^\perp$, $S_n$ est l'identité.
+  % Il est clair que sur chacun de ces sous-espaces, $S_n$ converge en norme
+  % (respectivement vers l'application nulle et l'identité).
+
+  Soit $x\in B(0, 1)$, $x = y + z$ avec $(y, z)\in F\times F^\perp$.
+  Alors $$\|S_n(x) - z \| = \frac{1}{n}\|y- T^n(y)\| \leq \frac{2}{n}$$
+  car $T$ est une contraction et
+  $\|y\|^2\leq \|y\|^2 + \|z\|^2 = \|x\|^2 \leq 1$. On déduit de cette
+  dernière inégalité que $S_n$ converge uniformément en $x$ vers sa limite
+  ponctuelle sur la boule
+  unité, ce qui implique que $S_n$ converge en norme vers sa limite ponctuelle.
+\end{proof}
 
 
 \section{Propriété de Blum-Hanson (1960)}
+\begin{df}
+  Soit $X$ un espace de Banach réel et $(x_n)_{n\in\IN}$ une suite d'éléments de
+  $X$.
+\end{df}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
