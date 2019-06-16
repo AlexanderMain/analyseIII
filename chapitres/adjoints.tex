@@ -152,12 +152,125 @@
   unité, ce qui implique que $S_n$ converge en norme vers sa limite ponctuelle.
 \end{proof}
 
+\subsection{Espaces de Banach}
+\begin{thm}[Théorème ergodique en moyenne]
+  Soient $X$ un espace de Banach, $T\in\mathcal L(X)$ tel que $\|T\|\leq 1$
+  et $x\in X$. Pour $N\in\IN$, $N\neq 0$, on définit
+  $A_N = \frac{1}{N}\sum_{k=0}^{N-1}T^k$.
 
+  Si la suite $(A_Nx)_{N\in\IN}$ a une sous-suite faiblement convergente
+  $A_{N_k}x\xrightarrow{\omega}z\in X$, alors $Tz = z$ et
+  $A_nx \xrightarrow{\|.\|} z$.
+\end{thm}
+\begin{proof}
+  Admis.
+\end{proof}
 \section{Propriété de Blum-Hanson (1960)}
 \begin{df}
   Soit $X$ un espace de Banach réel et $(x_n)_{n\in\IN}$ une suite d'éléments de
-  $X$.
+  $X$. On dit que $(x_n)_{n\in\IN}$ a la propriété de Blum-Hanson (B-H) si
+  pour toute suite de naturels strictement croissante $(n_k)_{k\in\IN}$,
+  $$\lim_{K\to+\infty}\frac{1}{K}\sum_{i=1}^Kx_{n_i} = 0.$$
 \end{df}
+
+\begin{prop}
+  Soit $X$ un espace de Banach réel et $(x_n)_{n\in\IN_0}$ une suite
+  d'éléments de
+  $X$. Si $(x_n)_{n\in\IN_0}$ a (B-H), alors $(x_n)_{n\in\IN_0}$ est bornée.
+\end{prop}
+\begin{proof}
+  Supposons que $(x_n)_{n\in\IN_0}$ est non bornée, c'est-à-dire pour toute
+  constante $C > 0$, il existe $N$ tel que $\|x_N\|> C$. On construit
+  une sous-suite $(x_{k_n})_{n\in\IN_0}$ telle que pour tout naturel $n$,
+  $1/n \|x_{k_1} + \cdots + x_{k_n}\| > n$.
+
+  On construit la suite par récurrence.
+  Comme $(x_n)_{n\in\IN}$ est non bornée, il existe $k_0$ tel que
+  $\|x_{k_0}\| >1$. Ceci couvre le cas de base.
+
+  Supposons maintenant avoir construit les $n-1$ premiers éléments de
+  la sous-suite, c'est-à-dire on a $k_1$ < $\ldots$ < $k_{n-1}$ tels que
+  $1/(n-1) \|x_{k_1} + \cdots + x_{k_{n-1}}\| > n-1$. On applique
+  à nouveau l'hypothèse sur la suite avec
+  $C = \max(\|x_{k_1} + \cdots + x_{k_{n-1}}\| + n^2,
+  \max_{l\leq k_{n-1}}\|x_l\|+1)$. Il existe $k_n > k_{n-1}$\footnote{
+    Comme $C$ excède la norme de tout élément de la suite d'indice
+    inférieur à $k_{n-1}$, nécessairement le $k_n$ obtenu est
+    strictement supérieur à $k_{n-1}$.
+  }
+  tel que $\|x_{k_n}\| \geq C$. Une application de \og{}l'inégalité
+  triangulaire renversée\fg{} assure
+  $$ \frac{1}{n} \|x_{k_0} + \cdots + x_{k_n}\| \geq
+  \frac{1}{n} (\|x_{k_n}\| - \|x_{k_0} + \cdots + x_{k_{n+1}}\|)
+  \geq \frac{n^2}{n} = n.$$
+  On voit facilement que la sous-suite construite ci-avant contredit (B-H).
+\end{proof}
+
+\begin{prop}
+  Soit $X$ un espace de Banach réel et $(x_n)_{n\in\IN_0}$ une suite
+  d'éléments de $X$ ayant (B-H). Alors $x_n\xrightarrow{\omega}0$.
+\end{prop}
+\begin{proof}
+  Par l'absurde, on suppose que la suite ne converge pas faiblement
+  vers $0$, c'est-à-dire qu'il existe $x^*\in X^*$ tel que
+  $(x^*(x_n))_{n\in\IN}$ ne converge pas vers $0$. On peut donc
+  extraire une sous-suite de $(x_n)_{n\in\IN}$ qui sera toujours au moins
+  $\epsilon$-distante de $0$ (pour un $\epsilon$ donné par l'hypothèse de
+  divergence).
+
+  Comme la suite est bornée, il en est de même
+  pour $(x^*(x_n))_{n\in\IN}$. Cette sous-suite admet donc une
+  sous-suite convergente (car il s'agit d'une suite d'éléments de $\IR$
+  bornée, donc contenue dans un compact). Il existe donc un réel $\alpha\neq 0$,
+  $(k_n)_{n\in\IN}$ une suite strictement croissante de naturels tels que
+  $x^*(x_{k_n})\to\alpha$ (en prenant une sous-suite de la sous-suite
+  qui était $\epsilon$-distante de 0 pour tout $n$, on assure $\alpha\neq 0$).
+
+  Cette sous-suite converge en moyenne de Césaro vers $\alpha$. Or, l'hypothèse
+  de (B-H) implique que $1/n(x_{k_0} + \cdots + x_{k_{n-1}})\to 0$.
+  En appliquant $x^*$ à la précédente suite, implique que
+  $1/n(x^*(x_{k_0}) + \cdots + x^*(x_{k_{n-1}}))\to 0$, contradiction avec
+  la convergence en moyenne de Césaro précédemment évoquée.
+\end{proof}
+
+\begin{df}
+  Un opérateur $T$ a (B-H) si pour toute suite $(n_k)_{k\in\IN}$ de nombres
+  naturels strictement croissante,
+  $$\forall x\in X,
+  \lim_{K\to+\infty}\frac{1}{K}\|\sum_{n=0}^KT^{k_n}(x)\| = 0.$$
+\end{df}
+
+\begin{thm}[Jones-Kuftinec (1971)] Soit $H$ un espace de Hilbert,
+  $T\in\mathcal{L}(H)$, $\|T\|\leq 1$. Alors
+  $$(\forall x\in H, T^n(x)\xrightarrow{\omega}0) \mbox{ si et seulement si }
+  T \mbox{ a (B-H)}.$$
+\end{thm}
+
+\begin{df}
+  Un espace vectoriel normé $(X, \|.\|)$ a (B-H) si pour tout
+  $T\in\mathcal L(X)$ tel que $\|T\|\leq 1$, les assertions suivantes
+  sont équivalentes:
+  \begin{enumerate}
+  \item $\forall x\in X$, $T^n(x)\xrightarrow{\omega} 0$;
+  \item $T$ a (B-H).
+  \end{enumerate}
+\end{df}
+
+\begin{ex}
+  Par exemple, tout espace de Hilbert a (B-H). Les espaces
+  de suites $c_0$, $\ell^1$ et $\ell^p$, $1 < p < \infty$ ont (B-H).
+
+  Toutefois, tous les opérateurs d'un espace de Hilbert n'ont pas nécessairement
+  (B-H); en 2007, il a été démontré qu'il existe un espace de Hilbert $H$ et
+  $T\in \mathcal L(H)$ n'ayant pas (B-H).
+\end{ex}
+
+\begin{rem}
+  On dit qu'un espace a la propriété de Schur si la convergence faible d'une
+  suite équivaut à la convergence forte d'une suite. L'espace
+  $\ell^1$ a cette propriété (qui simplifie la preuve de (B-H)).
+\end{rem}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../analyse3"
