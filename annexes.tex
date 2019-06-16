@@ -30,7 +30,6 @@ Tous les exercices ne seront pas corrigés.
 
 \section{Hahn-Banach (Formes géométriques)}
 \subsubsection*{Solution de l'exercice \ref{hb:g:j2}}
-
 On vérifie facilement que si $x\in \alpha C$, alors pour tout
 $\beta >\alpha$, $x\in \beta C$;
 avoir que $\alpha^{-1}x\in C$ implique que le segment joignant $0$ et ce
@@ -41,6 +40,26 @@ Par définition de la jauge, $j_C(x)= \inf\{\alpha > 0 \mid x\in \alpha C\}$.
 Soit $\varepsilon >0$, alors il existe $\alpha > 0$ tel que $j_C(x)\leq
 \alpha \leq j_C(x) + \varepsilon$ et $x\in\alpha C$. Par ce qui précède,
 on peut conclure.
+
+\section{Théorème du graphe fermé}
+\subsubsection*{Solution de l'exercice \ref{grp:ferme:exo:pos}}
+Par le théorème du graphe fermé, il suffit de montrer que le graphe
+de $T$ est fermé. Soit $(x_n, Tx_n)$ une suite du graphe de $T$ convergeant
+vers $(x, x^*)\in E\times E^*$ et montrons que $x^* = Tx$.
+
+Posons $u_n = x_n - x$, il suffit de montrer (par linéarité de $T$) que
+$Tu_n \to 0$. Notons $f = \lim_{n\to+\infty}Tu_n$ (elle existe car on suppose
+la convergence préalable de la suite $(Tx_n)_n$). Quel que soit $y\in E$, on a
+$$\langle T(y - u_n), y - u_n\rangle \geq 0.$$
+En passant à la limite quand $n\to+\infty$, on en déduit que pour tout $y\in E$,
+$$\langle Ty - f, y\rangle \geq 0 \iff
+\langle Ty, y\rangle \geq f(y).$$
+Soit $y\in E$. Pour tout réel $R$, cela implique que
+(par linéarité de $T$, de $Ty$ et de $f$)
+$$R^2\langle Ty, y\rangle \geq R f(y).$$
+En prenant $R\to 0$, avec $R> 0$, on déduit que $f(y)\leq 0$, et en prenant
+$R \to$ avec $R < 0$, on a $f(y) \geq 0$, d'où $f(y) = 0$. Ceci montre que
+$f$ est identiquement nulle, ce qu'on voulait montrer.
 
 \section{Topologie faible}
 \subsubsection*{Solution de l'exercice \ref{faib:ex:prod}}

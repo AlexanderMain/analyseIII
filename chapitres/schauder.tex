@@ -1,0 +1,223 @@
+%\section{Bases de Schauder}
+\section{Introduction et définition}
+Soit $X$ un espace de Banach. On a vu précedemment que toute base algébrique
+de $X$ est soit finie, soit non dénombrable.
+Si on considère $(e_j)_{j\in J}$ une base algébrique de $X$, et $(z_n)_n$ une
+suite d'éléments de $X$ convergeant vers un élément $z\in X$, il n'y a aucune
+raison (en dimension infinie) d'avoir une convergence composante par composante.
+\begin{exo}
+  Soit $\ell^\infty$ l'espace des suites de nombres réels bornées.
+  Posons $e_i=(\delta_{i, n})_{n\in\IN}$
+  et $x=(x_n)_n$, la suite définie par $x_n = 1/2^n$ pour tout naturel $n$.
+  \begin{enumerate}
+  \item Montrez que la suite $(x^{(k)})_{k\in\IN}$ définie par
+    $x^{(k)}=\sum_{n=0}^kx_ne_n$ converge vers $x$ dans $\ell^\infty$.
+  \item Montrer que la famille de vecteurs $V:= \{e_i \mid i\in \IN\}\cup \{x\}$
+    est linéairement indépendante (\textbf{rappel}: une famille de vecteurs est
+    linéairement indépendante si toute sous-famille finie l'est).
+  \item Du point précédent et du lemme de Zorn, on déduit qu'il existe une
+    base $B$ de $\ell^\infty$ contenant $V$ (cette affirmation ne fait pas
+    partie de l'exercice, vous n'êtes pas obligé de le montrer).
+    Argumentez que la suite $(x^{(k)})_{k\in\IN}$ introduite ci-avant
+    montre qu'il n'y a pas convergence composante par composante
+    dans la base $B$.
+  \end{enumerate}
+\end{exo}
+
+On introduit les bases de Schauder, plus appropriées pour les espaces de Banach.
+\begin{df}
+  La suite de vecteurs $(e_n)_{n\in\IN}$ est appelée une base de Schauder de $X$
+  si pour tout $x\in X$, il existe une unique suite $(x_n)_{n\in\IN}$ de
+  scalaires telle que
+  $$x = \sum_{n=0}^{+\infty}x_ne_n.$$
+\end{df}
+
+\begin{ex}
+  Les espaces de suites $c_0$ et $\ell^p$, $1\leq p < \infty$ admettent
+  des bases de Schauder; il s'agit de la famille des suites
+  $e_i=(\delta_{i, n})_{n\in\IN}$, $i\in\IN$.
+\end{ex}
+
+\begin{prop}
+  Si $X$ admet une base de Schauder, alors $X$ est séparable.
+\end{prop}
+\begin{proof}
+  Soit $(e_n)_{n\in\IN}$ une base de Schauder de $X$. Alors l'espace
+  vectoriel engendré par cette base est dense dans $X$. Posons
+  $V = \langle e_i \mid i\in\IN\rangle_\IK$. Il suffit de trouver
+  un sous-ensemble dénombrable de $X$ dont l'adhérence contient $V$.
+
+  Soit $\mathbb L = \IQ$ si $\IK = \IR$ et $\IQ(i)$ sinon. Alors
+  $\langle e_i \mid i\in\IN\rangle_\mathbb{L}$ est un sous-ensemble
+  dénombrable de $X$ dont l'adhérence contient $V$ car $\mathbb L$ est
+  dense dans $\IK$. Ceci termine la preuve.
+\end{proof}
+\begin{ex}
+  L'espace de suites $\ell^\infty$ n'admet pas de base de Schauder, car
+  il n'est pas séparable.
+\end{ex}
+
+La réciproque de cette dernière proposition n'est pas vraie. Il existe un espace
+de Banach séparable qui n'admet pas de base de Schauder. Per Enflo a en
+1974 construit un sous-espace de $L^p[0, 1]$, $1\leq p < \infty$ qui
+n'a pas de base de Schauder. L'espace $L^p[0, 1]$ admet une base de Schauder
+appelée système de Haar
+(\href{https://fr.wikipedia.org/wiki/Ondelette_de_Haar#Le_syst\%C3%
+  \%A8me_de_Haar}{Wikipédia}).
+
+\section{Projections et convergence composante par composante}
+Soit $X$ un espace de Banach admettant une base de Schauder et $(e_n)_{n\in\IN}$
+une base de Schauder normalisée de $X$.
+Pour $x = \sum_{n\geq 0}x_ne_n\in X$ et $j\geq 0$ naturel, on pose
+$P_j(x)=\sum_{n=0}^jx_ne_n$. Les applications $P_j$ sont linéaires.
+
+On introduit une nouvelle norme sur $X$ en
+posant $||x||' = \sup_{j\geq 0} \|P_j(x)\|$ pour tout $x\in X$. Elle est
+bien définie car $P_j(x)\xrightarrow[j\to+\infty]{} x$ (car $(e_n)_{n\in\IN}$
+est une base de Schauder de $X$).
+\begin{exo}
+  Montrer que l'application $\|.\|'$ introduite ci-avant est une norme.
+\end{exo}
+\begin{prop}\label{pj:prop}
+  $(X, \|.\|')$ est un espace de Banach.
+\end{prop}
+\begin{proof}
+  Soit $(x^{(n)})_{n\in\IN}$ une suite de Cauchy dans $(X, \|.\|')$, $x^{(n)}=
+  \sum_{k=0}^{+\infty}x^{(n)}_ke_k$ pour tout naturel $n$. Montrons d'abord que
+  pour $k$ fixé, $(x^{(n)}_k)_{n\in\IN}$ est une suite de Cauchy.
+
+  Soit $\epsilon > 0$, il existe $N_\epsilon$ tel que pour tous
+  $n, m\geq N_\epsilon$,
+  \begin{equation}\label{pj:pv:1}
+    \|x^{(n)} - x^{(m)}\|' =
+    \sup_{j\geq 0}\left\|\sum_{l = 1}^j(x^{(n)}_l-x^{(m)}_l)e_l\right\|
+    \leq \epsilon.
+  \end{equation}
+  En utilisant l'inégalité triangulaire, on a pour tous $n, m\geq N_\epsilon$:
+  $$|x^{(n)}_k - x^{(m)}_k|=\|(x^{(n)}_k - x^{(m)}_k)e_k\|\leq
+  \left\|\sum_{l = 1}^{k}(x^{(n)}_l-x^{(m)}_l)e_l\right\| +
+  \left\|\sum_{l = 1}^{k-1}(x^{(n)}_l-x^{(m)}_l)e_l\right\|\leq 2\epsilon.$$
+
+  Comme $\IK$ est complet, il existe donc $x_k\in\IK$ tel que
+  $x_k^{(n)}\to x_k$.
+
+  Montrons maintenant que la série $\sum_{k=0}^{+\infty} x_k e_k$ converge
+  dans $(X, \|.\|)$. Il suffit de montrer que la suite des sommes partielles
+  est de Cauchy. Soit $\epsilon > 0$, alors la série $\sum_{k=0}^{+\infty}
+  x_k^{(N_\epsilon)}e_k$ converge au sens de la norme $\|.\|$ (comme $(e_k)_k$
+  est une base de Schauder et qu'on considère l'écriture dans cette base
+  de $x^{(N_\epsilon)}$). Il existe donc $M_\epsilon$ tel que
+  pour tous $m, r\geq \max\{N_\epsilon, M_\epsilon\}$, $m< r$,
+  \begin{equation*}
+    \left\|\sum_{k=m+1}^rx_k^{(N_\epsilon)}e_k\right\|\leq \epsilon.
+  \end{equation*}
+  Soient $m, r\geq \max\{N_\epsilon, M_\epsilon\}$, $m < r$. On a,
+  en utilisant (\ref{pj:pv:1}) avec $m\to+\infty$ et $n=N_\epsilon$:
+  \begin{IEEEeqnarray*}{rCl}
+    \left\|\sum_{k=m+1}^rx_ke_k\right\| &
+    \leq & \left\|\sum_{k=m+1}^r(x_k-x^{(N_\epsilon)}_k)e_k\right\|
+    + \left\|\sum_{k=m+1}^rx_k^{(N_\epsilon)}e_k\right\| \\
+    & \leq & \left\|\sum_{k=1}^r(x_k-x^{(N_\epsilon)}_k)e_k\right\|
+    + \left\|\sum_{k=1}^m(x_k-x^{(N_\epsilon)}_k)e_k\right\|
+    + \epsilon \leq 3\epsilon.
+  \end{IEEEeqnarray*}
+  Ceci montre que $\sum_{k=0}^{+\infty} x_k e_k$ converge vers $x\in X$,
+  au sens de la norme $\|.\|$, par complétude de $(X, \|.\|)$
+  (il fallait s'assurer que cette série converge bien pour
+  poser $x$).
+
+  Montrons que cette série converge vers $x$ au sens de $\|.\|'$.
+  Il faut montrer que
+  $$\sup_{j\geq 0}\left\|P_j\left(x - \sum_{k=0}^nx_ke_k\right)\right\|\to 0.$$
+  Soit $\epsilon > 0$. Il existe $N$ tel que tout $n\geq N$ vérifie
+  $$\left\|\sum_{k=n}^{+\infty}x_ke_k\right\|< \varepsilon.$$
+  Soient $j\geq 0$ et $n\geq N$. Posons
+  $v_{j, n}= \|P_j(x - \sum_{k=0}^nx_ke_k)\|$. Si $j\leq n$, alors $v_{j, n}=0$.
+  Sinon, on a l'inégalité
+  $$ v_{j, n} =
+  \left\|\sum_{k=n+1}^jx_ke_k\right\| \leq
+  \left\|\sum_{k=n+1}^{+\infty}x_ke_k\right\| +
+  \left\|\sum_{k=j+1}^{+\infty}x_ke_k\right\|\leq 2\epsilon.$$
+
+  Comme cette majoration est uniforme en $j$, on a bien montré que la
+  série $\sum_{k=0}^{+\infty}x_ke_k$ converge vers $x$ au sens de $\|.\|'$.
+
+  Soient $\varepsilon > 0$ et $N_\varepsilon$ associé. En utilisant
+  (\ref{pj:pv:1}) avec $m\to\infty$, on déduit que pour tout $n\geq N_\epsilon$,
+  pour $j$ fixé, on a:
+  $$ \|P_j(x^{(n)} - x)\| =
+  \left\|\sum_{l = 1}^j(x^{(n)}_l-x_l)e_l\right\|
+  \leq \epsilon.$$
+  Ceci montre que $\|x^{(n)}-x\|'\leq \epsilon$ (la majoration ci-avant
+  est uniforme en $j$), ce qui termine la preuve.
+\end{proof}
+
+\begin{cor}
+  Les normes $\|.\|$ et $\|.\|'$ sont équivalentes sur $X$.
+\end{cor}
+\begin{proof}
+  Comme les deux normes induisent une structure d'espace de Banach sur $X$,
+  il suffit de montrer au vu du corollaire \ref{ao:de} du théorème
+  d'isomorphisme de Banach qu'une norme domine l'autre.
+
+  Soit $x\in X$. Comme $P_j(x)\xrightarrow[j\to+\infty]{}x$,
+  on a $\|x\|'\geq \|x\|$. Ceci montre l'équivalence des normes.
+\end{proof}
+
+\begin{cor}
+  Les application $P_j$ sont continues et $\sup_{j\geq 0}\|P_j\| < +\infty$.
+\end{cor}
+\begin{proof}
+  Soit $K > 0$ tel que pour tout $x\in X$, $\|x\|'\leq K\|x\|$.
+  Soit $j\geq 0$. Alors pour tout $x\in X$, $\|P_j(x)\|\leq K\|x\|$, ce qui
+  montre la continuité de $P_j$.
+
+  La seconde assertion est une conséquence directe du théorème de
+  Banach-Steinhaus, car pour tout $x\in X$, $\sup_{j\geq 0}\|P_j(x)\|=\|x\|'$
+  est fini.
+\end{proof}
+\begin{prop}
+  Soit $n$ un naturel. La forme linéaire $e^*_n$ définie par
+  $e^*_n(e_j) = \delta_{n, j}$ est continue.
+\end{prop}
+\begin{proof}
+  Soit $K > 0$ tel que pour tout $x\in X$, $\|x\|'\leq K\|x\|$.
+  Soit $x=\sum_{k=0}^{+\infty}x_ne_n\in X$. Alors:
+  $$|e^*_n(x)| = |x_n| = \|x_ne_n\| \leq \left\|\sum_{k=0}^{n}x_ne_n\right\|
+  + \left\|\sum_{k=0}^{n-1}x_ne_n\right\|\leq 2K\|x\|.$$
+\end{proof}
+\begin{cor}[Convergence composante par composante]
+  Soient $(z_k)_{k\in\IN}$ une suite d'éléments de $X$ et $z\in X$ tels que
+  $z_k\to z$. Alors $e^*_n(z_k)\to e^*_n(z)$.
+\end{cor}
+
+\begin{prop}
+  Il existe $C > 0$, $\forall p$, $q\in\IN$, $p\leq q$,
+  $\forall a_0$, $\ldots$, $a_q$,
+  $$\left\| \sum_{k=0}^p a_ke_k\right\| \leq
+  C \left\| \sum_{k=0}^q a_ke_k\right\|$$
+\end{prop}
+
+\begin{proof}
+  Soit $F = \{(a_n)_{n\in\IN}\mid \sum_{n=0}^\infty a_ne_n \mbox{ converge}\}$.
+  On munit $F$ de la norme $\|(a_n)_{n\in\IN}\|_F =
+  \sup_{j\geq 0}\|\sum_{n=0}^\infty a_ne_n\|$; $F$ est complet pour cette norme
+  (se référer à la preuve de la proposition \ref{pj:prop}).
+  L'application
+  $$T:F\to X: (a_n)_n\mapsto\sum_{n=0}^{+\infty}a_nx_n$$
+  est linéaire, bijective et continue car $\|\sum_{n=0}^{+\infty}a_nx_n\|\leq
+  \|(a_n)_n\|_F$. Le théorème d'isomorphisme de Banach permet d'affirmer
+  que $T^{-1}: X\to F$ est continue, c'est-à-dire qu'il existe une constante
+  $C$ telle que pour tout $x= \sum_{n=0}^{+\infty}a_nx_n$, $\|T^{-1}(x)\|_F
+  \leq c \|x\|$.
+
+  Soient $a_0, \ldots, a_q\in\IK$. En appliquant la dernière inégalité à
+  $x = a_0e_0 + \cdots + a_qe_q$, on a:
+  $$\left\| \sum_{k=0}^p a_ke_k \right\| \leq
+  \left\| (a_0, \ldots, a_q, 0, \ldots) \right\|_F \leq
+  C \left\| \sum_{k=0}^q a_ke_k \right\|.$$
+\end{proof}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:
