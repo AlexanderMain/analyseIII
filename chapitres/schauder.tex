@@ -182,9 +182,9 @@ est une base de Schauder de $X$).
 \end{prop}
 \begin{proof}
   Soit $K > 0$ tel que pour tout $x\in X$, $\|x\|'\leq K\|x\|$.
-  Soit $x=\sum_{k=0}^{+\infty}x_ne_n\in X$. Alors:
-  $$|e^*_n(x)| = |x_n| = \|x_ne_n\| \leq \left\|\sum_{k=0}^{n}x_ne_n\right\|
-  + \left\|\sum_{k=0}^{n-1}x_ne_n\right\|\leq 2K\|x\|.$$
+  Soit $x=\sum_{k=0}^{+\infty}x_ke_k\in X$. Alors:
+  $$|e^*_n(x)| = |x_n| = \|x_ke_k\| \leq \left\|\sum_{k=0}^{n}x_ke_k\right\|
+  + \left\|\sum_{k=0}^{n-1}x_ke_k\right\|\leq 2K\|x\|.$$
 \end{proof}
 \begin{cor}[Convergence composante par composante]
   Soient $(z_k)_{k\in\IN}$ une suite d'éléments de $X$ et $z\in X$ tels que
@@ -201,7 +201,7 @@ est une base de Schauder de $X$).
 \begin{proof}
   Soit $F = \{(a_n)_{n\in\IN}\mid \sum_{n=0}^\infty a_ne_n \mbox{ converge}\}$.
   On munit $F$ de la norme $\|(a_n)_{n\in\IN}\|_F =
-  \sup_{j\geq 0}\|\sum_{n=0}^\infty a_ne_n\|$; $F$ est complet pour cette norme
+  \sup_{j\geq 0}\|\sum_{n=0}^j a_ne_n\|$; $F$ est complet pour cette norme
   (se référer à la preuve de la proposition \ref{pj:prop}).
   L'application
   $$T:F\to X: (a_n)_n\mapsto\sum_{n=0}^{+\infty}a_nx_n$$
@@ -209,7 +209,7 @@ est une base de Schauder de $X$).
   \|(a_n)_n\|_F$. Le théorème d'isomorphisme de Banach permet d'affirmer
   que $T^{-1}: X\to F$ est continue, c'est-à-dire qu'il existe une constante
   $C$ telle que pour tout $x= \sum_{n=0}^{+\infty}a_nx_n$, $\|T^{-1}(x)\|_F
-  \leq c \|x\|$.
+  \leq C \|x\|$.
 
   Soient $a_0, \ldots, a_q\in\IK$. En appliquant la dernière inégalité à
   $x = a_0e_0 + \cdots + a_qe_q$, on a:

@@ -20,7 +20,7 @@ section).
 
 \begin{df}
   Un sous-ensemble $A$ de $X$ est dit nulle part dense s'il vérifie
-  $$\mathrm{int}\left(\mathrm{adh}(A)\right) = \varnothing$$
+  $$\mathrm{int}\left(\mathrm{adh}(A)\right) = \varnothing.$$
 
   De manière équivalente, $A$ est dit nulle part dense si le complémentaire
   de son adhérence est dense dans $X$.
@@ -238,35 +238,33 @@ la topologie induite.
   Soit $(X, \mathcal{T})$ un espace topologique.
   Rappelons que si $B$ est un sous-ensemble de $X$, la topologie
   induite sur $B$ est la topologie $\mathcal{T}_B$ suivante:
-  $$\mathcal{T}_B=\left\{U\cap B\mid U\in\mathcal{T}\right\}$$
+  $$\mathcal{T}_B=\left\{U\cap B\mid U\in\mathcal{T}\right\}.$$
   De plus, si on note $\mathcal{F}$ l'ensemble des fermés de $X$,
   on a la caractérisation suivante des fermés de la topologie
   induite:
-  $$\mathcal{F}_B=\left\{F\cap B\mid F\in\mathcal{F}\right\}$$
+  $$\mathcal{F}_B=\left\{F\cap B\mid F\in\mathcal{F}\right\}.$$
 
-  \textbf{Propriété}: la fermeture de $A$ au sens de $B$ correspond
+  \textbf{Propriété}: la fermeture de $A$ au sens de $\mathcal T_B$ correspond
   l'intersection de $B$ et de la fermeture de $A$ au sens
-  de $X$ (car on regarde le plus petit fermé contenant $A$).
+  de $\mathcal T$ (car on regarde le plus petit fermé contenant $A$).
 
   \begin{proof}
-  Soit $F$ un fermé de $B$ contenant $A$. Alors
-  $F = G\cap B$ pour un fermé $G$ de $X$.
-  Puisque $ A \subseteq F\subseteq G$, $G$ contient
-  l'adhérence de $A$ au sens de $X$
-  (qui est le plus petit fermé de $X$
-  contenant $A$), donc $F$ contient $\mathrm{adh}_X(A)\cap B$.
-  Ceci montre que le plus petit fermé de $B$ contenant $A$
-  est $\mathrm{adh}_X(A)\cap B$, ce qu'on voulait montrer.
+    Soit $F\in\mathcal F_B$ contenant $A$. Alors $F = G\cap B$ pour un
+    fermé $G\in\mathcal F$. Puisque $ A \subseteq F\subseteq G$, $G$
+    contient l'adhérence de $A$ au sens de $X$ (qui est le plus petit
+    fermé de $X$ contenant $A$), donc $F$ contient $\mathrm{adh}_X(A)\cap B$.
+    Ceci montre que le plus petit fermé de $B$ contenant $A$
+    est $\mathrm{adh}_X(A)\cap B$, ce qu'on voulait montrer.
 \end{proof}
 
   \textbf{Propriété}: si on suppose que $B$ est ouvert, alors l'intérieur d'un
-  sous-ensemble $A$ de $B$ au sens de $B$ correspond à
-  son intérieur au sens de $X$
+  sous-ensemble $A$ de $B$ au sens de $\mathcal T_B$ correspond à
+  son intérieur au sens de $\mathcal T$
   (car les ouverts de la topologie induite sur $B$ sont des
   ouverts de $X$).
 
   \begin{proof}
-    Soit $U$ contenu dans $A$ un ouvert de $B$. Alors $U$ est un
+    Soit $U\subseteq A$ un ouvert de $B$. Alors $U$ est un
     ouvert de $X$ (car il est l'intersection de $B$ qui est ouvert
     et d'un ouvert de $X$). Donc $U$ est contenu dans l'intérieur
     de $A$ au sens de $X$. Puisque l'intérieur de $A$ est un sous-ensemble
@@ -316,8 +314,8 @@ on introduit tout d'abord un lemme utile
   ce qui implique que $U$ est vide.
 \end{proof}
 
-Nous pouvons donc prouver assez facilement le théorème \ref{baire:ind} en utilisant
-le lemme \ref{baire:ind:help}
+Nous pouvons donc prouver assez facilement le théorème
+\ref{baire:ind} en utilisant le lemme \ref{baire:ind:help}.
 
 \begin{proof}[Preuve du théorème \ref{baire:ind}]
   Soit $(F_n)_{n\in\mathbb N}$ une famille de fermés d'intérieur
@@ -406,7 +404,8 @@ catégorie.
 \end{proof}
 
 \begin{prop}
-  Tout intervalle de $\mathbb R$ n'est pas de première catégorie.
+  Tout intervalle d'intérieur non vide de $\mathbb R$ n'est pas de
+  première catégorie.
 \end{prop}
 \begin{proof}
   Supposons par contradiction qu'il existe un intervalle $I$

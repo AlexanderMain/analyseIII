@@ -17,10 +17,10 @@ vectoriel de $E$, $f: G \to \mathbb{R}$ une forme linéaire
 et $p: E\to \mathbb{R}$ une application vérifiant les hypothèses suivantes:
 \begin{itemize}
 \item $\forall\lambda >0, \forall x \in E, p(\lambda x)=\lambda p(x)$
-  (p est dite positivement homogène)
+  (p est dite positivement homogène);
 \item $\forall x,y \in E, p(x+y)\leq p(x)+p(y)$
-  (p est dite sous-additive)
-\item$\forall x\in G, f(x)\leq p(x)$
+  (p est dite sous-additive);
+\item$\forall x\in G, f(x)\leq p(x)$.
 \end{itemize}
 Alors il existe $g:E\to\mathbb{R}$ forme linéaire étendant $f$ et telle
 que $\forall x \in E, g(x)\leq p(x)$.
@@ -34,38 +34,38 @@ que $\forall x \in E, g(x)\leq p(x)$.
   comme annoncé dans le théorème.
 
   On doit montrer qu'il existe un réel $g(x_0)$ tel que pour
-  tout $x = y+tx_0\in V$, $g(x)\leq p(x)$, c'est-à-dire:
-  $$f(y) + t g(x_0)\leq p(y + tx_0)$$
+  tout $x = y+tx_0\in V$, $g(x)\leq p(x)$, c'est-à-dire
+  $$f(y) + t g(x_0)\leq p(y + tx_0).$$
 
   Analysons les différents cas, selon le signe de $t$:
 
   \textbf{Cas 1, $t>0$}: la condition devient, par positive
   homogénéité de $p$ et linéarité de $f$
   $$\forall y\in G, g(x_0)\leq p\left(\frac{y}{t} + x_0\right)
-  - f\left(\frac{y}{t}\right)$$
+  - f\left(\frac{y}{t}\right).$$
   Puisque $G$ est un sous-espace vectoriel, on peut réécrire la
   condition:
-  $$\forall z\in G, g(x_0)\leq p(z + x_0) - f(z)$$
+  $$\forall z\in G, g(x_0)\leq p(z + x_0) - f(z).$$
 
   \textbf{Cas 2, $t<0$}: la condition devient, par positive
   homogénéité de $p$ et linéarité de $f$
   $$\forall y\in G, g(x_0)\geq  f\left(\frac{-y}{t}\right)
-  - p\left(\frac{-y}{t} - x_0\right)$$
+  - p\left(\frac{-y}{t} - x_0\right).$$
   Puisque $G$ est un sous-espace vectoriel, on peut réécrire la
   condition:
-  $$\forall w\in G, g(x_0)\geq f(w) - p(w - x_0) $$
+  $$\forall w\in G, g(x_0)\geq f(w) - p(w - x_0).$$
 
   La question qu'on se posait revient donc à se demander s'il existe
   un réel satisfaisant les inégalités:
-  $$\forall w, z\in G, f(w) - p(w - x_0)\leq g(x_0)\leq p(z + x_0) - f(z)$$
+  $$\forall w, z\in G, f(w) - p(w - x_0)\leq g(x_0)\leq p(z + x_0) - f(z).$$
 
   Il suffit de montrer l'assertion:
-  $$\forall w, z\in G, f(w) - p(w - x_0)\leq p(z + x_0) - f(z)$$
+  $$\forall w, z\in G, f(w) - p(w - x_0)\leq p(z + x_0) - f(z).$$
 
   Soient $z, w\in G$. On a $f(w + z)\leq p(w+z)$ par hypothèse
   sur $p$. Or puisque $$p(w + z)= p(w - x_0 + z +x_0)
   \leq p(w - x_0) + p(z + x_0)$$ par sous-additivité de $p$,
-  et que $f$ est linéaire, on a l'inégalité.
+  et linéarité de $f$, on a l'inégalité.
 
   On peut donc poser, par exemple,
   $g(x_0)=\inf_{z\in G}p(z+x_0)-f(z)$.
@@ -76,7 +76,7 @@ que $\forall x \in E, g(x)\leq p(x)$.
   graphe de $h_1$ est inclus à celui de $h_2$):
   $$\mathcal{M}= \left\{(V, h)\mid  V\mbox{ sev. de $E$}, G\subseteq V,
     h: V\to\mathbb{R} \mbox{ linéaire, $h$ prolongement de $f$},
-    h\leq p_{|V}\right\}$$
+    h\leq p_{|V}\right\}.$$
 \end{proof}
 
 \subsection{Espaces vectoriels sur $\mathbb{C}$}
@@ -87,10 +87,11 @@ vectoriel de $E$, $f: G \to \mathbb{C}$ une forme linéaire
 et $p: E\to \left[0,+\infty\right[ $ une application vérifiant
 les hypothèses suivantes:
 \begin{itemize}
-\item $\forall\lambda \in\mathbb{C}, \forall x \in E, p(\lambda x)=|\lambda| p(x)$
+\item $\forall\lambda \in\mathbb{C},
+  \forall x \in E, p(\lambda x)=|\lambda| p(x)$;
 \item $\forall x,y \in E, p(x+y)\leq p(x)+p(y)$
-  (p est dite sous-additive)
-\item$\forall x\in G, |f(x)|\leq p(x)$
+  (p est dite sous-additive);
+\item$\forall x\in G, |f(x)|\leq p(x)$.
 \end{itemize}
 Alors il existe $g:E\to\mathbb{C}$ forme linéaire étendant $f$ et telle
 que $\forall x \in E, |g(x)|\leq p(x)$.
@@ -100,8 +101,8 @@ que $\forall x \in E, |g(x)|\leq p(x)$.
   Remarquez que quel que soit l'élément $x\in G$ considéré,
   on a les égalités suivantes:
   \begin{IEEEeqnarray*}{rCl}
-    i f(x) &=& - \Im(f)(x) + i\Re(f)(x)\\
-    f(ix) &=& \Re(f)(ix) + i \Im(f)(ix)
+    i f(x) &=& - \Im(f)(x) + i\Re(f)(x);\\
+    f(ix) &=& \Re(f)(ix) + i \Im(f)(ix).
   \end{IEEEeqnarray*}
 
   Par définition de l'égalité de deux nombres complexes
@@ -110,7 +111,7 @@ que $\forall x \in E, |g(x)|\leq p(x)$.
   on en déduit que $\Re(f)(ix) = -\Im(f)(x)$ et que
   $\Im(f)(ix) = \Re(f)(x)$. On peut donc exprimer $f$
   uniquement à l'aide de $\Re(f)$ de la manière suivante:
-  $$f(x) = \Re(f)(x) - i \Re(f)(ix)$$
+  $$f(x) = \Re(f)(x) - i \Re(f)(ix).$$
 
   L'application $\Re(f):G \to\mathbb{R}$ est une application
   $\mathbb{R}$-linéaire. Par le théorème de Hahn-Banach, cas
@@ -196,7 +197,7 @@ celui des réels ou des complexes.
   Calculons la norme de $f$:
   $$\|f\|=\sup_{\substack{t\in\mathbb{K}\\ \|tx_0\|\leq 1}}|f(tx_0)|=
   \sup_{\substack{t\in\mathbb{K}\\ |t|\leq\frac{1}{\|x_0\|}}}|t| =
-  \frac{1}{\|x_0\|}$$
+  \frac{1}{\|x_0\|}.$$
 
   Pour conclure, il suffit d'utiliser le théorème \ref{hb:a3}.
 \end{proof}
@@ -220,7 +221,7 @@ celui des réels ou des complexes.
   que $|x^*(x)|\leq \|x^*\|\cdot \|x\|$.
 
   Par le corollaire \ref{hb:a:cor2}, on obtient l'égalité
-  $$\|x\|=\max_{\substack{\|x^*\|\leq 1 \\ x^*\in E^*}}|x^*(x)|$$
+  $$\|x\|=\max_{\substack{\|x^*\|\leq 1 \\ x^*\in E^*}}|x^*(x)|.$$
 \end{rem}
 
 \begin{cor}\label{hb:a:cor4}
@@ -241,8 +242,9 @@ celui des réels ou des complexes.
 
   Montrons que $f$ est continue.
   Soit $y + tx_0\in F\oplus \mathbb{K}x_0$ tel que
-  $\|y + t x_0\|\leq 1$. On a, pout $t\neq 0$:
-  $$\|y + tx_0\| = |t|\cdot \left\|x_0 - \left(-\frac{y}{t}\right)\right\|\geq d\cdot |t|$$
+  $\|y + t x_0\|\leq 1$. On a, pour $t\neq 0$:
+  $$\|y + tx_0\| = |t|\cdot
+  \left\|x_0 - \left(-\frac{y}{t}\right)\right\|\geq d\cdot |t|.$$
   D'où $|f(y + t x_0)| = |t|\leq \frac{1}{d}$. Ceci montre que $f$
   est continue.
 
@@ -252,12 +254,12 @@ celui des réels ou des complexes.
   $\|f\|\geq \frac{1}{d}$.
 
   Soit $\varepsilon >0$. Il existe $y\in F$ tel que
-  $|d-\|y-x_0\||<\varepsilon$ (définition d'infimum)
-  . Cela implique $\| y - x_0\|\leq d + \varepsilon$.
+  $\|y-x_0\| - d <\varepsilon$ (définition d'infimum)
+  c'est-à-dire $\| y - x_0\|\leq d + \varepsilon$.
   On a également l'inégalité
   $$\|f\|\geq \left|f\left(\frac{y - x_0}{\| y - x_0\|}\right)\right|
   =\frac{1}{\| y - x_0\|}
-  \geq \frac{1}{d+\varepsilon}$$
+  \geq \frac{1}{d+\varepsilon}.$$
   On conclut en faisant tendre $\varepsilon$ vers 0.
 \end{proof}
 
@@ -268,9 +270,9 @@ Pour conclure cette section, les deux exercices suivants sont laissés:
   suivantes:
   \begin{enumerate}
   \item ($x_0\in\mathrm{adh}(F)$) \ssi{} ($\forall x^*\in E^*,
-    F\subseteq \mathrm{Ker}(x^*)\implies x^*(x_0) = 0$)
+    F\subseteq \mathrm{Ker}(x^*)\implies x^*(x_0) = 0$);
   \item ($\mathrm{adh}(F) = E$)  \ssi{}  ($\forall x^*\in E^*,
-    F\subseteq \mathrm{Ker}(x^*)\implies x^* = 0$)
+    F\subseteq \mathrm{Ker}(x^*)\implies x^* = 0$).
   \end{enumerate}
 \end{exo}
 
@@ -284,7 +286,7 @@ concise à l'aide de cette notation.
   Soit $F$ un sous-espace vectoriel de $E$. On appelle
   annulateur de $F$ le sous-espace vectoriel suivant
   de $E^*$:
-  $$F^\perp = \left\{x^*\in E^*\mid F\subseteq \mathrm{Ker}(x^*)\right\}$$
+  $$F^\perp = \left\{x^*\in E^*\mid F\subseteq \mathrm{Ker}(x^*)\right\}.$$
 \end{df}
 
 \subsection{Bidualité}
@@ -298,12 +300,12 @@ on le note $E^{**}$.
   On appelle injection canonique l'application
   \begin{IEEEeqnarray*}{rCrCl}
     i & : & E & \to & E^{**} \\
-    & & x & \mapsto & i(x)
+    & & x & \mapsto & i(x).
   \end{IEEEeqnarray*}
   où pour tout $x\in E$, $i(x)$ est l'application définie par
    \begin{IEEEeqnarray*}{rCrCl}
       i(x) & : & E^* & \to & \mathbb{K} \\
-      & & x^* & \mapsto & i(x)(x^*) = x^*(x)
+      & & x^* & \mapsto & i(x)(x^*) = x^*(x).
     \end{IEEEeqnarray*}
 \end{df}
 
@@ -325,7 +327,7 @@ suivantes:
   les égalités suivantes (par le corollaire \ref{hb:a:cor2}):
 
   $$\|i(x)\|=\sup_{\substack{\|x^*\|\leq1\\ x^*\in E^*}}|x^*(x)|
-  = \|x\|$$
+  = \|x\|.$$
   Par cet argument, on a $\|i\| = 1$, ce qui implique
   que $i$ est continue.
 \end{proof}
@@ -361,7 +363,7 @@ pas leur norme. Donnons-en un:
   la suite $x = (\frac{1}{2^n})_{n\in \mathbb{N}}$
   qui est bien élément de $\ell^1$. Alors
   l'application suivante est bien élément de $(c_0)^*$:
-  $$x^*:c_0\to\mathbb{K}:(y_n)_{n\in\mathbb{N}}\mapsto \sum_{n=0}^\infty x_ny_n$$
+  $$x^*:c_0\to\mathbb{K}:(y_n)_{n\in\mathbb{N}}\mapsto \sum_{n=0}^\infty x_ny_n.$$
 
   Montrons que $x^*$ n'atteint pas sa norme. Soit $y = (y_n)_{n\in\mathbb{N}}$
   un élément de la boule unité de $c_0$. Par définition, il existe
@@ -401,7 +403,7 @@ de Hilbert sont réflexifs.
   il existe $u, v$ deux éléments de $H$ leur correspondant (via
   le théorème de représentation de Riesz-Fréchet). On pose
   alors:
-  $$\langle u^*, v^*\rangle = \langle v, u \rangle$$
+  $$\langle u^*, v^*\rangle = \langle v, u \rangle.$$
 
   Il s'agit bien d'un produit scalaire; les détails sont
   laissés à titre d'exercice (l'échange est important pour
@@ -415,7 +417,7 @@ de Hilbert sont réflexifs.
   De la même manière, on munit le bidual de $H$ d'un
   produit scalaire, pour tous $u^{**}, v^{**}$ du bidual,
   soient $u^*, v^*$ leur représentants du dual, on pose:
-    $$\langle u^{**}, v^{**}\rangle = \langle v^*, u^* \rangle$$
+    $$\langle u^{**}, v^{**}\rangle = \langle v^*, u^* \rangle.$$
 
   Soit $y^{**}\in H^{**}$. Montrons qu'il existe un élément
   de $y$ de $H$ tel que $y^{**}$ est l'image de $y$ par
@@ -426,7 +428,7 @@ de Hilbert sont réflexifs.
   linéaire continue et $x$ son représentant dans $H$. Alors:
   $$i(y)(x^*) = x^*(y) = \langle y, x\rangle$$
   et
-  $$y^{**}(x^*) = \langle x^*, y^{*} \rangle = \langle y, x\rangle$$
+  $$y^{**}(x^*) = \langle x^*, y^{*} \rangle = \langle y, x\rangle.$$
 
   Les deux correspondent ce qui  conclut la preuve.
 
@@ -448,7 +450,7 @@ Soit $E$ un espace vectoriel sur $\mathbb{K}$
 
 Il existe une formulation équivalente en termes de formes linéaires:
 \begin{prop}
-  Soit $H$ un sous-espace vectoriel de $H$.
+  Soit $H$ un sous-espace vectoriel de $E$.
   Il s'agit d'un hyperplan vectoriel \ssi{} il existe une
   forme linéaire $f$ non identiquement nulle dont $H$ est
   le noyau.
@@ -478,7 +480,7 @@ hyperplans dits affines. Il s'agit de translatés d'hyperplans
 vectoriels.
 \begin{df}
   Un sous-ensemble $H$ de $E$ est dit hyperplan affine s'il
-  existe $f$ une forme linéaire sur $E$, un scalaire $\alpha$
+  existe $f$ une forme linéaire sur $E$ non nulle et un scalaire $\alpha$
   tels que $H = f^{-1}(\{\alpha\})$.
 \end{df}
 
@@ -583,7 +585,7 @@ Pour se familiariser avec cette fonction, vous êtes invité
 \begin{exo} \label{hb:g:j2}
   Soit $C$ un ouvert convexe de $E$ contenant $0$. Soit $x$ un élément
   de $E$. Montrer que quel que soit $\varepsilon > 0$,
-  $$\frac{1}{j_C(x)+\varepsilon}x\in C$$
+  $$\frac{1}{j_C(x)+\varepsilon}x\in C.$$
 \end{exo}
 
 Pour prouver les formes géométriques du théorème de Hahn-Banach,
@@ -593,14 +595,14 @@ nous allons utiliser le résultat suivant.
 Soient $C$ un ouvert convexe non vide de $E$ et $x_0\in E\setminus
  C$. Alors il existe un hyperplan fermé qui sépare $\{x_0\}$ et $C$
 au sens large, c'est-à-dire:
-$$\exists x^{*}\in E^*, \forall x \in C, x^*(x) < x^{*}(x_0)$$
+$$\exists x^{*}\in E^*, \forall x \in C, x^*(x) < x^{*}(x_0).$$
 \end{prop}
 
 Prouvons plusieurs propriétés de la jauge d'un convexe qui serviront
 dans la preuve de la proposition \ref{hb:g:l}.
 
 \begin{lem} \label{lem:jc}
-  Soit $C$ un ouvert convexe de $E$ contenant 0. Alors:
+  Soit $C$ un ouvert convexe de $E$ contenant 0.
   \begin{enumerate}
   \item $\exists M> 0$, $\forall x\in E$, $0\leq j_C(x)\leq M\|x\|$.
     \label{lem:jc1}
@@ -637,10 +639,10 @@ dans la preuve de la proposition \ref{hb:g:l}.
     $\frac{1}{j_C(y)+\varepsilon}y\in C$ (cf. exercice résolu \ref{hb:g:j2}).
     Par convexité de $C$, on a pour tout $t\in [0, 1]$:
     $$t\frac{1}{j_C(x)+\varepsilon}x +
-    (1-t)\frac{1}{j_C(y)+\varepsilon}y\in C$$
+    (1-t)\frac{1}{j_C(y)+\varepsilon}y\in C.$$
     En prenant $\displaystyle{t = \frac{j_C(x)+\varepsilon}
       {j_C(x) +j_C(y)+2\varepsilon}}$, on obtient
-    $$\frac{x+y}{j_C(x) +j_C(y)+2\varepsilon}\in C $$
+    $$\frac{x+y}{j_C(x) +j_C(y)+2\varepsilon}\in C. $$
 
     Par le point \ref{lem:jc2} et la positive homogénéité de la jauge d'un convexe,
     on obtient $j(x + y) < j_C(x)+j_C(y)+2\varepsilon$. On conclut
@@ -682,7 +684,7 @@ précédente ou un des corollaires des formes analytiques.
 \begin{exo}
   Montrer que $E^*$ sépare les points de $E$, c'est-à-dire si $x$, $y$
   sont des éléments de $E$, il existe $x^*$ une forme linéaire continue
-  sur $E$ telle que $x^*(x)\neq x^*(y)$
+  sur $E$ telle que $x^*(x)\neq x^*(y)$.
 \end{exo}
 
 En particulier deux éléments de $E$ sont égaux \ssi{} leur image
@@ -703,7 +705,7 @@ $(E, \|.\|)$ sur $\mathbb{R}$.
   il suffit de remarquer qu'il s'agit d'une union d'ouverts:
 
   $$ C = \bigcup_{b\in B} A - b =
-  \bigcup_{b\in B} \left\{a - b \mid a\in A\right\}$$
+  \bigcup_{b\in B} \left\{a - b \mid a\in A\right\}.$$
 
   \'{E}tant donné que $A$ et $B$ sont disjoints, $0\notin C$.
   Par la proposition \ref{hb:g:l}, il existe une forme linéaire
@@ -780,19 +782,19 @@ Voici une première généralisation de la première forme géométrique.
   convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
   $x^*$ une forme linéaire non nulle sur $E$ et $\alpha$ un nombre réel tels que:
   $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
-  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\}.$$
 \end{thm}
 
 \begin{proof}
   Par la première forme géométrique (dans le cas réel), il existe une forme continue $f$
   $\mathbb{R}$-linéaire sur $E$ telle que
   $$A\subseteq \left\{x\in E\mid f(x) \leq \alpha\right\} \mbox{ et }
-  B\subseteq \left\{x\in E\mid f(x) \geq \alpha\right\} $$
+  B\subseteq \left\{x\in E\mid f(x) \geq \alpha\right\}. $$
 
   On conclut en posant $x^*(x) = f(x) - if(ix)$ pour tous $x$ dans $E$.
   La linéarité est à vérifier à titre d'exercice et
   elle est bien continue car: $$|x^*(x)|\leq |f(x)|+|f(ix)|\leq
-  \|f\|\|x\|+\|f\|\|ix\| = 2 \|f\|\|x\|$$
+  \|f\|\|x\|+\|f\|\|ix\| = 2 \|f\|\|x\|.$$
 \end{proof}
 
 Il est possible d'avoir un résultat similaire en considérant
@@ -814,7 +816,7 @@ Le résultat est le suivant:
   convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
   $x^*$ une forme linéaire non nulle sur $E$ et $\alpha$ un nombre réel tels que:
   $$A\subseteq \left\{x\in E\mid |x^*(x)| \leq \alpha\right\} \mbox{ et }
-  B\subseteq \left\{x\in E\mid |x^*(x)| \geq \alpha\right\} $$
+  B\subseteq \left\{x\in E\mid |x^*(x)| \geq \alpha\right\}. $$
 \end{cor}
 
 
@@ -822,14 +824,14 @@ Le résultat est le suivant:
 
   Par le théorème \ref{hb:g:c1}, il existe $x^*$ linéaire continue telle que
   $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
-  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\}. $$
 
   Alors pour tous $b$ dans $B$,
   on a: $|x^*(b)|\geq \Re(x^*)(b) \geq \alpha$.
   Soit $a\in A$. On a (par linéarité de $x^*$ et par $\mathbb{C}$-symétrie
   de $A$):
   $$|x^*(a)| = x^*(e^{-i\arg(x^*(a))}a) =
-  \Re(x^*)(e^{-i\arg(x^*(a))}a)\leq \alpha$$
+  \Re(x^*)(e^{-i\arg(x^*(a))}a)\leq \alpha.$$
 \end{proof}
 
 Adaptons la seconde forme géométrique du théorème de Hahn-Banach.
@@ -838,8 +840,9 @@ Adaptons la seconde forme géométrique du théorème de Hahn-Banach.
   convexe non vide de $E$ tels que $A$ et $B$ sont disjoints. Il existe
   $x^*$ une forme linéaire non nulle sur $E$, $\alpha$ un nombre réel et
   $\varepsilon > 0$ tels que:
-  $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha-\varepsilon\right\} \mbox{ et }
-  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha+\varepsilon\right\} $$
+  $$A\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha-\varepsilon\right\}
+  \mbox{ et }
+  B\subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha+\varepsilon\right\}. $$
 \end{thm}
 
 \begin{proof}
@@ -849,7 +852,7 @@ Adaptons la seconde forme géométrique du théorème de Hahn-Banach.
   Alors par le théorème \ref{hb:g:c1}, il existe une forme linéaire continue $x^*$,
   un réel $\alpha$ tel que:
   $$A_\varepsilon\subseteq \left\{x\in E\mid \Re(x^*)(x) \leq \alpha\right\} \mbox{ et }
-  B_\varepsilon \subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\} $$
+  B_\varepsilon \subseteq \left\{x\in E\mid \Re(x^*)(x) \geq \alpha\right\}. $$
 
   Alors pour tout $a$ dans $A$, pour tout $z$ dans $B(0, \varepsilon)$,
   $\Re(x^*)(a + z) \leq \alpha$.
