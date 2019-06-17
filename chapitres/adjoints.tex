@@ -85,7 +85,7 @@
   Soient $H$ un espace de Hilbert et $T\in\mathcal L(H)$ tel que $\|T\|\leq 1$
   (on dit dans ce contexte que $T$ est une contraction).
   Soit
-  $$S_n = \frac{1}{n}\sum_{k=0}^{n-1}T^n.$$
+  $$S_n = \frac{1}{n}\sum_{k=0}^{n-1}T^k.$$
   La suite $(S_n)_{n\in\IN}$ converge dans $\mathcal L(H)$ et l'opérateur
   limite est la projection orthogonale sur
   $\mathrm{Fix}(T) = \{x\in H\mid T(x) = x\}$.
@@ -237,7 +237,7 @@
   Un opérateur $T$ a (B-H) si pour toute suite $(n_k)_{k\in\IN}$ de nombres
   naturels strictement croissante,
   $$\forall x\in X,
-  \lim_{K\to+\infty}\frac{1}{K}\|\sum_{n=0}^KT^{k_n}(x)\| = 0.$$
+  \lim_{K\to+\infty}\frac{1}{K}\left\|\sum_{n=0}^{K-1}T^{n_k}(x)\right\| = 0.$$
 \end{df}
 
 \begin{thm}[Jones-Kuftinec (1971)] Soit $H$ un espace de Hilbert,
