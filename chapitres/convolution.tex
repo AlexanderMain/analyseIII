@@ -1,0 +1,92 @@
+\begin{df}
+Le produit de convolution de deux fonctions $f, g:\IR\to\IK$
+(où $\IK = \IR$ ou $\IC$), noté $f * g$ est la fonction définie par
+$$(f * g)(x) = \int_{\IR}f(x-t)g(t)\ud t\mbox{, } x\in\IR.$$
+\end{df}
+
+Le produit de convolution est commutatif. Il suffit de poser
+le changement de variable $u = x - t$ pour le prouver.
+
+\begin{thm}%[Inégalité de Young pour la convolution]
+  Soient $1 < p$, $q <\infty$ tels que $\frac{1}{p} + \frac{1}{q} = 1$,
+  $f\in L^p(\IR)$ et $g\in L^q(\IR)$.
+  Pour tout $x\in \IR$, $(f * g)(x)$ existe et $\|f * g\|_\infty$ est finie
+  et $(f * g)\in L^1(\IR)$.
+\end{thm}
+
+\begin{proof}
+  On admet l'existence et que $f * g$ est intégrable.
+
+  Remarquons que $|(f  * g)(x)| =
+  |\int_{\IR}f(x-t)g(t)\ud t | \leq \|f\|_p \|g\|_q$ par l'inégalité de Hölder
+  pour tout $x$, ce qui montre que $f * g$ est bornée.
+\end{proof}
+
+\begin{thm}
+  Soient $f$, $g\in L^1(\IR)$. Pour presque tout $x$, $f * g$ existe et
+  $\|f * g \|_1\leq \|f\|_1 \|g\|_1$.
+\end{thm}
+\begin{proof}
+  Soit $F(t, x) = f(x - t)g(t)$. On admet que $F$ est mesurable sur $\IR^2$.
+  On a:
+  $$\int_{\IR^2}|F(t, x)|\ud(t, x) =
+  \int_\IR \left(\int_\IR|f(x - t)| \ud x\right) |g(t)|\ud t =
+  \int_\IR \|f\|_1 |g(t)|\ud t = \|f\|_1 \|g\|_1.$$
+
+  On déduit du théorème de Fubini que $\int_\IR f(x - t) g(t) \ud t$ existe
+  pour presque tout $x$.
+\end{proof}
+
+\begin{df}[Transformation de Fourier sur $L^1(\IR)$]
+Soit $f\in L^1(\IR)$. La transformée de Fourier de $f$, notée $\mathcal F(f)$
+ou $\widehat{f}$ est définie par:
+$$\widehat{f}(x) = \int_\IR f(t) e^{-2i\pi t x}\ud t\mbox{, } x\in \IR.$$
+\end{df}
+
+\begin{prop}
+  Soit $f\in L^1(\IR)$. Alors $\widehat{f}$ est bien définie,
+  continue sur $\IR$ et
+  $\lim_{|x|\to\infty}\widehat{f}(x) = 0$.
+\end{prop}
+
+\begin{proof}
+  On a $|f(t)e^{2i \pi t x}| \leq |f(t)|$ pour tous réels $x$ et $t$. De
+  cette majoration, on déduit que $\widehat{f}(x)$ est bien définie pour
+  tout $x$ (car $f\in L^1(\IR)$).
+  Le théorème de convergence dominée implique la continuité séquentielle
+  de $\widehat{f}$ (on utilise toujours la même majoration).
+
+  Le reste du résultat est admis.
+\end{proof}
+
+\begin{thm}
+  Soit $f\in L^1(\IR)$. On pose $f_x(t) = f(t-x)$.
+
+  Alors $T: \IR\to L^1(\IR): x\mapsto f_x$ est uniformément continue.
+\end{thm}
+
+\begin{proof}
+  Admis.
+\end{proof}
+
+\begin{thm}
+  Soient $f$, $g\in L^1(\IR)$. On a l'égalité $\widehat{f * g} = \widehat{f}
+  * \widehat{g}$.
+\end{thm}
+
+\begin{proof}
+  On admet sans preuve que les hypothèses du théorème de Fubini sont vérifiées.
+  \begin{IEEEeqnarray*}{rCl}
+    \widehat{f * g} & = & \int_\IR (f * g)(x) e^{-2i\pi xy}\ud x \\
+    & = &\int_\IR\left(\int_\IR f(x - t) g(t) \ud t\right) e^{-2i\pi xy}\ud x \\
+    & = &\int_\IR\int_\IR f(x - t) e^{-2i\pi (x - t)y} g(t) e^{2i\pi ty}
+    \ud(t, x) \\
+    & = & \int_\IR \left(
+      \int_\IR f(x - t) e^{-2i\pi (x - t) y} g(t) e^{2i\pi ty} \right)
+  \end{IEEEeqnarray*}
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../analyse3"
+%%% End:

@@ -66,12 +66,19 @@ de prouver ce résultat.
   \left(\sum_{k=1}^n|x_k|^p\right)^{\frac{1}{p}}
   \left(\sum_{k=1}^n|y_k|^q\right)^{\frac{1}{q}}$$
 \end{thm}
-\begin{proof}
-  Prouvons préalablement que pour tous réels
-  $a, b >0$, l'inégalité suivante est vérifiée:
+
+Prouvons préalablement le lemme suivant:
+\begin{lem}[Inégalité de Young]
+  Pour tous réels
+  $a, b \geq 0$, l'inégalité suivante est vérifiée:
   \begin{equation}\label{hold:pv1}
-    a\cdot b\leq\frac{a^p}{p}\cdot\frac{b^q}{q}
+    a\cdot b\leq\frac{a^p}{p}\cdot\frac{b^q}{q}.
   \end{equation}
+\end{lem}
+
+\begin{proof}
+  Si $a$ ou $b$ est nul, l'inégalité est immédiate. Supposons
+  maintenant que $a$ et $b$ sont non nuls.
 
   Il est aisé de vérifier, à l'aide de la dérivation, que
   la fonction $\ln:\left]0, +\infty\right[\mapsto\mathbb{R}$
@@ -90,8 +97,10 @@ de prouver ce résultat.
 
   Etant donné que la fonction exponentielle est croissante,
   on a bien l'inégalité \ref{hold:pv1}.
+\end{proof}
 
-
+Prouvons l'inégalité de Hölder:
+\begin{proof}
 Soient $x=(x_k)_{1\leq k\leq n}, y=(y_k)_{1\leq k\leq n}\in\mathbb{K}^n$.
 Supposons les tous les deux non nuls, puisque dans ce cas, l'inégalité
 du théorème est claire.
