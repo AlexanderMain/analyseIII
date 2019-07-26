@@ -86,12 +86,19 @@
   (on dit dans ce contexte que $T$ est une contraction).
   Soit
   $$S_n = \frac{1}{n}\sum_{k=0}^{n-1}T^k.$$
-  La suite $(S_n)_{n\in\IN}$ converge dans $\mathcal L(H)$ et l'opérateur
-  limite est la projection orthogonale sur
-  $\mathrm{Fix}(T) = \{x\in H\mid T(x) = x\}$.
+  La suite $(S_n)_{n\in\IN}$ converge dans $\mathcal L(H)$, au sens de la
+  topologie forte des opérateurs (voir
+  \href{https://en.wikipedia.org/wiki/Strong\_operator\_topology}{Wikipédia}),
+  et l'opérateur limite est la projection orthogonale $P$ sur
+  $\mathrm{Fix}(T) = \{x\in H\mid T(x) = x\}$. Autrement dit,
+  $$\forall x \in H, S_n(x)\xrightarrow{\|.\|} P(x).$$
 \end{thm}
 
 \begin{proof}
+  Remarquons tout d'abord que l'opérateur $P$ est bien défini et continu;
+  $\mathrm{Fix}(T)$ est bien un sous-espace vectoriel fermé de $H$ (exercice)
+  et le théorème de Pythagore permet d'affirmer que $P$ est borné.
+
   Posons $F = \mathrm{adh}( (\mathrm{Id}-T)(H) )$. Tout élément $x\in H$
   s'écrit de manière unique $x = y +z$ avec $y\in F$ et $z\in F^\perp$ (théorème
   du supplémentaire orthogonal d'un sous-espace vectoriel fermé).
@@ -132,8 +139,9 @@
   d'uniques $y\in F$, $z\in F^{\perp}$ tels que $x = y + z$. On en déduit que
   $$\lim_{n\to+\infty}S_n(x) =
   \lim_{n\to+\infty}S_n(y) + \lim_{n\to+\infty}S_n(z)=
-  0 + z = z.$$
-  Ceci montre que $S_n$ converge ponctuellement vers l'opérateur annoncé.
+  0 + z = z = P(x).$$
+  Ceci montre que $S_n$ converge ponctuellement vers l'opérateur annoncé,
+  ce qui correspond à l'affirmation du théorème.
 
   % L'application $\sigma: F \times F^\perp\to H: (y, x) \mapsto y + z$
   % est linéaire,  continue. Comme $F$ et $F^\perp$
@@ -143,13 +151,13 @@
   % Il est clair que sur chacun de ces sous-espaces, $S_n$ converge en norme
   % (respectivement vers l'application nulle et l'identité).
 
-  Soit $x\in B(0, 1)$, $x = y + z$ avec $(y, z)\in F\times F^\perp$.
-  Alors $$\|S_n(x) - z \| = \|S_n(y)\| \leq ...?$$ % \frac{2}{n}$$
-  car $T$ est une contraction et
-  $\|y\|^2\leq \|y\|^2 + \|z\|^2 = \|x\|^2 \leq 1$. On déduit de cette
-  dernière inégalité que $S_n$ converge uniformément en $x$ vers sa limite
-  ponctuelle sur la boule
-  unité, ce qui implique que $S_n$ converge en norme vers sa limite ponctuelle.
+  % Soit $x\in B(0, 1)$, $x = y + z$ avec $(y, z)\in F\times F^\perp$.
+  % Alors $$\|S_n(x) - z \| = \|S_n(y)\| \leq ...?$$ % \frac{2}{n}$$
+  % car $T$ est une contraction et
+  % $\|y\|^2\leq \|y\|^2 + \|z\|^2 = \|x\|^2 \leq 1$. On déduit de cette
+  % dernière inégalité que $S_n$ converge uniformément en $x$ vers sa limite
+  % ponctuelle sur la boule
+  % unité, ce qui implique que $S_n$ converge en norme vers sa limite ponctuelle.
 \end{proof}
 
 \subsection{Espaces de Banach}

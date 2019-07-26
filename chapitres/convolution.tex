@@ -46,9 +46,56 @@ $$\widehat{f}(x) = \int_\IR f(t) e^{-2i\pi t x}\ud t\mbox{, } x\in \IR.$$
 \begin{prop}
   Soit $f\in L^1(\IR)$. Alors $\widehat{f}$ est bien définie,
   continue sur $\IR$ et
-  $\lim_{|x|\to\infty}\widehat{f}(x) = 0$.
+  $$\lim_{|x|\to\infty}\widehat{f}(x) = 0.$$
 \end{prop}
 
+Avant de démontrer cette proposition, montrons un autre résultat utile à
+sa preuve.
+\begin{thm}\label{conv:trans}
+  Soit $1 \leq p < \infty$ et $f \in L^p(\IR)$. On pose, pour tout réel
+  $t$, $f_t: \IR \to \IR: x\mapsto f(x - t)$.
+  Alors
+  $$f_t \xrightarrow[t\to 0]{\|.\|_p} f.$$
+\end{thm}
+
+\begin{proof}[Esquisse de preuve]
+  Posons $V = \{f\in L^p(\IR) \mid f_t \to f \mbox{ quand } t\to 0\}$.
+  On va montrer qu'il s'agit d'un sous-espace vectoriel fermé de $L^p(\IR)$
+  qui contient les fonctions étagées (intégrables au sens de la norme $\|.\|_p$)
+
+  Puisque $f \mapsto f_t$ est linéaire, on déduit facilement que $V$ est
+  un espace vectoriel. Montrons maintenant que $V$ est fermé. On choisit
+  $f\in L^p(\IR)$ telle qu'il existe une suite $f^{(n)}\in V$ telle que
+  $\|f - f^{(n)}\|_p\to 0$.
+
+  Soit $\epsilon >0$, il existe par hypothèse un rang $N$ tel que
+  $\|f^{(N)} - f\|_p < \epsilon/3$. Puisque $f^{(N)} \in V$, il existe
+  $T > 0$ tel que pour tout $t$ vérifiant $|t| < T$, on a
+  $|f^{(N)}_t - f^{(N)}| < \epsilon/3$. On remarque également
+  que $\|f^{(N)} - f\|_p = \|f^{(N)}_t - f_t\|_p$ pour tout réel $t$ (car
+  la mesure
+  de Lebesgue est invariante par translation). On déduit de l'inégalité
+  triangulaire que pour tout $t$ tel que $|t| < T$, on a bien
+  $\|f_t - f \|_p < \epsilon$.
+
+  On retrouve dans $V$ les indicatrices d'intervalles $[a, b]$ bornés;
+  en effet, notons $f$ une telle indicatrice, alors pour $t$ borné,
+  on peut borner $f_t$ par une fonction intégrable indépendante de $t$
+  (e.g. l'indicatrice de l'intervalle  $[a - 1, b+1]$, alors on prend
+  $|t| < 1$) et on déduit alors
+  du théorème de convergence dominée que $f_t \xrightarrow{\|.\|_p} f$.
+
+  Puisque $V$ est un sous-espace vectoriel de $L^p(\IR)$, on retrouve
+  dans $V$ toutes les combinaisons linéaires d'indicatrices d'intervalles et
+  en particulier les indicatrices des unions finies d'intervalles.
+  Comme $V$ est fermé, on y retrouve les indicatrices de tout ensemble
+  de mesure finie (cf. construction de la mesure de Lebesgue). Cela implique
+  que toute fonction étagée à support de mesure finie
+  est dans $V$ et par densité de l'ensemble de ces fonctions, on conclut
+  $V = L^p(\IR)$.
+\end{proof}
+
+Prouvons maintenant la proposition.
 \begin{proof}
   On a $|f(t)e^{2i \pi t x}| \leq |f(t)|$ pour tous réels $x$ et $t$. De
   cette majoration, on déduit que $\widehat{f}(x)$ est bien définie pour
@@ -56,18 +103,36 @@ $$\widehat{f}(x) = \int_\IR f(t) e^{-2i\pi t x}\ud t\mbox{, } x\in \IR.$$
   Le théorème de convergence dominée implique la continuité séquentielle
   de $\widehat{f}$ (on utilise toujours la même majoration).
 
-  Le reste du résultat est admis.
+  Montrons maintenant la seconde assertion de la proposition.
+  Pour tout $y\in \IR$, on a les égalités:
+  \begin{IEEEeqnarray*}{rClL}
+    \widehat{f}(y) & = & -\int_\IR f(x) e^{-2i\pi xy} e^{-i\pi} \ud x &
+    \mbox{(car $e^{i\pi} = -1$)}\\
+    & = & -\int_\IR f(x) e^{-2i\pi \left(xy - \frac{1}{2}\right)} \ud x &\\
+    & = & -\int_\IR f\!\left(t-\frac{1}{2y}\right) e^{-2i\pi ty}\ud t \quad &
+    \mbox{(en posant $t = x + \frac{1}{2y}$)}.
+  \end{IEEEeqnarray*}
+  On en déduit alors que pour tout réel $y$ non nul, on a
+  \begin{equation*}
+    2\widehat{f}(y) = \int_\IR f(x) e^{-2i\pi xy} \ud x -
+    \int_\IR f\!\left(t - \frac{1}{2y}\right)e^{-2i\pi t y} \ud t
+  \end{equation*}
+  et par l'inégalité triangulaire, on a
+  \begin{equation*}
+    2|\widehat{f}(y)|\leq
+    \int_\IR \left|f(x) -f\left(x - \frac{1}{2y}\right)\right|
+    \cdot |e^{-2i\pi xy}|\ud x = \|f - f_{\frac{1}{2y}}\|_1.
+  \end{equation*}
+
+  Par le théorème \ref{conv:trans}, on a bien que
+  $|\widehat{f}(y)| \xrightarrow{|y|\to + \infty} 0$, ce qu'on voulait montrer.
 \end{proof}
 
-\begin{thm}
-  Soit $f\in L^1(\IR)$. On pose $f_x(t) = f(t-x)$.
-
-  Alors $T: \IR\to L^1(\IR): x\mapsto f_x$ est uniformément continue.
-\end{thm}
-
-\begin{proof}
-  Admis.
-\end{proof}
+\begin{exo}
+  Reprenons les notations du théorème \ref{conv:trans}. Déduire de ce
+  théorème que
+  $T: \IR\to L^1(\IR): x\mapsto f_x$ est uniformément continue.
+\end{exo}
 
 \begin{thm}
   Soient $f$, $g\in L^1(\IR)$. On a l'égalité $\widehat{f * g} = \widehat{f}
